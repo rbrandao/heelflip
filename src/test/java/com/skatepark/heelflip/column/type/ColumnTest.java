@@ -1,4 +1,4 @@
-package com.skatepark.heelflip;
+package com.skatepark.heelflip.column.type;
 
 import com.skatepark.heelflip.column.type.DoubleColumn;
 import com.skatepark.heelflip.column.type.LongColumn;
