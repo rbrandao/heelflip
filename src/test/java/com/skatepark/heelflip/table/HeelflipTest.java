@@ -4,7 +4,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import com.skatepark.heelflip.util.JsonUtil;
+import com.skatepark.heelflip.util.JSONFlatter;
 
 import org.junit.Test;
 
@@ -31,7 +31,7 @@ public class HeelflipTest {
                     .collect(Collectors.toList());
 
             for (JsonElement elem : jsons) {
-                List<JsonObject> planner = JsonUtil.flatten(elem.getAsJsonObject());
+                List<JsonObject> planner = JSONFlatter.flatten(elem.getAsJsonObject());
                 planner.forEach(System.out::println);
             }
         }

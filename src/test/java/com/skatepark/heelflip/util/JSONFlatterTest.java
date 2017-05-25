@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-public class JsonUtilTest {
+public class JSONFlatterTest {
 
     @Test
     public void testFlattenOnPlainJson() {
@@ -18,7 +18,7 @@ public class JsonUtilTest {
         source.addProperty("c", 10.3);
         source.addProperty("d", "word");
 
-        List<JsonObject> flattenObjs = JsonUtil.flatten(source);
+        List<JsonObject> flattenObjs = JSONFlatter.flatten(source);
         Assert.assertEquals(1, flattenObjs.size());
         Assert.assertEquals(source, flattenObjs.get(0));
     }
@@ -36,7 +36,7 @@ public class JsonUtilTest {
         source.addProperty("d", "word");
         source.add("e", e);
 
-        List<JsonObject> flattenObjs = JsonUtil.flatten(source);
+        List<JsonObject> flattenObjs = JSONFlatter.flatten(source);
         Assert.assertEquals(1, flattenObjs.size());
 
         JsonObject expected = new JsonObject();
@@ -69,7 +69,7 @@ public class JsonUtilTest {
         source.addProperty("d", "word");
         source.add("e", e);
 
-        List<JsonObject> flattenObjs = JsonUtil.flatten(source);
+        List<JsonObject> flattenObjs = JSONFlatter.flatten(source);
         Assert.assertEquals(1, flattenObjs.size());
 
         JsonObject expected = new JsonObject();
@@ -104,7 +104,7 @@ public class JsonUtilTest {
         source.addProperty("b", true);
         source.add("c", array);
 
-        List<JsonObject> flattenObjs = JsonUtil.flatten(source);
+        List<JsonObject> flattenObjs = JSONFlatter.flatten(source);
         Assert.assertEquals(2, flattenObjs.size());
 
         JsonObject expected0 = new JsonObject();
@@ -118,6 +118,51 @@ public class JsonUtilTest {
         expected1.addProperty("b", true);
         expected1.addProperty("c.a", 20);
         expected1.addProperty("c.b", false);
+
+        Assert.assertEquals(expected0, flattenObjs.get(0));
+        Assert.assertEquals(expected1, flattenObjs.get(1));
+    }
+
+    @Test
+    public void testFlatten1ArrayIntoObject() {
+        JsonObject elem0 = new JsonObject();
+        elem0.addProperty("a", 10);
+        elem0.addProperty("b", true);
+
+        JsonObject elem1 = new JsonObject();
+        elem1.addProperty("a", 20);
+        elem1.addProperty("b", false);
+
+        JsonArray array = new JsonArray();
+        array.add(elem0);
+        array.add(elem1);
+
+        JsonObject c = new JsonObject();
+        c.addProperty("a", 15);
+        c.add("b", array);
+
+        JsonObject source = new JsonObject();
+        source.addProperty("a", 10);
+        source.addProperty("b", true);
+        source.add("c", c);
+
+        List<JsonObject> flattenObjs = JSONFlatter.flatten(source);
+        System.out.println(flattenObjs.get(0));
+        Assert.assertEquals(2, flattenObjs.size());
+
+        JsonObject expected0 = new JsonObject();
+        expected0.addProperty("a", 10);
+        expected0.addProperty("b", true);
+        expected0.addProperty("c.a", 15);
+        expected0.addProperty("c.b.a", 10);
+        expected0.addProperty("c.b.b", true);
+
+        JsonObject expected1 = new JsonObject();
+        expected1.addProperty("a", 10);
+        expected1.addProperty("b", true);
+        expected1.addProperty("c.a", 15);
+        expected1.addProperty("c.b.a", 20);
+        expected1.addProperty("c.b.b", false);
 
         Assert.assertEquals(expected0, flattenObjs.get(0));
         Assert.assertEquals(expected1, flattenObjs.get(1));
