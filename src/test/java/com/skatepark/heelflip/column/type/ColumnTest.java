@@ -1,9 +1,5 @@
 package com.skatepark.heelflip.column.type;
 
-import com.skatepark.heelflip.column.type.DoubleColumn;
-import com.skatepark.heelflip.column.type.LongColumn;
-import com.skatepark.heelflip.column.type.StringColumn;
-
 import org.junit.Assert;
 import org.junit.Test;
 

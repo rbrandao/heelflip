@@ -1,10 +1,5 @@
 package com.skatepark.heelflip.column;
 
-import com.skatepark.heelflip.column.IColumn;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Objects;
 
 public class MetaValue<T> {
