@@ -50,7 +50,6 @@ public class JSONFlatterTest {
         Assert.assertEquals(expected, flattenObjs.get(0));
     }
 
-
     @Test
     public void testFlatten2LevelObj() {
         JsonObject c = new JsonObject();
@@ -147,7 +146,6 @@ public class JSONFlatterTest {
         source.add("c", c);
 
         List<JsonObject> flattenObjs = JSONFlatter.flatten(source);
-        System.out.println(flattenObjs.get(0));
         Assert.assertEquals(2, flattenObjs.size());
 
         JsonObject expected0 = new JsonObject();
@@ -163,6 +161,51 @@ public class JSONFlatterTest {
         expected1.addProperty("c.a", 15);
         expected1.addProperty("c.b.a", 20);
         expected1.addProperty("c.b.b", false);
+
+        Assert.assertEquals(expected0, flattenObjs.get(0));
+        Assert.assertEquals(expected1, flattenObjs.get(1));
+    }
+
+    @Test
+    public void testFlatten1ObjectIntoArray() {
+        JsonObject c = new JsonObject();
+        c.addProperty("x", 15);
+        c.addProperty("y", 35);
+
+        JsonObject elem0 = new JsonObject();
+        elem0.addProperty("a", 10);
+        elem0.addProperty("b", true);
+        elem0.add("c", c);
+
+        JsonObject elem1 = new JsonObject();
+        elem1.addProperty("a", 20);
+        elem1.addProperty("b", false);
+
+        JsonArray array = new JsonArray();
+        array.add(elem0);
+        array.add(elem1);
+
+        JsonObject source = new JsonObject();
+        source.addProperty("a", 10);
+        source.addProperty("b", true);
+        source.add("c", array);
+
+        List<JsonObject> flattenObjs = JSONFlatter.flatten(source);
+        Assert.assertEquals(2, flattenObjs.size());
+
+        JsonObject expected0 = new JsonObject();
+        expected0.addProperty("a", 10);
+        expected0.addProperty("b", true);
+        expected0.addProperty("c.a", 10);
+        expected0.addProperty("c.b", true);
+        expected0.addProperty("c.c.x", 15);
+        expected0.addProperty("c.c.y", 35);
+
+        JsonObject expected1 = new JsonObject();
+        expected1.addProperty("a", 10);
+        expected1.addProperty("b", true);
+        expected1.addProperty("c.a", 20);
+        expected1.addProperty("c.b", false);
 
         Assert.assertEquals(expected0, flattenObjs.get(0));
         Assert.assertEquals(expected1, flattenObjs.get(1));
