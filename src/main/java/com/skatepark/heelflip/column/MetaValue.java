@@ -1,16 +1,10 @@
 package com.skatepark.heelflip.column;
 
-import java.util.Objects;
-
-public class MetaValue<T> {
-
-    private T value;
+public class MetaValue {
 
     private long count;
 
-    public MetaValue(T value) {
-        Objects.requireNonNull(value, "value should not be null.");
-        this.value = value;
+    public MetaValue() {
         this.count = 0;
     }
 

@@ -40,14 +40,14 @@ public class HeelflipTest {
         Assert.assertEquals(1.2, heelflip.minAsDouble("b"), 10E10);
         Assert.assertEquals(1.5, heelflip.maxAsDouble("b"), 10E10);
 
-        Assert.assertEquals(0, heelflip.minAsLong("c"));
-        Assert.assertEquals(0, heelflip.maxAsLong("c"));
-        Assert.assertEquals(0, heelflip.minAsDouble("c"), 10E10);
-        Assert.assertEquals(0, heelflip.maxAsDouble("c"), 10E10);
+        Assert.assertEquals(-1, heelflip.minAsLong("c"));
+        Assert.assertEquals(-1, heelflip.maxAsLong("c"));
+        Assert.assertEquals(-1, heelflip.minAsDouble("c"), 10E10);
+        Assert.assertEquals(-1, heelflip.maxAsDouble("c"), 10E10);
 
-        Assert.assertEquals(0, heelflip.minAsLong("d"));
-        Assert.assertEquals(0, heelflip.maxAsLong("d"));
-        Assert.assertEquals(0, heelflip.minAsDouble("d"), 10E10);
-        Assert.assertEquals(0, heelflip.maxAsDouble("d"), 10E10);
+        Assert.assertEquals(-1, heelflip.minAsLong("d"));
+        Assert.assertEquals(-1, heelflip.maxAsLong("d"));
+        Assert.assertEquals(-1, heelflip.minAsDouble("d"), 10E10);
+        Assert.assertEquals(-1, heelflip.maxAsDouble("d"), 10E10);
     }
 }

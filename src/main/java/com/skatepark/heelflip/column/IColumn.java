@@ -1,44 +1,52 @@
 package com.skatepark.heelflip.column;
 
-import com.skatepark.heelflip.column.type.DoubleColumn;
-import com.skatepark.heelflip.column.type.LongColumn;
-import com.skatepark.heelflip.column.type.StringColumn;
+import java.util.Set;
 
-import java.util.List;
-
-public interface IColumn<T> {
+public interface IColumn {
 
     String name();
 
-    void add(T value);
+    void add(String value);
+
+    void add(int value);
+
+    void add(long value);
+
+    void add(double value);
+
+    long count(String value);
+
+    long count(int value);
+
+    long count(long value);
+
+    long count(double value);
 
     long count();
 
-    long count(T value);
+    int minAsInt();
 
-    List<T> values();
+    int maxAsInt();
 
-    default boolean isLongColumn() {
-        return this instanceof LongColumn;
-    }
+    int sumAsInt();
 
-    default boolean isDoubleColumn() {
-        return this instanceof DoubleColumn;
-    }
+    long minAsLong();
 
-    default boolean isStringColumn() {
-        return this instanceof StringColumn;
-    }
+    long maxAsLong();
 
-    default LongColumn getAsLongColumn() {
-        return (LongColumn) this;
-    }
+    long sumAsLong();
 
-    default DoubleColumn getAsDoubleColumn() {
-        return (DoubleColumn) this;
-    }
+    double minAsDouble();
 
-    default StringColumn getAsStringColumn() {
-        return (StringColumn) this;
-    }
+    double maxAsDouble();
+
+    double sumAsDouble();
+
+    Set<Integer> valuesAsIntSet();
+
+    Set<Long> valuesAsLongSet();
+
+    Set<Double> valuesAsDoubleSet();
+
+    Set<String> valuesAsStringSet();
 }

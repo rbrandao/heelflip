@@ -1,9 +1,7 @@
 package com.skatepark.heelflip.table;
 
 import com.skatepark.heelflip.column.IColumn;
-import com.skatepark.heelflip.column.type.DoubleColumn;
-import com.skatepark.heelflip.column.type.LongColumn;
-import com.skatepark.heelflip.column.type.StringColumn;
+import com.skatepark.heelflip.column.type.ObjectColumn;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,53 +19,31 @@ public class Heelflip {
         this.columnsMap = new HashMap<>();
     }
 
-    public void add(String columnName, Integer value) {
+    public void add(String columnName, int value) {
         Objects.requireNonNull(columnName, "columnName should not be null.");
-        Objects.requireNonNull(value, "value should not be null.");
-
-        add(columnName, value.longValue());
+        add(columnName, Integer.toString(value));
     }
 
-    public void add(String columnName, Long value) {
-        Objects.requireNonNull(columnName, "columnName should not be null.");
-        Objects.requireNonNull(value, "value should not be null.");
 
-        if (!columnsMap.containsKey(columnName)) {
-            columnsMap.put(columnName, new LongColumn(columnName));
-        }
-        IColumn column = columnsMap.get(columnName);
-        if (!column.isLongColumn()) {
-            return;
-        }
-        column.getAsLongColumn().add(value);
+    public void add(String columnName, long value) {
+        Objects.requireNonNull(columnName, "columnName should not be null.");
+        add(columnName, Long.toString(value));
     }
 
-    public void add(String columnName, Double value) {
+    public void add(String columnName, double value) {
         Objects.requireNonNull(columnName, "columnName should not be null.");
-        Objects.requireNonNull(value, "value should not be null.");
-
-        if (!columnsMap.containsKey(columnName)) {
-            columnsMap.put(columnName, new DoubleColumn(columnName));
-        }
-        IColumn column = columnsMap.get(columnName);
-        if (!column.isDoubleColumn()) {
-            return;
-        }
-        column.getAsDoubleColumn().add(value);
+        add(columnName, Double.toString(value));
     }
+
 
     public void add(String columnName, String value) {
         Objects.requireNonNull(columnName, "columnName should not be null.");
         Objects.requireNonNull(value, "value should not be null.");
 
         if (!columnsMap.containsKey(columnName)) {
-            columnsMap.put(columnName, new StringColumn(columnName));
+            columnsMap.put(columnName, new ObjectColumn(columnName));
         }
-        IColumn column = columnsMap.get(columnName);
-        if (!column.isStringColumn()) {
-            return;
-        }
-        column.getAsStringColumn().add(value);
+        columnsMap.get(columnName).add(value);
     }
 
     public int size() {
@@ -82,64 +58,32 @@ public class Heelflip {
     public long minAsLong(String columnName) {
         Objects.requireNonNull(columnName, "columnName should not be null.");
         if (!columnsMap.containsKey(columnName)) {
-            return 0;
+            return -1;
         }
-        IColumn column = columnsMap.get(columnName);
-        if (column.isStringColumn()) {
-            return 0;
-        }
-        if (column.isDoubleColumn()) {
-            Double min = column.getAsDoubleColumn().min();
-            return min.longValue();
-        }
-        return column.getAsLongColumn().min();
+        return columnsMap.get(columnName).minAsLong();
     }
 
     public long maxAsLong(String columnName) {
         Objects.requireNonNull(columnName, "columnName should not be null.");
         if (!columnsMap.containsKey(columnName)) {
-            return 0;
+            return -1;
         }
-        IColumn column = columnsMap.get(columnName);
-        if (column.isStringColumn()) {
-            return 0;
-        }
-        if (column.isDoubleColumn()) {
-            Double max = column.getAsDoubleColumn().max();
-            return max.longValue();
-        }
-        return column.getAsLongColumn().max();
+        return columnsMap.get(columnName).maxAsLong();
     }
 
     public double minAsDouble(String columnName) {
         Objects.requireNonNull(columnName, "columnName should not be null.");
         if (!columnsMap.containsKey(columnName)) {
-            return 0;
+            return -1;
         }
-        IColumn column = columnsMap.get(columnName);
-        if (column.isStringColumn()) {
-            return 0;
-        }
-        if (column.isLongColumn()) {
-            Long min = column.getAsLongColumn().min();
-            return min.doubleValue();
-        }
-        return column.getAsDoubleColumn().min();
+        return columnsMap.get(columnName).minAsDouble();
     }
 
     public double maxAsDouble(String columnName) {
         Objects.requireNonNull(columnName, "columnName should not be null.");
         if (!columnsMap.containsKey(columnName)) {
-            return 0;
+            return -1;
         }
-        IColumn column = columnsMap.get(columnName);
-        if (column.isStringColumn()) {
-            return 0;
-        }
-        if (column.isLongColumn()) {
-            Long max = column.getAsLongColumn().max();
-            return max.doubleValue();
-        }
-        return column.getAsDoubleColumn().max();
+        return columnsMap.get(columnName).maxAsDouble();
     }
 }
