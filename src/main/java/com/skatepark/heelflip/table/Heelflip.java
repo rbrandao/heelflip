@@ -19,31 +19,11 @@ public class Heelflip {
         this.columnsMap = new HashMap<>();
     }
 
-    public void add(String columnName, int value) {
-        Objects.requireNonNull(columnName, "columnName should not be null.");
-        add(columnName, Integer.toString(value));
-    }
+    public void add(Map<String, Object> values) {
+        Objects.requireNonNull(values, "values should not be null.");
 
-
-    public void add(String columnName, long value) {
-        Objects.requireNonNull(columnName, "columnName should not be null.");
-        add(columnName, Long.toString(value));
-    }
-
-    public void add(String columnName, double value) {
-        Objects.requireNonNull(columnName, "columnName should not be null.");
-        add(columnName, Double.toString(value));
-    }
-
-
-    public void add(String columnName, String value) {
-        Objects.requireNonNull(columnName, "columnName should not be null.");
-        Objects.requireNonNull(value, "value should not be null.");
-
-        if (!columnsMap.containsKey(columnName)) {
-            columnsMap.put(columnName, new ObjectColumn(columnName));
-        }
-        columnsMap.get(columnName).add(value);
+        values.entrySet().stream()
+                .forEach(entry -> addValue(entry.getKey(), entry.getValue()));
     }
 
     public int size() {
@@ -56,34 +36,40 @@ public class Heelflip {
     }
 
     public long minAsLong(String columnName) {
-        Objects.requireNonNull(columnName, "columnName should not be null.");
-        if (!columnsMap.containsKey(columnName)) {
+        if (!contains(columnName)) {
             return -1;
         }
         return columnsMap.get(columnName).minAsLong();
     }
 
     public long maxAsLong(String columnName) {
-        Objects.requireNonNull(columnName, "columnName should not be null.");
-        if (!columnsMap.containsKey(columnName)) {
+        if (!contains(columnName)) {
             return -1;
         }
         return columnsMap.get(columnName).maxAsLong();
     }
 
     public double minAsDouble(String columnName) {
-        Objects.requireNonNull(columnName, "columnName should not be null.");
-        if (!columnsMap.containsKey(columnName)) {
+        if (!contains(columnName)) {
             return -1;
         }
         return columnsMap.get(columnName).minAsDouble();
     }
 
     public double maxAsDouble(String columnName) {
-        Objects.requireNonNull(columnName, "columnName should not be null.");
-        if (!columnsMap.containsKey(columnName)) {
+        if (!contains(columnName)) {
             return -1;
         }
         return columnsMap.get(columnName).maxAsDouble();
+    }
+
+    private void addValue(String columnName, Object value) {
+        Objects.requireNonNull(columnName, "columnName should not be null.");
+        Objects.requireNonNull(value, "value should not be null.");
+
+        if (!contains(columnName)) {
+            columnsMap.put(columnName, new ObjectColumn(columnName));
+        }
+        columnsMap.get(columnName).add(value.toString());
     }
 }
