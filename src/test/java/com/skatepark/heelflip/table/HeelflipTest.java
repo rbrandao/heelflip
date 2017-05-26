@@ -336,6 +336,39 @@ public class HeelflipTest {
     }
 
     @Test
+    public void testValuesAsStringSet() throws IOException {
+        InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_FILE_PATH);
+
+        Heelflip heelflip = new Heelflip("table");
+        heelflip.load(stream);
+
+        Assert.assertEquals(10, heelflip.size());
+
+        Assert.assertEquals(1, heelflip.valuesAsStringSet("a").size());
+        Assert.assertEquals(1, heelflip.valuesAsStringSet("b").size());
+        Assert.assertEquals(1, heelflip.valuesAsStringSet("c").size());
+        Assert.assertEquals(1, heelflip.valuesAsStringSet("d").size());
+        Assert.assertEquals(1, heelflip.valuesAsStringSet("e").size());
+        Assert.assertEquals(1, heelflip.valuesAsStringSet("f").size());
+        Assert.assertEquals(1, heelflip.valuesAsStringSet("g").size());
+        Assert.assertEquals(1, heelflip.valuesAsStringSet("h").size());
+        Assert.assertEquals(1, heelflip.valuesAsStringSet("i").size());
+        Assert.assertEquals(1, heelflip.valuesAsStringSet("j").size());
+        Assert.assertEquals(0, heelflip.valuesAsStringSet("l").size());
+
+        Assert.assertTrue(heelflip.valuesAsStringSet("a").contains("0"));
+        Assert.assertTrue(heelflip.valuesAsStringSet("b").contains("1"));
+        Assert.assertTrue(heelflip.valuesAsStringSet("c").contains("2"));
+        Assert.assertTrue(heelflip.valuesAsStringSet("d").contains("3"));
+        Assert.assertTrue(heelflip.valuesAsStringSet("e").contains("4"));
+        Assert.assertTrue(heelflip.valuesAsStringSet("f").contains("5"));
+        Assert.assertTrue(heelflip.valuesAsStringSet("g").contains("6"));
+        Assert.assertTrue(heelflip.valuesAsStringSet("h").contains("7"));
+        Assert.assertTrue(heelflip.valuesAsStringSet("i").contains("8"));
+        Assert.assertTrue(heelflip.valuesAsStringSet("j").contains("9"));
+    }
+
+    @Test
     public void testLoadLargeFiles() throws IOException {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(STOCKS_FILE_PATH);
 
