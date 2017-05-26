@@ -1,26 +1,25 @@
 package com.skatepark.heelflip.table;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Map;
+import java.util.List;
 import java.util.Objects;
 import java.util.OptionalDouble;
 import java.util.OptionalInt;
 import java.util.OptionalLong;
 import java.util.Set;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 class ObjectColumn implements IColumn {
 
     private String name;
 
-    private Map<UUID, HFValue> values;
+    private List<HFValue> values;
 
     public ObjectColumn(String name) {
         Objects.requireNonNull(name, "name should not be null.");
         this.name = name;
-        this.values = new HashMap<>();
+        this.values = new ArrayList<>();
     }
 
     @Override
@@ -31,7 +30,7 @@ class ObjectColumn implements IColumn {
     @Override
     public void add(HFValue value) {
         Objects.requireNonNull(value, "value should not be null.");
-        values.put(value.getId(), value);
+        values.add(value);
     }
 
     @Override
@@ -39,7 +38,7 @@ class ObjectColumn implements IColumn {
         if (value == null) {
             return 0;
         }
-        return values.values().stream()
+        return values.stream()
                 .map(hfValue -> hfValue.getAsString())
                 .filter(v -> v.equals(value))
                 .count();
@@ -62,12 +61,12 @@ class ObjectColumn implements IColumn {
 
     @Override
     public long count() {
-        return values.values().size();
+        return values.size();
     }
 
     @Override
     public int minAsInt() {
-        OptionalInt min = values.values().stream()
+        OptionalInt min = values.stream()
                 .map(HFValue::getAsDouble)
                 .filter(Objects::nonNull)
                 .mapToInt(Double::intValue)
@@ -77,7 +76,7 @@ class ObjectColumn implements IColumn {
 
     @Override
     public int maxAsInt() {
-        OptionalInt max = values.values().stream()
+        OptionalInt max = values.stream()
                 .map(HFValue::getAsDouble)
                 .filter(Objects::nonNull)
                 .mapToInt(Double::intValue)
@@ -87,7 +86,7 @@ class ObjectColumn implements IColumn {
 
     @Override
     public int sumAsInt() {
-        return values.values().stream()
+        return values.stream()
                 .map(HFValue::getAsDouble)
                 .filter(Objects::nonNull)
                 .mapToInt(Double::intValue)
@@ -96,7 +95,7 @@ class ObjectColumn implements IColumn {
 
     @Override
     public long minAsLong() {
-        OptionalLong min = values.values().stream()
+        OptionalLong min = values.stream()
                 .map(HFValue::getAsDouble)
                 .filter(Objects::nonNull)
                 .mapToLong(Double::longValue)
@@ -106,7 +105,7 @@ class ObjectColumn implements IColumn {
 
     @Override
     public long maxAsLong() {
-        OptionalLong max = values.values().stream()
+        OptionalLong max = values.stream()
                 .map(HFValue::getAsDouble)
                 .filter(Objects::nonNull)
                 .mapToLong(Double::longValue)
@@ -116,7 +115,7 @@ class ObjectColumn implements IColumn {
 
     @Override
     public long sumAsLong() {
-        return values.values().stream()
+        return values.stream()
                 .map(HFValue::getAsDouble)
                 .filter(Objects::nonNull)
                 .mapToLong(Double::longValue)
@@ -125,7 +124,7 @@ class ObjectColumn implements IColumn {
 
     @Override
     public double minAsDouble() {
-        OptionalDouble min = values.values().stream()
+        OptionalDouble min = values.stream()
                 .map(HFValue::getAsDouble)
                 .filter(Objects::nonNull)
                 .mapToDouble(Double::doubleValue)
@@ -135,7 +134,7 @@ class ObjectColumn implements IColumn {
 
     @Override
     public double maxAsDouble() {
-        OptionalDouble max = values.values().stream()
+        OptionalDouble max = values.stream()
                 .map(HFValue::getAsDouble)
                 .filter(Objects::nonNull)
                 .mapToDouble(Double::doubleValue)
@@ -145,7 +144,7 @@ class ObjectColumn implements IColumn {
 
     @Override
     public double sumAsDouble() {
-        return values.values().stream()
+        return values.stream()
                 .map(HFValue::getAsDouble)
                 .filter(Objects::nonNull)
                 .mapToDouble(Double::doubleValue)
@@ -155,7 +154,7 @@ class ObjectColumn implements IColumn {
     @Override
     public Set<Integer> valuesAsIntSet() {
         Set<Integer> result = new HashSet<>();
-        for (HFValue value : values.values()) {
+        for (HFValue value : values) {
             Double d = value.getAsDouble();
             if (d != null) {
                 result.add(d.intValue());
@@ -167,7 +166,7 @@ class ObjectColumn implements IColumn {
     @Override
     public Set<Long> valuesAsLongSet() {
         Set<Long> result = new HashSet<>();
-        for (HFValue value : values.values()) {
+        for (HFValue value : values) {
             Double d = value.getAsDouble();
             if (d != null) {
                 result.add(d.longValue());
@@ -179,7 +178,7 @@ class ObjectColumn implements IColumn {
     @Override
     public Set<Double> valuesAsDoubleSet() {
         Set<Double> result = new HashSet<>();
-        for (HFValue value : values.values()) {
+        for (HFValue value : values) {
             Double d = value.getAsDouble();
             if (d != null) {
                 result.add(d);
@@ -190,7 +189,7 @@ class ObjectColumn implements IColumn {
 
     @Override
     public Set<String> valuesAsStringSet() {
-        return values.values().stream()
+        return values.stream()
                 .map(HFValue::getAsString)
                 .collect(Collectors.toSet());
     }

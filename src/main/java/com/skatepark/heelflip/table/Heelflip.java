@@ -4,14 +4,13 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import com.skatepark.heelflip.util.Flatter;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -29,14 +28,8 @@ public class Heelflip {
         Objects.requireNonNull(json, "json should not be null.");
 
         UUID id = UUID.randomUUID();
-        for (JsonObject object : Flatter.flatten(json)) {
-            for (Map.Entry<String, JsonElement> entry : object.entrySet()) {
-                String columnName = entry.getKey();
-                JsonElement jsonValue = entry.getValue();
-
-                addValue(new HFValue(columnName, id, jsonValue.getAsJsonPrimitive()));
-            }
-        }
+        List<HFValue> values = Extractor.extract(id, json);
+        values.stream().forEach(this::addValue);
     }
 
     public int size() {
