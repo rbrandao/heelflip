@@ -381,6 +381,9 @@ public class HeelflipTest {
         Assert.assertEquals(1, heelflip.count("a"));
         Assert.assertEquals(2, heelflip.count("b.x"));
         Assert.assertEquals(2, heelflip.count("b.y"));
+
+        Assert.assertEquals(9, heelflip.minAsInt("b.x"));
+        Assert.assertEquals(10, heelflip.minAsInt("b.y"));
     }
 
     @Test
