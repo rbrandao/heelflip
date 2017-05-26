@@ -237,6 +237,105 @@ public class HeelflipTest {
     }
 
     @Test
+    public void testValuesAsIntSet() throws IOException {
+        InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_FILE_PATH);
+
+        Heelflip heelflip = new Heelflip("table");
+        heelflip.load(stream);
+
+        Assert.assertEquals(10, heelflip.size());
+
+        Assert.assertEquals(1, heelflip.valuesAsIntSet("a").size());
+        Assert.assertEquals(1, heelflip.valuesAsIntSet("b").size());
+        Assert.assertEquals(1, heelflip.valuesAsIntSet("c").size());
+        Assert.assertEquals(1, heelflip.valuesAsIntSet("d").size());
+        Assert.assertEquals(1, heelflip.valuesAsIntSet("e").size());
+        Assert.assertEquals(1, heelflip.valuesAsIntSet("f").size());
+        Assert.assertEquals(1, heelflip.valuesAsIntSet("g").size());
+        Assert.assertEquals(1, heelflip.valuesAsIntSet("h").size());
+        Assert.assertEquals(1, heelflip.valuesAsIntSet("i").size());
+        Assert.assertEquals(1, heelflip.valuesAsIntSet("j").size());
+        Assert.assertEquals(0, heelflip.valuesAsIntSet("l").size());
+
+        Assert.assertTrue(heelflip.valuesAsIntSet("a").contains(0));
+        Assert.assertTrue(heelflip.valuesAsIntSet("b").contains(1));
+        Assert.assertTrue(heelflip.valuesAsIntSet("c").contains(2));
+        Assert.assertTrue(heelflip.valuesAsIntSet("d").contains(3));
+        Assert.assertTrue(heelflip.valuesAsIntSet("e").contains(4));
+        Assert.assertTrue(heelflip.valuesAsIntSet("f").contains(5));
+        Assert.assertTrue(heelflip.valuesAsIntSet("g").contains(6));
+        Assert.assertTrue(heelflip.valuesAsIntSet("h").contains(7));
+        Assert.assertTrue(heelflip.valuesAsIntSet("i").contains(8));
+        Assert.assertTrue(heelflip.valuesAsIntSet("j").contains(9));
+    }
+
+    @Test
+    public void testValuesAsLongSet() throws IOException {
+        InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_FILE_PATH);
+
+        Heelflip heelflip = new Heelflip("table");
+        heelflip.load(stream);
+
+        Assert.assertEquals(10, heelflip.size());
+
+        Assert.assertEquals(1, heelflip.valuesAsLongSet("a").size());
+        Assert.assertEquals(1, heelflip.valuesAsLongSet("b").size());
+        Assert.assertEquals(1, heelflip.valuesAsLongSet("c").size());
+        Assert.assertEquals(1, heelflip.valuesAsLongSet("d").size());
+        Assert.assertEquals(1, heelflip.valuesAsLongSet("e").size());
+        Assert.assertEquals(1, heelflip.valuesAsLongSet("f").size());
+        Assert.assertEquals(1, heelflip.valuesAsLongSet("g").size());
+        Assert.assertEquals(1, heelflip.valuesAsLongSet("h").size());
+        Assert.assertEquals(1, heelflip.valuesAsLongSet("i").size());
+        Assert.assertEquals(1, heelflip.valuesAsLongSet("j").size());
+        Assert.assertEquals(0, heelflip.valuesAsLongSet("l").size());
+
+        Assert.assertTrue(heelflip.valuesAsLongSet("a").contains(0L));
+        Assert.assertTrue(heelflip.valuesAsLongSet("b").contains(1L));
+        Assert.assertTrue(heelflip.valuesAsLongSet("c").contains(2L));
+        Assert.assertTrue(heelflip.valuesAsLongSet("d").contains(3L));
+        Assert.assertTrue(heelflip.valuesAsLongSet("e").contains(4L));
+        Assert.assertTrue(heelflip.valuesAsLongSet("f").contains(5L));
+        Assert.assertTrue(heelflip.valuesAsLongSet("g").contains(6L));
+        Assert.assertTrue(heelflip.valuesAsLongSet("h").contains(7L));
+        Assert.assertTrue(heelflip.valuesAsLongSet("i").contains(8L));
+        Assert.assertTrue(heelflip.valuesAsLongSet("j").contains(9L));
+    }
+
+    @Test
+    public void testValuesAsDoubleSet() throws IOException {
+        InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_FILE_PATH);
+
+        Heelflip heelflip = new Heelflip("table");
+        heelflip.load(stream);
+
+        Assert.assertEquals(10, heelflip.size());
+
+        Assert.assertEquals(1, heelflip.valuesAsDoubleSet("a").size());
+        Assert.assertEquals(1, heelflip.valuesAsDoubleSet("b").size());
+        Assert.assertEquals(1, heelflip.valuesAsDoubleSet("c").size());
+        Assert.assertEquals(1, heelflip.valuesAsDoubleSet("d").size());
+        Assert.assertEquals(1, heelflip.valuesAsDoubleSet("e").size());
+        Assert.assertEquals(1, heelflip.valuesAsDoubleSet("f").size());
+        Assert.assertEquals(1, heelflip.valuesAsDoubleSet("g").size());
+        Assert.assertEquals(1, heelflip.valuesAsDoubleSet("h").size());
+        Assert.assertEquals(1, heelflip.valuesAsDoubleSet("i").size());
+        Assert.assertEquals(1, heelflip.valuesAsDoubleSet("j").size());
+        Assert.assertEquals(0, heelflip.valuesAsDoubleSet("l").size());
+
+        Assert.assertTrue(heelflip.valuesAsDoubleSet("a").contains(0.0));
+        Assert.assertTrue(heelflip.valuesAsDoubleSet("b").contains(1.0));
+        Assert.assertTrue(heelflip.valuesAsDoubleSet("c").contains(2.0));
+        Assert.assertTrue(heelflip.valuesAsDoubleSet("d").contains(3.0));
+        Assert.assertTrue(heelflip.valuesAsDoubleSet("e").contains(4.0));
+        Assert.assertTrue(heelflip.valuesAsDoubleSet("f").contains(5.0));
+        Assert.assertTrue(heelflip.valuesAsDoubleSet("g").contains(6.0));
+        Assert.assertTrue(heelflip.valuesAsDoubleSet("h").contains(7.0));
+        Assert.assertTrue(heelflip.valuesAsDoubleSet("i").contains(8.0));
+        Assert.assertTrue(heelflip.valuesAsDoubleSet("j").contains(9.0));
+    }
+
+    @Test
     public void testLoadLargeFiles() throws IOException {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(STOCKS_FILE_PATH);
 

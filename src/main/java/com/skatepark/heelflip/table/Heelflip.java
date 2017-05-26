@@ -54,101 +54,93 @@ public class Heelflip {
     }
 
     public boolean contains(String columnName) {
-        Objects.requireNonNull(columnName, "columnName should not be null.");
-        return columnsMap.containsKey(columnName);
+        return columnName != null && columnsMap.containsKey(columnName);
     }
 
     public int minAsInt(String columnName) {
-        if (!contains(columnName)) {
-            return -1;
-        }
-        return columnsMap.get(columnName).minAsInt();
+        return !contains(columnName) ?
+                -1 :
+                columnsMap.get(columnName).minAsInt();
     }
 
     public int maxAsInt(String columnName) {
-        if (!contains(columnName)) {
-            return -1;
-        }
-        return columnsMap.get(columnName).maxAsInt();
+        return !contains(columnName) ?
+                -1 :
+                columnsMap.get(columnName).maxAsInt();
     }
 
     public int sumAsInt(String columnName) {
-        if (!contains(columnName)) {
-            return -1;
-        }
-        return columnsMap.get(columnName).sumAsInt();
+        return !contains(columnName) ?
+                -1 :
+                columnsMap.get(columnName).sumAsInt();
     }
 
     public long minAsLong(String columnName) {
-        if (!contains(columnName)) {
-            return -1;
-        }
-        return columnsMap.get(columnName).minAsLong();
+        return !contains(columnName) ?
+                -1 :
+                columnsMap.get(columnName).minAsLong();
     }
 
     public long maxAsLong(String columnName) {
-        if (!contains(columnName)) {
-            return -1;
-        }
-        return columnsMap.get(columnName).maxAsLong();
+        return !contains(columnName) ?
+                -1 :
+                columnsMap.get(columnName).maxAsLong();
     }
 
     public long sumAsLong(String columnName) {
-        if (!contains(columnName)) {
-            return -1;
-        }
-        return columnsMap.get(columnName).sumAsLong();
+        return !contains(columnName) ?
+                -1 :
+                columnsMap.get(columnName).sumAsLong();
     }
 
     public double minAsDouble(String columnName) {
-        if (!contains(columnName)) {
-            return -1;
-        }
-        return columnsMap.get(columnName).minAsDouble();
+        return !contains(columnName) ?
+                -1 :
+                columnsMap.get(columnName).minAsDouble();
     }
 
     public double maxAsDouble(String columnName) {
-        if (!contains(columnName)) {
-            return -1;
-        }
-        return columnsMap.get(columnName).maxAsDouble();
+        return !contains(columnName) ?
+                -1 :
+                columnsMap.get(columnName).maxAsDouble();
     }
 
     public double sumAsDouble(String columnName) {
-        if (!contains(columnName)) {
-            return -1;
-        }
-        return columnsMap.get(columnName).sumAsDouble();
+        return !contains(columnName) ?
+                -1 :
+                columnsMap.get(columnName).sumAsDouble();
     }
 
     public Set<Integer> valuesAsIntSet(String columnName) {
-        if (!contains(columnName)) {
-            return Collections.emptySet();
-        }
-        return columnsMap.get(columnName).valuesAsIntSet();
+        return !contains(columnName) ?
+                Collections.emptySet() :
+                columnsMap.get(columnName).valuesAsIntSet();
     }
 
     public Set<Long> valuesAsLongSet(String columnName) {
-        if (!contains(columnName)) {
-            return Collections.emptySet();
-        }
-        return columnsMap.get(columnName).valuesAsLongSet();
+        return !contains(columnName) ?
+                Collections.emptySet() :
+                columnsMap.get(columnName).valuesAsLongSet();
     }
 
     public Set<Double> valuesAsDoubleSet(String columnName) {
-        if (!contains(columnName)) {
-            return Collections.emptySet();
-        }
-        return columnsMap.get(columnName).valuesAsDoubleSet();
+        return !contains(columnName) ?
+                Collections.emptySet() :
+                columnsMap.get(columnName).valuesAsDoubleSet();
     }
 
     public Set<String> valuesAsStringSet(String columnName) {
-        if (!contains(columnName)) {
-            return Collections.emptySet();
-        }
-        return columnsMap.get(columnName).valuesAsStringSet();
+        return !contains(columnName) ?
+                Collections.emptySet() :
+                columnsMap.get(columnName).valuesAsStringSet();
     }
 
+    /**
+     * Add value to respective column.
+     *
+     * @param columnName column name.
+     * @param value      value.
+     */
     private void addValue(String columnName, Object value) {
         Objects.requireNonNull(columnName, "columnName should not be null.");
         Objects.requireNonNull(value, "value should not be null.");
@@ -159,6 +151,12 @@ public class Heelflip {
         columnsMap.get(columnName).add(value.toString());
     }
 
+    /**
+     * Load {@link InputStream} with JSON file per-line format.
+     *
+     * @param stream stream.
+     * @throws IOException if IO errors occurs.
+     */
     public void load(InputStream stream) throws IOException {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream))) {
             JsonParser parser = new JsonParser();

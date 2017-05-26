@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e7b9f98c-d72e-423a-91e6-aa149e7231bc" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/sample.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/Heelflip.java" afterPath="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/Heelflip.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/table/HeelflipTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/table/HeelflipTest.java" />
     </list>
@@ -31,8 +29,8 @@
       <file leaf-file-name="HeelflipTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/table/HeelflipTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="733">
-              <caret line="249" column="30" selection-start-line="249" selection-start-column="30" selection-end-line="249" selection-end-column="30" />
+            <state relative-caret-position="211">
+              <caret line="334" column="70" selection-start-line="334" selection-start-column="70" selection-end-line="334" selection-end-column="70" />
               <folding />
             </state>
           </provider>
@@ -51,8 +49,8 @@
       <file leaf-file-name="Heelflip.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/Heelflip.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1273">
-              <caret line="120" column="55" selection-start-line="120" selection-start-column="55" selection-end-line="120" selection-end-column="55" />
+            <state relative-caret-position="427">
+              <caret line="113" column="38" selection-start-line="113" selection-start-column="24" selection-end-line="113" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -283,84 +281,6 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.All in heelflip">
-    <configuration default="false" name="HeelflipTest.testMaxAsInt" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.skatepark.heelflip.table.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="heelflip" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.skatepark.heelflip.table" />
-      <option name="MAIN_CLASS_NAME" value="com.skatepark.heelflip.table.HeelflipTest" />
-      <option name="METHOD_NAME" value="testMaxAsInt" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="HeelflipTest.testSumAsInt" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.skatepark.heelflip.table.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="heelflip" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.skatepark.heelflip.table" />
-      <option name="MAIN_CLASS_NAME" value="com.skatepark.heelflip.table.HeelflipTest" />
-      <option name="METHOD_NAME" value="testSumAsInt" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="HeelflipTest.testMaxAsLong" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.skatepark.heelflip.table.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="heelflip" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.skatepark.heelflip.table" />
-      <option name="MAIN_CLASS_NAME" value="com.skatepark.heelflip.table.HeelflipTest" />
-      <option name="METHOD_NAME" value="testMaxAsLong" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
     <configuration default="false" name="HeelflipTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -396,6 +316,84 @@
       <option name="MAIN_CLASS_NAME" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="HeelflipTest.testValuesAsIntSet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.skatepark.heelflip.table.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="heelflip" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.skatepark.heelflip.table" />
+      <option name="MAIN_CLASS_NAME" value="com.skatepark.heelflip.table.HeelflipTest" />
+      <option name="METHOD_NAME" value="testValuesAsIntSet" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="HeelflipTest.testValuesAsLongSet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.skatepark.heelflip.table.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="heelflip" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.skatepark.heelflip.table" />
+      <option name="MAIN_CLASS_NAME" value="com.skatepark.heelflip.table.HeelflipTest" />
+      <option name="METHOD_NAME" value="testValuesAsLongSet" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="HeelflipTest.testValuesAsDoubleSet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.skatepark.heelflip.table.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="heelflip" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.skatepark.heelflip.table" />
+      <option name="MAIN_CLASS_NAME" value="com.skatepark.heelflip.table.HeelflipTest" />
+      <option name="METHOD_NAME" value="testValuesAsDoubleSet" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -656,19 +654,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testMaxAsInt" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testSumAsInt" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testMaxAsLong" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.HeelflipTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.All in heelflip" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.HeelflipTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.All in heelflip" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testValuesAsIntSet" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testValuesAsLongSet" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testValuesAsDoubleSet" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="JUnit.All in heelflip" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.HeelflipTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testMaxAsLong" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testSumAsInt" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testMaxAsInt" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testValuesAsDoubleSet" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testValuesAsLongSet" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testValuesAsIntSet" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.HeelflipTest" />
       </list>
     </recent_temporary>
   </component>
@@ -689,35 +687,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_heelflip - 2017.05.25 at 22h 25m 18s.xml">
+    <history-entry file="All_in_heelflip - 2017.05.25 at 23h 06m 49s.xml">
       <configuration name="All in heelflip" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="All_in_heelflip - 2017.05.25 at 22h 49m 22s.xml">
-      <configuration name="All in heelflip" configurationId="JUnit" />
+    <history-entry file="HeelflipTest_testValuesAsDoubleSet - 2017.05.25 at 23h 05m 56s.xml">
+      <configuration name="HeelflipTest.testValuesAsDoubleSet" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HeelflipTest - 2017.05.25 at 22h 44m 54s.xml">
-      <configuration name="HeelflipTest" configurationId="JUnit" />
+    <history-entry file="HeelflipTest_testValuesAsDoubleSet - 2017.05.25 at 23h 06m 05s.xml">
+      <configuration name="HeelflipTest.testValuesAsDoubleSet" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HeelflipTest - 2017.05.25 at 22h 48m 19s.xml">
-      <configuration name="HeelflipTest" configurationId="JUnit" />
+    <history-entry file="HeelflipTest_testValuesAsDoubleSet - 2017.05.25 at 23h 06m 16s.xml">
+      <configuration name="HeelflipTest.testValuesAsDoubleSet" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HeelflipTest_test - 2017.05.25 at 22h 32m 51s.xml">
-      <configuration name="HeelflipTest.test" configurationId="JUnit" />
+    <history-entry file="HeelflipTest_testValuesAsDoubleSet - 2017.05.25 at 23h 06m 37s.xml">
+      <configuration name="HeelflipTest.testValuesAsDoubleSet" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HeelflipTest_test - 2017.05.25 at 22h 35m 37s.xml">
-      <configuration name="HeelflipTest.test" configurationId="JUnit" />
+    <history-entry file="HeelflipTest_testValuesAsIntSet - 2017.05.25 at 23h 03m 01s.xml">
+      <configuration name="HeelflipTest.testValuesAsIntSet" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HeelflipTest_testMaxAsInt - 2017.05.25 at 22h 42m 04s.xml">
-      <configuration name="HeelflipTest.testMaxAsInt" configurationId="JUnit" />
+    <history-entry file="HeelflipTest_testValuesAsIntSet - 2017.05.25 at 23h 03m 45s.xml">
+      <configuration name="HeelflipTest.testValuesAsIntSet" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HeelflipTest_testMaxAsLong - 2017.05.25 at 22h 44m 40s.xml">
-      <configuration name="HeelflipTest.testMaxAsLong" configurationId="JUnit" />
+    <history-entry file="HeelflipTest_testValuesAsLongSet - 2017.05.25 at 23h 04m 36s.xml">
+      <configuration name="HeelflipTest.testValuesAsLongSet" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HeelflipTest_testMinAsLong - 2017.05.25 at 22h 41m 17s.xml">
-      <configuration name="HeelflipTest.testMinAsLong" configurationId="JUnit" />
+    <history-entry file="HeelflipTest_testValuesAsLongSet - 2017.05.25 at 23h 04m 48s.xml">
+      <configuration name="HeelflipTest.testValuesAsLongSet" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HeelflipTest_testSumAsInt - 2017.05.25 at 22h 43m 13s.xml">
-      <configuration name="HeelflipTest.testSumAsInt" configurationId="JUnit" />
+    <history-entry file="HeelflipTest_testValuesAsLongSet - 2017.05.25 at 23h 05m 03s.xml">
+      <configuration name="HeelflipTest.testValuesAsLongSet" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -749,6 +747,32 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32908705" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32908705" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.53731346" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962063" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32908705" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39800996" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -1001,16 +1025,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/Heelflip.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1273">
-          <caret line="120" column="55" selection-start-line="120" selection-start-column="55" selection-end-line="120" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/resources/sample.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -1019,10 +1033,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/Heelflip.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="427">
+          <caret line="113" column="38" selection-start-line="113" selection-start-column="24" selection-end-line="113" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/table/HeelflipTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="733">
-          <caret line="249" column="30" selection-start-line="249" selection-start-column="30" selection-end-line="249" selection-end-column="30" />
+        <state relative-caret-position="211">
+          <caret line="334" column="70" selection-start-line="334" selection-start-column="70" selection-end-line="334" selection-end-column="70" />
           <folding />
         </state>
       </provider>
