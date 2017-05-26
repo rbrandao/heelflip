@@ -1,11 +1,16 @@
 package com.skatepark.heelflip.table;
 
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import com.skatepark.heelflip.column.IColumn;
 import com.skatepark.heelflip.column.type.ObjectColumn;
-import com.skatepark.heelflip.util.JSONFlatter;
+import com.skatepark.heelflip.util.Flatter;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -27,7 +32,7 @@ public class Heelflip {
     public void add(JsonObject json) {
         Objects.requireNonNull(json, "json should not be null.");
 
-        for (JsonObject object : JSONFlatter.flatten(json)) {
+        for (JsonObject object : Flatter.flatten(json)) {
             object.entrySet().stream()
                     .forEach(entry -> addValue(entry.getKey(), entry.getValue()));
         }
@@ -117,5 +122,16 @@ public class Heelflip {
             columnsMap.put(columnName, new ObjectColumn(columnName));
         }
         columnsMap.get(columnName).add(value.toString());
+    }
+
+    public void load(InputStream stream) throws IOException {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream))) {
+            JsonParser parser = new JsonParser();
+
+            reader.lines()
+                    .map(line -> parser.parse(line))
+                    .map(elem -> elem.getAsJsonObject())
+                    .forEach(this::add);
+        }
     }
 }

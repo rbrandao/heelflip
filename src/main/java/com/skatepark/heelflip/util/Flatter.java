@@ -16,7 +16,7 @@ import java.util.Map;
  * @author greatjapa
  * @see JsonObject
  */
-public class JSONFlatter {
+public class Flatter {
 
     /**
      * Flatter the given JSON.
@@ -107,7 +107,7 @@ public class JSONFlatter {
      * @param prefixSeq prefix used in key when we copy to target JSON.
      */
     private static void shallowCopy(JsonObject source, JsonObject target, String... prefixSeq) {
-        String prefix = prefixSeq == null ? "" : String.join(".", prefixSeq);
+        String prefix = prefixSeq == null ? "" : String.join("", prefixSeq);
         for (Map.Entry<String, JsonElement> entry : source.entrySet()) {
             String fieldName = entry.getKey();
             JsonElement value = entry.getValue();
