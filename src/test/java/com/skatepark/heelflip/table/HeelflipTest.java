@@ -14,13 +14,13 @@ public class HeelflipTest {
     //http://jsonstudio.com/resources/
     private static final String STOCKS_FILE_PATH = "stocks.json";
     private static final String ZIPS_FILE_PATH = "zips.json";
-
+    
     @Test
     public void testColumnNames() throws IOException {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_FILE_PATH);
 
         Heelflip heelflip = new Heelflip("table");
-        heelflip.load(stream);
+        heelflip.loadNDJSON(stream);
 
         Assert.assertEquals(10, heelflip.size());
 
@@ -43,7 +43,7 @@ public class HeelflipTest {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_FILE_PATH);
 
         Heelflip heelflip = new Heelflip("table");
-        heelflip.load(stream);
+        heelflip.loadNDJSON(stream);
 
         Assert.assertEquals(10, heelflip.size());
 
@@ -65,7 +65,7 @@ public class HeelflipTest {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_FILE_PATH);
 
         Heelflip heelflip = new Heelflip("table");
-        heelflip.load(stream);
+        heelflip.loadNDJSON(stream);
 
         Assert.assertEquals(10, heelflip.size());
 
@@ -87,7 +87,7 @@ public class HeelflipTest {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_FILE_PATH);
 
         Heelflip heelflip = new Heelflip("table");
-        heelflip.load(stream);
+        heelflip.loadNDJSON(stream);
 
         Assert.assertEquals(10, heelflip.size());
 
@@ -109,7 +109,7 @@ public class HeelflipTest {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_FILE_PATH);
 
         Heelflip heelflip = new Heelflip("table");
-        heelflip.load(stream);
+        heelflip.loadNDJSON(stream);
 
         Assert.assertEquals(10, heelflip.size());
 
@@ -131,7 +131,7 @@ public class HeelflipTest {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_FILE_PATH);
 
         Heelflip heelflip = new Heelflip("table");
-        heelflip.load(stream);
+        heelflip.loadNDJSON(stream);
 
         Assert.assertEquals(10, heelflip.size());
 
@@ -153,7 +153,7 @@ public class HeelflipTest {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_FILE_PATH);
 
         Heelflip heelflip = new Heelflip("table");
-        heelflip.load(stream);
+        heelflip.loadNDJSON(stream);
 
         Assert.assertEquals(10, heelflip.size());
 
@@ -175,7 +175,7 @@ public class HeelflipTest {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_FILE_PATH);
 
         Heelflip heelflip = new Heelflip("table");
-        heelflip.load(stream);
+        heelflip.loadNDJSON(stream);
 
         Assert.assertEquals(10, heelflip.size());
 
@@ -197,7 +197,7 @@ public class HeelflipTest {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_FILE_PATH);
 
         Heelflip heelflip = new Heelflip("table");
-        heelflip.load(stream);
+        heelflip.loadNDJSON(stream);
 
         Assert.assertEquals(10, heelflip.size());
 
@@ -219,7 +219,7 @@ public class HeelflipTest {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_FILE_PATH);
 
         Heelflip heelflip = new Heelflip("table");
-        heelflip.load(stream);
+        heelflip.loadNDJSON(stream);
 
         Assert.assertEquals(10, heelflip.size());
 
@@ -241,7 +241,7 @@ public class HeelflipTest {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_FILE_PATH);
 
         Heelflip heelflip = new Heelflip("table");
-        heelflip.load(stream);
+        heelflip.loadNDJSON(stream);
 
         Assert.assertEquals(10, heelflip.size());
 
@@ -274,7 +274,7 @@ public class HeelflipTest {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_FILE_PATH);
 
         Heelflip heelflip = new Heelflip("table");
-        heelflip.load(stream);
+        heelflip.loadNDJSON(stream);
 
         Assert.assertEquals(10, heelflip.size());
 
@@ -307,7 +307,7 @@ public class HeelflipTest {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_FILE_PATH);
 
         Heelflip heelflip = new Heelflip("table");
-        heelflip.load(stream);
+        heelflip.loadNDJSON(stream);
 
         Assert.assertEquals(10, heelflip.size());
 
@@ -340,7 +340,7 @@ public class HeelflipTest {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_FILE_PATH);
 
         Heelflip heelflip = new Heelflip("table");
-        heelflip.load(stream);
+        heelflip.loadNDJSON(stream);
 
         Assert.assertEquals(10, heelflip.size());
 
@@ -373,11 +373,11 @@ public class HeelflipTest {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(STOCKS_FILE_PATH);
 
         Heelflip heelflip = new Heelflip("table");
-        heelflip.load(stream);
+        heelflip.loadNDJSON(stream);
         Assert.assertEquals(69, heelflip.size());
 
         stream = getClass().getClassLoader().getResourceAsStream(ZIPS_FILE_PATH);
-        heelflip.load(stream);
+        heelflip.loadNDJSON(stream);
 
         Assert.assertEquals(75, heelflip.size());
     }

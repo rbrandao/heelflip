@@ -1,5 +1,6 @@
 package com.skatepark.heelflip.table;
 
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -34,7 +35,7 @@ public class Heelflip {
 
         for (JsonObject object : Flatter.flatten(json)) {
             object.entrySet().stream()
-                    .forEach(entry -> addValue(entry.getKey(), entry.getValue()));
+                    .forEach(entry -> addValue(entry.getKey(), entry.getValue().getAsString()));
         }
     }
 
@@ -111,6 +112,36 @@ public class Heelflip {
                 columnsMap.get(columnName).sumAsDouble();
     }
 
+    public long count(String columnName) {
+        return !contains(columnName) ?
+                -1 :
+                columnsMap.get(columnName).count();
+    }
+
+    public long count(String columnName, int value) {
+        return !contains(columnName) ?
+                -1 :
+                columnsMap.get(columnName).count(value);
+    }
+
+    public long count(String columnName, long value) {
+        return !contains(columnName) ?
+                -1 :
+                columnsMap.get(columnName).count(value);
+    }
+
+    public long count(String columnName, double value) {
+        return !contains(columnName) ?
+                -1 :
+                columnsMap.get(columnName).count(value);
+    }
+
+    public long count(String columnName, String value) {
+        return !contains(columnName) ?
+                -1 :
+                columnsMap.get(columnName).count(value);
+    }
+
     public Set<Integer> valuesAsIntSet(String columnName) {
         return !contains(columnName) ?
                 Collections.emptySet() :
@@ -152,12 +183,12 @@ public class Heelflip {
     }
 
     /**
-     * Load {@link InputStream} with JSON file per-line format.
+     * Load {@link InputStream} with JSON newline delimited format.
      *
      * @param stream stream.
      * @throws IOException if IO errors occurs.
      */
-    public void load(InputStream stream) throws IOException {
+    public void loadNDJSON(InputStream stream) throws IOException {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream))) {
             JsonParser parser = new JsonParser();
 
@@ -165,6 +196,27 @@ public class Heelflip {
                     .map(line -> parser.parse(line))
                     .map(elem -> elem.getAsJsonObject())
                     .forEach(this::add);
+        }
+    }
+
+    /**
+     * Load {@link InputStream} with JSON array where each element is the data itself.
+     *
+     * @param stream stream.
+     * @throws IOException if IO errors occurs.
+     */
+    public void loadJSONArray(InputStream stream) throws IOException {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream))) {
+            JsonParser parser = new JsonParser();
+
+
+            JsonElement result = new JsonParser().parse(new InputStreamReader(stream));
+            if (!result.isJsonArray()) {
+                throw new IllegalArgumentException("result is not a JSON array.");
+            }
+            for (JsonElement elem : result.getAsJsonArray()) {
+                add(elem.getAsJsonObject());
+            }
         }
     }
 }
