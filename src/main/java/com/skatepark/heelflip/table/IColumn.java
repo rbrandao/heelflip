@@ -1,18 +1,12 @@
-package com.skatepark.heelflip.column;
+package com.skatepark.heelflip.table;
 
 import java.util.Set;
 
-public interface IColumn {
+interface IColumn {
 
     String name();
 
-    void add(String value);
-
-    void add(int value);
-
-    void add(long value);
-
-    void add(double value);
+    void add(HFValue value);
 
     long count(String value);
 

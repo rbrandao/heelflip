@@ -4,8 +4,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import com.skatepark.heelflip.column.IColumn;
-import com.skatepark.heelflip.column.type.ObjectColumn;
 import com.skatepark.heelflip.util.Flatter;
 
 import java.io.BufferedReader;
@@ -17,33 +15,28 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.UUID;
 
 public class Heelflip {
 
-    private String name;
-
     private Map<String, IColumn> columnsMap;
 
-    public Heelflip(String name) {
-        Objects.requireNonNull(name, "name should not be null.");
-        this.name = name;
+    public Heelflip() {
         this.columnsMap = new HashMap<>();
     }
 
     public void add(JsonObject json) {
         Objects.requireNonNull(json, "json should not be null.");
 
+        UUID id = UUID.randomUUID();
         for (JsonObject object : Flatter.flatten(json)) {
-            object.entrySet().stream()
-                    .forEach(entry -> addValue(entry.getKey(), entry.getValue().getAsString()));
+            for (Map.Entry<String, JsonElement> entry : object.entrySet()) {
+                String columnName = entry.getKey();
+                JsonElement jsonValue = entry.getValue();
+
+                addValue(columnName, new HFValue(id, jsonValue.getAsJsonPrimitive()));
+            }
         }
-    }
-
-    public void add(Map<String, Object> values) {
-        Objects.requireNonNull(values, "values should not be null.");
-
-        values.entrySet().stream()
-                .forEach(entry -> addValue(entry.getKey(), entry.getValue()));
     }
 
     public int size() {
@@ -172,14 +165,14 @@ public class Heelflip {
      * @param columnName column name.
      * @param value      value.
      */
-    private void addValue(String columnName, Object value) {
+    private void addValue(String columnName, HFValue value) {
         Objects.requireNonNull(columnName, "columnName should not be null.");
         Objects.requireNonNull(value, "value should not be null.");
 
         if (!contains(columnName)) {
             columnsMap.put(columnName, new ObjectColumn(columnName));
         }
-        columnsMap.get(columnName).add(value.toString());
+        columnsMap.get(columnName).add(value);
     }
 
     /**
