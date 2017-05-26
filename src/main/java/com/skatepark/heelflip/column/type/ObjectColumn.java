@@ -160,10 +160,9 @@ public class ObjectColumn implements IColumn {
     public Set<Integer> valuesAsIntSet() {
         Set<Integer> result = new HashSet<>();
         for (String value : values.keySet()) {
-            try {
-                result.add(Double.valueOf(value).intValue());
-            } catch (NumberFormatException e) {
-                //do nothing
+            Double d = toDouble(value);
+            if (d != null) {
+                result.add(d.intValue());
             }
         }
         return result;
@@ -173,10 +172,9 @@ public class ObjectColumn implements IColumn {
     public Set<Long> valuesAsLongSet() {
         Set<Long> result = new HashSet<>();
         for (String value : values.keySet()) {
-            try {
-                result.add(Double.valueOf(value).longValue());
-            } catch (NumberFormatException e) {
-                //do nothing
+            Double d = toDouble(value);
+            if (d != null) {
+                result.add(d.longValue());
             }
         }
         return result;
@@ -186,10 +184,9 @@ public class ObjectColumn implements IColumn {
     public Set<Double> valuesAsDoubleSet() {
         Set<Double> result = new HashSet<>();
         for (String value : values.keySet()) {
-            try {
-                result.add(Double.valueOf(value));
-            } catch (NumberFormatException e) {
-                //do nothing
+            Double d = toDouble(value);
+            if (d != null) {
+                result.add(d);
             }
         }
         return result;
@@ -198,5 +195,19 @@ public class ObjectColumn implements IColumn {
     @Override
     public Set<String> valuesAsStringSet() {
         return Collections.unmodifiableSet(values.keySet());
+    }
+
+    /**
+     * Internal utility that converts {@link String} to {@link Double}.
+     *
+     * @param value value as {@link String}.
+     * @return value as {@link Double}.
+     */
+    private Double toDouble(String value) {
+        try {
+            return Double.valueOf(value);
+        } catch (NumberFormatException e) {
+            return null;
+        }
     }
 }
