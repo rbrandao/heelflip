@@ -34,7 +34,7 @@ public class Heelflip {
                 String columnName = entry.getKey();
                 JsonElement jsonValue = entry.getValue();
 
-                addValue(columnName, new HFValue(id, jsonValue.getAsJsonPrimitive()));
+                addValue(new HFValue(columnName, id, jsonValue.getAsJsonPrimitive()));
             }
         }
     }
@@ -162,13 +162,12 @@ public class Heelflip {
     /**
      * Add value to respective column.
      *
-     * @param columnName column name.
-     * @param value      value.
+     * @param value value.
      */
-    private void addValue(String columnName, HFValue value) {
-        Objects.requireNonNull(columnName, "columnName should not be null.");
+    private void addValue(HFValue value) {
         Objects.requireNonNull(value, "value should not be null.");
 
+        String columnName = value.getColumnName();
         if (!contains(columnName)) {
             columnsMap.put(columnName, new ObjectColumn(columnName));
         }

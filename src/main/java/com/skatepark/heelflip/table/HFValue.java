@@ -7,16 +7,24 @@ import java.util.UUID;
 
 class HFValue {
 
+    private String columnName;
+
     private UUID id;
 
     private JsonPrimitive value;
 
-    public HFValue(UUID id, JsonPrimitive value) {
+    public HFValue(String columnName, UUID id, JsonPrimitive value) {
+        Objects.requireNonNull(columnName, "columnName should not be null.");
         Objects.requireNonNull(id, "id should not be null.");
         Objects.requireNonNull(value, "value should not be null.");
 
+        this.columnName = columnName;
         this.id = id;
         this.value = value;
+    }
+
+    public String getColumnName() {
+        return columnName;
     }
 
     public UUID getId() {
@@ -52,7 +60,28 @@ class HFValue {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        HFValue hfValue = (HFValue) o;
+
+        if (!columnName.equals(hfValue.columnName)) return false;
+        if (!id.equals(hfValue.id)) return false;
+        return value.equals(hfValue.value);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = columnName.hashCode();
+        result = 31 * result + id.hashCode();
+        result = 31 * result + value.hashCode();
+        return result;
+    }
+
+    @Override
     public String toString() {
-        return String.format("%s:%s", id, value);
+        return String.format("%s:%s (%s)", columnName, value, id);
     }
 }

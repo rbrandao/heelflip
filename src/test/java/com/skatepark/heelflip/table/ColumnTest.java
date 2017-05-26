@@ -13,10 +13,10 @@ public class ColumnTest {
     public void testDoubleValues() {
 
         ObjectColumn column = new ObjectColumn("a");
-        column.add(new HFValue(UUID.randomUUID(), new JsonPrimitive(2.3)));
-        column.add(new HFValue(UUID.randomUUID(), new JsonPrimitive(2.1)));
-        column.add(new HFValue(UUID.randomUUID(), new JsonPrimitive(2.0)));
-        column.add(new HFValue(UUID.randomUUID(), new JsonPrimitive(2.0)));
+        column.add(new HFValue("a", UUID.randomUUID(), new JsonPrimitive(2.3)));
+        column.add(new HFValue("a", UUID.randomUUID(), new JsonPrimitive(2.1)));
+        column.add(new HFValue("a", UUID.randomUUID(), new JsonPrimitive(2.0)));
+        column.add(new HFValue("a", UUID.randomUUID(), new JsonPrimitive(2.0)));
 
         Assert.assertEquals("a", column.name());
         Assert.assertEquals(2, column.minAsInt());
@@ -44,10 +44,10 @@ public class ColumnTest {
     @Test
     public void testLongValues() {
         ObjectColumn column = new ObjectColumn("a");
-        column.add(new HFValue(UUID.randomUUID(), new JsonPrimitive(10)));
-        column.add(new HFValue(UUID.randomUUID(), new JsonPrimitive(11)));
-        column.add(new HFValue(UUID.randomUUID(), new JsonPrimitive(12)));
-        column.add(new HFValue(UUID.randomUUID(), new JsonPrimitive(12)));
+        column.add(new HFValue("a", UUID.randomUUID(), new JsonPrimitive(10)));
+        column.add(new HFValue("a", UUID.randomUUID(), new JsonPrimitive(11)));
+        column.add(new HFValue("a", UUID.randomUUID(), new JsonPrimitive(12)));
+        column.add(new HFValue("a", UUID.randomUUID(), new JsonPrimitive(12)));
 
         Assert.assertEquals("a", column.name());
         Assert.assertEquals(10, column.minAsInt());
@@ -75,10 +75,10 @@ public class ColumnTest {
     @Test
     public void testStringColumn() {
         ObjectColumn column = new ObjectColumn("a");
-        column.add(new HFValue(UUID.randomUUID(), new JsonPrimitive("foo")));
-        column.add(new HFValue(UUID.randomUUID(), new JsonPrimitive("foo")));
-        column.add(new HFValue(UUID.randomUUID(), new JsonPrimitive("boo")));
-        column.add(new HFValue(UUID.randomUUID(), new JsonPrimitive("call")));
+        column.add(new HFValue("a", UUID.randomUUID(), new JsonPrimitive("foo")));
+        column.add(new HFValue("a", UUID.randomUUID(), new JsonPrimitive("foo")));
+        column.add(new HFValue("a", UUID.randomUUID(), new JsonPrimitive("boo")));
+        column.add(new HFValue("a", UUID.randomUUID(), new JsonPrimitive("call")));
 
         Assert.assertEquals("a", column.name());
         Assert.assertEquals(4, column.count());
@@ -94,14 +94,14 @@ public class ColumnTest {
     @Test
     public void testMixedColumn() {
         ObjectColumn column = new ObjectColumn("a");
-        column.add(new HFValue(UUID.randomUUID(), new JsonPrimitive("foo")));
-        column.add(new HFValue(UUID.randomUUID(), new JsonPrimitive("true")));
-        column.add(new HFValue(UUID.randomUUID(), new JsonPrimitive("1.2")));
-        column.add(new HFValue(UUID.randomUUID(), new JsonPrimitive("10")));
-        column.add(new HFValue(UUID.randomUUID(), new JsonPrimitive("20")));
-        column.add(new HFValue(UUID.randomUUID(), new JsonPrimitive(1.2)));
-        column.add(new HFValue(UUID.randomUUID(), new JsonPrimitive(10)));
-        column.add(new HFValue(UUID.randomUUID(), new JsonPrimitive(15L)));
+        column.add(new HFValue("a", UUID.randomUUID(), new JsonPrimitive("foo")));
+        column.add(new HFValue("a", UUID.randomUUID(), new JsonPrimitive("true")));
+        column.add(new HFValue("a", UUID.randomUUID(), new JsonPrimitive("1.2")));
+        column.add(new HFValue("a", UUID.randomUUID(), new JsonPrimitive("10")));
+        column.add(new HFValue("a", UUID.randomUUID(), new JsonPrimitive("20")));
+        column.add(new HFValue("a", UUID.randomUUID(), new JsonPrimitive(1.2)));
+        column.add(new HFValue("a", UUID.randomUUID(), new JsonPrimitive(10)));
+        column.add(new HFValue("a", UUID.randomUUID(), new JsonPrimitive(15L)));
 
         Assert.assertEquals("a", column.name());
         Assert.assertEquals(1, column.minAsInt());
