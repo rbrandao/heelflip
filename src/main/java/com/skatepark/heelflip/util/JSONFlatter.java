@@ -50,8 +50,8 @@ public class JSONFlatter {
 
             for (JsonObject flattenObj : flatten(obj)) {
                 JsonObject newJson = new JsonObject();
-                shallowCopy(json, newJson, "");
-                shallowCopy(flattenObj, newJson, fieldName + ".");
+                shallowCopy(json, newJson);
+                shallowCopy(flattenObj, newJson, fieldName, ".");
                 result.add(newJson);
             }
         }
@@ -60,16 +60,22 @@ public class JSONFlatter {
             String fieldName = entry.getKey();
             JsonArray array = entry.getValue();
 
-            for (JsonElement elem : array) {
-                if (!elem.isJsonObject()) {
-                    continue;
+            for (int i = 0; i < array.size(); i++) {
+                JsonElement elem = array.get(i);
+                if (elem.isJsonPrimitive()) {
+                    JsonObject newJson = new JsonObject();
+                    shallowCopy(json, newJson);
+                    newJson.add(String.format("%s_%d", fieldName, i), elem);
+                    result.add(newJson);
                 }
 
-                for (JsonObject flattenObj : flatten(elem.getAsJsonObject())) {
-                    JsonObject newJson = new JsonObject();
-                    shallowCopy(json, newJson, "");
-                    shallowCopy(flattenObj, newJson, fieldName + ".");
-                    result.add(newJson);
+                if (elem.isJsonObject()) {
+                    for (JsonObject flattenObj : flatten(elem.getAsJsonObject())) {
+                        JsonObject newJson = new JsonObject();
+                        shallowCopy(json, newJson);
+                        shallowCopy(flattenObj, newJson, fieldName, ".");
+                        result.add(newJson);
+                    }
                 }
             }
         }
@@ -96,11 +102,12 @@ public class JSONFlatter {
     /**
      * Copy only the primitive values of first JSON level.
      *
-     * @param source source JSON.
-     * @param target target JSON.
-     * @param prefix prefix used in key when we copy to target JSON.
+     * @param source    source JSON.
+     * @param target    target JSON.
+     * @param prefixSeq prefix used in key when we copy to target JSON.
      */
-    private static void shallowCopy(JsonObject source, JsonObject target, String prefix) {
+    private static void shallowCopy(JsonObject source, JsonObject target, String... prefixSeq) {
+        String prefix = prefixSeq == null ? "" : String.join(".", prefixSeq);
         for (Map.Entry<String, JsonElement> entry : source.entrySet()) {
             String fieldName = entry.getKey();
             JsonElement value = entry.getValue();

@@ -19,10 +19,11 @@ public class HeelflipTest {
 
     //http://jsonstudio.com/resources/
     private static final String STOCKS_FILE_PATH = "stocks.json";
+    private static final String ZIPS_FILE_PATH = "zips.json";
 
     @Test
     public void foo() throws IOException {
-        InputStream stream = getClass().getClassLoader().getResourceAsStream(STOCKS_FILE_PATH);
+        InputStream stream = getClass().getClassLoader().getResourceAsStream(ZIPS_FILE_PATH);
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream))) {
             JsonParser parser = new JsonParser();
 
@@ -30,10 +31,15 @@ public class HeelflipTest {
                     .map(line -> parser.parse(line))
                     .collect(Collectors.toList());
 
+            Heelflip heelflip = new Heelflip("table");
             for (JsonElement elem : jsons) {
-                List<JsonObject> planner = JSONFlatter.flatten(elem.getAsJsonObject());
-                planner.forEach(System.out::println);
+                heelflip.add(elem.getAsJsonObject());
             }
+            System.out.println(heelflip.columnNames());
+            System.out.println(heelflip.valuesAsStringSet("pop"));
+            System.out.println(heelflip.maxAsLong("pop"));
+            System.out.println(heelflip.valuesAsStringSet("loc_0"));
+            System.out.println(heelflip.valuesAsStringSet("city"));
         }
     }
 }

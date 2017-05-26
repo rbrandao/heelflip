@@ -1,11 +1,16 @@
 package com.skatepark.heelflip.table;
 
+import com.google.gson.JsonObject;
+
 import com.skatepark.heelflip.column.IColumn;
 import com.skatepark.heelflip.column.type.ObjectColumn;
+import com.skatepark.heelflip.util.JSONFlatter;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 
 public class Heelflip {
 
@@ -19,6 +24,15 @@ public class Heelflip {
         this.columnsMap = new HashMap<>();
     }
 
+    public void add(JsonObject json) {
+        Objects.requireNonNull(json, "json should not be null.");
+
+        for (JsonObject object : JSONFlatter.flatten(json)) {
+            object.entrySet().stream()
+                    .forEach(entry -> addValue(entry.getKey(), entry.getValue()));
+        }
+    }
+
     public void add(Map<String, Object> values) {
         Objects.requireNonNull(values, "values should not be null.");
 
@@ -28,6 +42,10 @@ public class Heelflip {
 
     public int size() {
         return columnsMap.size();
+    }
+
+    public Set<String> columnNames() {
+        return Collections.unmodifiableSet(columnsMap.keySet());
     }
 
     public boolean contains(String columnName) {
@@ -61,6 +79,34 @@ public class Heelflip {
             return -1;
         }
         return columnsMap.get(columnName).maxAsDouble();
+    }
+
+    public Set<Integer> valuesAsIntSet(String columnName) {
+        if (!contains(columnName)) {
+            return Collections.emptySet();
+        }
+        return columnsMap.get(columnName).valuesAsIntSet();
+    }
+
+    public Set<Long> valuesAsLongSet(String columnName) {
+        if (!contains(columnName)) {
+            return Collections.emptySet();
+        }
+        return columnsMap.get(columnName).valuesAsLongSet();
+    }
+
+    public Set<Double> valuesAsDoubleSet(String columnName) {
+        if (!contains(columnName)) {
+            return Collections.emptySet();
+        }
+        return columnsMap.get(columnName).valuesAsDoubleSet();
+    }
+
+    public Set<String> valuesAsStringSet(String columnName) {
+        if (!contains(columnName)) {
+            return Collections.emptySet();
+        }
+        return columnsMap.get(columnName).valuesAsStringSet();
     }
 
     private void addValue(String columnName, Object value) {
