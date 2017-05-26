@@ -10,6 +10,7 @@ import java.util.Set;
 public class HeelflipTest {
 
     private static final String SAMPLE_FILE_PATH = "sample.json";
+    private static final String SAMPLE_ARRAY_FILE_PATH = "sample_array.json";
 
     //http://jsonstudio.com/resources/
     private static final String STOCKS_FILE_PATH = "stocks.json";
@@ -366,6 +367,20 @@ public class HeelflipTest {
         Assert.assertTrue(heelflip.valuesAsStringSet("h").contains("7"));
         Assert.assertTrue(heelflip.valuesAsStringSet("i").contains("8"));
         Assert.assertTrue(heelflip.valuesAsStringSet("j").contains("9"));
+    }
+
+    @Test
+    public void testCountWithArray() throws IOException {
+        InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_ARRAY_FILE_PATH);
+
+        Heelflip heelflip = new Heelflip();
+        heelflip.loadNDJSON(stream);
+
+        Assert.assertEquals(3, heelflip.size());
+
+        Assert.assertEquals(1, heelflip.count("a"));
+        Assert.assertEquals(2, heelflip.count("b.x"));
+        Assert.assertEquals(2, heelflip.count("b.y"));
     }
 
     @Test
