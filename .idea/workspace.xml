@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e7b9f98c-d72e-423a-91e6-aa149e7231bc" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/util/JSONFlatter.java" afterPath="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/util/Flatter.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/util/JSONFlatterTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/util/FlatterTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/sample.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/Heelflip.java" afterPath="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/Heelflip.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/table/HeelflipTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/table/HeelflipTest.java" />
@@ -29,11 +28,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Flatter.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/util/Flatter.java">
+      <file leaf-file-name="HeelflipTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/table/HeelflipTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="109" column="64" selection-start-line="109" selection-start-column="64" selection-end-line="109" selection-end-column="64" />
+            <state relative-caret-position="733">
+              <caret line="249" column="30" selection-start-line="249" selection-start-column="30" selection-end-line="249" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sample.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/sample.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="19" column="79" selection-start-line="19" selection-start-column="79" selection-end-line="19" selection-end-column="79" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Heelflip.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/Heelflip.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1273">
+              <caret line="120" column="55" selection-start-line="120" selection-start-column="55" selection-end-line="120" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -76,12 +95,13 @@
         <option value="$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/column/type/ColumnTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/util/JsonUtilTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/util/JsonUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/Heelflip.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/table/HeelflipTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/util/JSONFlatterTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/util/FlatterTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/util/JSONFlatter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/util/Flatter.java" />
+        <option value="$PROJECT_DIR$/src/test/resources/sample.json" />
+        <option value="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/Heelflip.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/table/HeelflipTest.java" />
       </list>
     </option>
   </component>
@@ -190,10 +210,6 @@
               <option name="myItemId" value="heelflip" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="util" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -238,74 +254,6 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="heelflip" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="heelflip" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="heelflip" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="heelflip" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="util" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="heelflip" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="heelflip" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="heelflip" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -335,6 +283,84 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.All in heelflip">
+    <configuration default="false" name="HeelflipTest.testMaxAsInt" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.skatepark.heelflip.table.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="heelflip" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.skatepark.heelflip.table" />
+      <option name="MAIN_CLASS_NAME" value="com.skatepark.heelflip.table.HeelflipTest" />
+      <option name="METHOD_NAME" value="testMaxAsInt" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="HeelflipTest.testSumAsInt" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.skatepark.heelflip.table.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="heelflip" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.skatepark.heelflip.table" />
+      <option name="MAIN_CLASS_NAME" value="com.skatepark.heelflip.table.HeelflipTest" />
+      <option name="METHOD_NAME" value="testSumAsInt" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="HeelflipTest.testMaxAsLong" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.skatepark.heelflip.table.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="heelflip" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.skatepark.heelflip.table" />
+      <option name="MAIN_CLASS_NAME" value="com.skatepark.heelflip.table.HeelflipTest" />
+      <option name="METHOD_NAME" value="testMaxAsLong" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
     <configuration default="false" name="HeelflipTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -349,84 +375,6 @@
       <option name="MAIN_CLASS_NAME" value="com.skatepark.heelflip.table.HeelflipTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="FlatterTest.testFlatten1ArrayIntoObject" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.skatepark.heelflip.util.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="heelflip" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.skatepark.heelflip.util" />
-      <option name="MAIN_CLASS_NAME" value="com.skatepark.heelflip.util.FlatterTest" />
-      <option name="METHOD_NAME" value="testFlatten1ArrayIntoObject" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="FlatterTest.testFlatten1ObjectIntoArray" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.skatepark.heelflip.util.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="heelflip" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.skatepark.heelflip.util" />
-      <option name="MAIN_CLASS_NAME" value="com.skatepark.heelflip.util.FlatterTest" />
-      <option name="METHOD_NAME" value="testFlatten1ObjectIntoArray" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="HeelflipTest.foo" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.skatepark.heelflip.table.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="heelflip" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.skatepark.heelflip.table" />
-      <option name="MAIN_CLASS_NAME" value="com.skatepark.heelflip.table.HeelflipTest" />
-      <option name="METHOD_NAME" value="foo" />
-      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -708,19 +656,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.HeelflipTest" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.FlatterTest.testFlatten1ArrayIntoObject" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.FlatterTest.testFlatten1ObjectIntoArray" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.HeelflipTest.foo" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testMaxAsInt" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testSumAsInt" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testMaxAsLong" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.HeelflipTest" />
       <item index="4" class="java.lang.String" itemvalue="JUnit.All in heelflip" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="JUnit.All in heelflip" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.HeelflipTest.foo" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.HeelflipTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.FlatterTest.testFlatten1ObjectIntoArray" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.FlatterTest.testFlatten1ArrayIntoObject" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.HeelflipTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testMaxAsLong" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testSumAsInt" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testMaxAsInt" />
       </list>
     </recent_temporary>
   </component>
@@ -741,40 +689,40 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_heelflip - 2017.05.25 at 22h 23m 17s.xml">
-      <configuration name="All in heelflip" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="All_in_heelflip - 2017.05.25 at 22h 25m 18s.xml">
       <configuration name="All in heelflip" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HeelflipTest - 2017.05.25 at 22h 12m 43s.xml">
+    <history-entry file="All_in_heelflip - 2017.05.25 at 22h 49m 22s.xml">
+      <configuration name="All in heelflip" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="HeelflipTest - 2017.05.25 at 22h 44m 54s.xml">
       <configuration name="HeelflipTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HeelflipTest - 2017.05.25 at 22h 13m 33s.xml">
+    <history-entry file="HeelflipTest - 2017.05.25 at 22h 48m 19s.xml">
       <configuration name="HeelflipTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HeelflipTest_foo - 2017.05.25 at 21h 09m 11s.xml">
-      <configuration name="HeelflipTest.foo" configurationId="JUnit" />
+    <history-entry file="HeelflipTest_test - 2017.05.25 at 22h 32m 51s.xml">
+      <configuration name="HeelflipTest.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HeelflipTest_foo - 2017.05.25 at 21h 09m 37s.xml">
-      <configuration name="HeelflipTest.foo" configurationId="JUnit" />
+    <history-entry file="HeelflipTest_test - 2017.05.25 at 22h 35m 37s.xml">
+      <configuration name="HeelflipTest.test" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HeelflipTest_foo - 2017.05.25 at 21h 10m 25s.xml">
-      <configuration name="HeelflipTest.foo" configurationId="JUnit" />
+    <history-entry file="HeelflipTest_testMaxAsInt - 2017.05.25 at 22h 42m 04s.xml">
+      <configuration name="HeelflipTest.testMaxAsInt" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HeelflipTest_foo - 2017.05.25 at 21h 10m 45s.xml">
-      <configuration name="HeelflipTest.foo" configurationId="JUnit" />
+    <history-entry file="HeelflipTest_testMaxAsLong - 2017.05.25 at 22h 44m 40s.xml">
+      <configuration name="HeelflipTest.testMaxAsLong" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HeelflipTest_foo - 2017.05.25 at 22h 14m 21s.xml">
-      <configuration name="HeelflipTest.foo" configurationId="JUnit" />
+    <history-entry file="HeelflipTest_testMinAsLong - 2017.05.25 at 22h 41m 17s.xml">
+      <configuration name="HeelflipTest.testMinAsLong" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="HeelflipTest_foo - 2017.05.25 at 22h 14m 36s.xml">
-      <configuration name="HeelflipTest.foo" configurationId="JUnit" />
+    <history-entry file="HeelflipTest_testSumAsInt - 2017.05.25 at 22h 43m 13s.xml">
+      <configuration name="HeelflipTest.testSumAsInt" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="741" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -824,7 +772,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/column/type/NumericColumn.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/column/AbstractColumn.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/column/MetaValue.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1019,28 +966,10 @@
         <state relative-caret-position="1800">
           <caret line="129" column="16" selection-start-line="129" selection-start-column="16" selection-end-line="129" selection-end-column="16" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2961#2962#0" expanded="true" />
-            <element signature="e#3018#3019#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#2961#2962#0" expanded="false" />
+            <element signature="e#3018#3019#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/Heelflip.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="126" column="20" selection-start-line="126" selection-start-column="16" selection-end-line="126" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/table/HeelflipTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1064,11 +993,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/util/Flatter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="109" column="64" selection-start-line="109" selection-start-column="64" selection-end-line="109" selection-end-column="64" />
+        <state relative-caret-position="126">
+          <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/Heelflip.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1273">
+          <caret line="120" column="55" selection-start-line="120" selection-start-column="55" selection-end-line="120" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/sample.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" column="79" selection-start-line="19" selection-start-column="79" selection-end-line="19" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/table/HeelflipTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="733">
+          <caret line="249" column="30" selection-start-line="249" selection-start-column="30" selection-end-line="249" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>

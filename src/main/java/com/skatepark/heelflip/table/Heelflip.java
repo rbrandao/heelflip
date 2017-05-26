@@ -58,6 +58,27 @@ public class Heelflip {
         return columnsMap.containsKey(columnName);
     }
 
+    public int minAsInt(String columnName) {
+        if (!contains(columnName)) {
+            return -1;
+        }
+        return columnsMap.get(columnName).minAsInt();
+    }
+
+    public int maxAsInt(String columnName) {
+        if (!contains(columnName)) {
+            return -1;
+        }
+        return columnsMap.get(columnName).maxAsInt();
+    }
+
+    public int sumAsInt(String columnName) {
+        if (!contains(columnName)) {
+            return -1;
+        }
+        return columnsMap.get(columnName).sumAsInt();
+    }
+
     public long minAsLong(String columnName) {
         if (!contains(columnName)) {
             return -1;
@@ -72,6 +93,13 @@ public class Heelflip {
         return columnsMap.get(columnName).maxAsLong();
     }
 
+    public long sumAsLong(String columnName) {
+        if (!contains(columnName)) {
+            return -1;
+        }
+        return columnsMap.get(columnName).sumAsLong();
+    }
+
     public double minAsDouble(String columnName) {
         if (!contains(columnName)) {
             return -1;
@@ -84,6 +112,13 @@ public class Heelflip {
             return -1;
         }
         return columnsMap.get(columnName).maxAsDouble();
+    }
+
+    public double sumAsDouble(String columnName) {
+        if (!contains(columnName)) {
+            return -1;
+        }
+        return columnsMap.get(columnName).sumAsDouble();
     }
 
     public Set<Integer> valuesAsIntSet(String columnName) {
