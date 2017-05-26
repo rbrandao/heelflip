@@ -19,17 +19,16 @@ public class ColumnTest {
         column.add(new HFValue("a", UUID.randomUUID(), new JsonPrimitive(2.0)));
 
         Assert.assertEquals("a", column.name());
-        Assert.assertEquals(2, column.minAsInt());
-        Assert.assertEquals(2, column.maxAsInt());
-        Assert.assertEquals(8, column.sumAsInt());
 
-        Assert.assertEquals(2, column.minAsLong());
-        Assert.assertEquals(2, column.maxAsLong());
-        Assert.assertEquals(8, column.sumAsLong());
-
-        Assert.assertEquals(2.0, column.minAsDouble(), 10E10);
-        Assert.assertEquals(2.3, column.maxAsDouble(), 10E10);
-        Assert.assertEquals(8.4, column.sumAsDouble(), 10E10);
+        ColumnStatistic statistics = column.getStatistics();
+        Assert.assertEquals(4, statistics.getCount());
+        Assert.assertEquals(0, statistics.getStringCount());
+        Assert.assertEquals(0, statistics.getBooleanCount());
+        Assert.assertEquals(0, statistics.getLongCount());
+        Assert.assertEquals(4, statistics.getDoubleCount());
+        Assert.assertEquals(2.0, statistics.getMin().doubleValue(), 10E10);
+        Assert.assertEquals(2.3, statistics.getMax().doubleValue(), 10E10);
+        Assert.assertEquals(8.4, statistics.getSum().doubleValue(), 10E10);
 
         Assert.assertEquals(4, column.count());
         Assert.assertEquals(2, column.count(2.0));
@@ -50,17 +49,16 @@ public class ColumnTest {
         column.add(new HFValue("a", UUID.randomUUID(), new JsonPrimitive(12)));
 
         Assert.assertEquals("a", column.name());
-        Assert.assertEquals(10, column.minAsInt());
-        Assert.assertEquals(12, column.maxAsInt());
-        Assert.assertEquals(45, column.sumAsInt());
 
-        Assert.assertEquals(10, column.minAsLong());
-        Assert.assertEquals(12, column.maxAsLong());
-        Assert.assertEquals(45, column.sumAsLong());
-
-        Assert.assertEquals(10, column.minAsDouble(), 10E10);
-        Assert.assertEquals(12, column.maxAsDouble(), 10E10);
-        Assert.assertEquals(45, column.sumAsDouble(), 10E10);
+        ColumnStatistic statistics = column.getStatistics();
+        Assert.assertEquals(4, statistics.getCount());
+        Assert.assertEquals(0, statistics.getStringCount());
+        Assert.assertEquals(0, statistics.getBooleanCount());
+        Assert.assertEquals(0, statistics.getLongCount());
+        Assert.assertEquals(4, statistics.getDoubleCount());
+        Assert.assertEquals(10, statistics.getMin().intValue());
+        Assert.assertEquals(12, statistics.getMax().intValue());
+        Assert.assertEquals(45, statistics.getSum().intValue());
 
         Assert.assertEquals(4, column.count());
         Assert.assertEquals(2, column.count(12));
@@ -81,6 +79,17 @@ public class ColumnTest {
         column.add(new HFValue("a", UUID.randomUUID(), new JsonPrimitive("call")));
 
         Assert.assertEquals("a", column.name());
+
+        ColumnStatistic statistics = column.getStatistics();
+        Assert.assertEquals(4, statistics.getCount());
+        Assert.assertEquals(0, statistics.getStringCount());
+        Assert.assertEquals(0, statistics.getBooleanCount());
+        Assert.assertEquals(0, statistics.getLongCount());
+        Assert.assertEquals(4, statistics.getDoubleCount());
+        Assert.assertEquals(0, statistics.getMin().intValue());
+        Assert.assertEquals(0, statistics.getMax().intValue());
+        Assert.assertEquals(0, statistics.getSum().intValue());
+
         Assert.assertEquals(4, column.count());
         Assert.assertEquals(2, column.count("foo"));
         Assert.assertEquals(0, column.count("other"));
@@ -104,17 +113,16 @@ public class ColumnTest {
         column.add(new HFValue("a", UUID.randomUUID(), new JsonPrimitive(15L)));
 
         Assert.assertEquals("a", column.name());
-        Assert.assertEquals(1, column.minAsInt());
-        Assert.assertEquals(20, column.maxAsInt());
-        Assert.assertEquals(57, column.sumAsInt());
 
-        Assert.assertEquals(1, column.minAsLong());
-        Assert.assertEquals(20, column.maxAsLong());
-        Assert.assertEquals(57, column.sumAsLong());
-
-        Assert.assertEquals(10, column.minAsDouble(), 10E10);
-        Assert.assertEquals(12, column.maxAsDouble(), 10E10);
-        Assert.assertEquals(45, column.sumAsDouble(), 10E10);
+        ColumnStatistic statistics = column.getStatistics();
+        Assert.assertEquals(4, statistics.getCount());
+        Assert.assertEquals(0, statistics.getStringCount());
+        Assert.assertEquals(0, statistics.getBooleanCount());
+        Assert.assertEquals(0, statistics.getLongCount());
+        Assert.assertEquals(4, statistics.getDoubleCount());
+        Assert.assertEquals(10, statistics.getMin().intValue());
+        Assert.assertEquals(12, statistics.getMax().intValue());
+        Assert.assertEquals(45, statistics.getSum().intValue());
 
         Assert.assertEquals(8, column.count());
         Assert.assertEquals(2, column.count(10));

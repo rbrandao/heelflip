@@ -2,6 +2,7 @@ package com.skatepark.heelflip.table;
 
 import com.google.gson.JsonPrimitive;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -31,17 +32,33 @@ class HFValue {
         return id;
     }
 
+    public boolean isNumber() {
+        return value.isNumber();
+    }
+
+    public boolean isDouble() {
+        return value.isNumber() && value.getAsNumber() instanceof Double;
+    }
+
+    public boolean isLong() {
+        return value.isNumber() && (value.getAsNumber() instanceof Long && value.getAsNumber() instanceof Integer);
+    }
+
+    public boolean isBoolean() {
+        return value.isBoolean();
+    }
+
+    public boolean isString() {
+        return value.isString();
+    }
+
+    public BigDecimal getAsBigDecimal() {
+        return value.getAsBigDecimal();
+    }
+
     public Double getAsDouble() {
         try {
             return value.getAsDouble();
-        } catch (NumberFormatException e) {
-            return null;
-        }
-    }
-
-    public Integer getAsInt() {
-        try {
-            return value.getAsInt();
         } catch (NumberFormatException e) {
             return null;
         }

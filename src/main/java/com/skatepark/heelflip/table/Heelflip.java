@@ -18,7 +18,7 @@ import java.util.UUID;
 
 public class Heelflip {
 
-    private Map<String, IColumn> columnsMap;
+    private Map<String, ObjectColumn> columnsMap;
 
     public Heelflip() {
         this.columnsMap = new HashMap<>();
@@ -42,60 +42,6 @@ public class Heelflip {
 
     public boolean contains(String columnName) {
         return columnName != null && columnsMap.containsKey(columnName);
-    }
-
-    public int minAsInt(String columnName) {
-        return !contains(columnName) ?
-                -1 :
-                columnsMap.get(columnName).minAsInt();
-    }
-
-    public int maxAsInt(String columnName) {
-        return !contains(columnName) ?
-                -1 :
-                columnsMap.get(columnName).maxAsInt();
-    }
-
-    public int sumAsInt(String columnName) {
-        return !contains(columnName) ?
-                -1 :
-                columnsMap.get(columnName).sumAsInt();
-    }
-
-    public long minAsLong(String columnName) {
-        return !contains(columnName) ?
-                -1 :
-                columnsMap.get(columnName).minAsLong();
-    }
-
-    public long maxAsLong(String columnName) {
-        return !contains(columnName) ?
-                -1 :
-                columnsMap.get(columnName).maxAsLong();
-    }
-
-    public long sumAsLong(String columnName) {
-        return !contains(columnName) ?
-                -1 :
-                columnsMap.get(columnName).sumAsLong();
-    }
-
-    public double minAsDouble(String columnName) {
-        return !contains(columnName) ?
-                -1 :
-                columnsMap.get(columnName).minAsDouble();
-    }
-
-    public double maxAsDouble(String columnName) {
-        return !contains(columnName) ?
-                -1 :
-                columnsMap.get(columnName).maxAsDouble();
-    }
-
-    public double sumAsDouble(String columnName) {
-        return !contains(columnName) ?
-                -1 :
-                columnsMap.get(columnName).sumAsDouble();
     }
 
     public long count(String columnName) {
