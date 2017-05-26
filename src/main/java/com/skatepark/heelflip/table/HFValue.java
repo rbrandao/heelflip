@@ -50,4 +50,9 @@ class HFValue {
     public String getAsString() {
         return value.getAsString();
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s:%s", id, value);
+    }
 }

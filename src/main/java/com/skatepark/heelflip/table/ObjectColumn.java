@@ -31,7 +31,6 @@ class ObjectColumn implements IColumn {
     @Override
     public void add(HFValue value) {
         Objects.requireNonNull(value, "value should not be null.");
-
         values.put(value.getId(), value);
     }
 
