@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-import java.util.OptionalDouble;
-import java.util.OptionalInt;
-import java.util.OptionalLong;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -41,16 +38,32 @@ class ObjectColumn {
                 .count();
     }
 
+    public long count(boolean value) {
+        return values.stream()
+                .map(hfValue -> hfValue.getAsBoolean())
+                .filter(v -> v != null && v.equals(value))
+                .count();
+    }
+
     public long count(int value) {
-        return count(Integer.toString(value));
+        return values.stream()
+                .map(hfValue -> hfValue.getAsInt())
+                .filter(v -> v != null && v.equals(value))
+                .count();
     }
 
     public long count(long value) {
-        return count(Long.toString(value));
+        return values.stream()
+                .map(hfValue -> hfValue.getAsLong())
+                .filter(v -> v != null && v.equals(value))
+                .count();
     }
 
     public long count(double value) {
-        return count(Double.toString(value));
+        return values.stream()
+                .map(hfValue -> hfValue.getAsDouble())
+                .filter(v -> v != null && v.equals(value))
+                .count();
     }
 
     public long count() {

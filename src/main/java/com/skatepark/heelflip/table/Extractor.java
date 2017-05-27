@@ -55,7 +55,7 @@ class Extractor {
                 arraysMap.put(fieldName, value.getAsJsonArray());
             }
             if (value.isJsonPrimitive()) {
-                result.add(new HFValue(fieldName, id, value.getAsJsonPrimitive()));
+                result.add(new HFValue(id, fieldName, value.getAsJsonPrimitive()));
             }
         }
 
@@ -74,7 +74,7 @@ class Extractor {
                 JsonElement elem = array.get(i);
                 if (elem.isJsonPrimitive()) {
                     String newFieldName = String.format("%s_%d", fieldName, i);
-                    result.add(new HFValue(newFieldName, id, elem.getAsJsonPrimitive()));
+                    result.add(new HFValue(id, newFieldName, elem.getAsJsonPrimitive()));
                 }
 
                 if (elem.isJsonObject()) {

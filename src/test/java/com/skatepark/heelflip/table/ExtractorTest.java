@@ -23,10 +23,10 @@ public class ExtractorTest {
         List<HFValue> values = Extractor.extract(id, source);
         Assert.assertEquals(4, values.size());
 
-        Assert.assertEquals(new HFValue("a", id, source.getAsJsonPrimitive("a")), values.get(0));
-        Assert.assertEquals(new HFValue("b", id, source.getAsJsonPrimitive("b")), values.get(1));
-        Assert.assertEquals(new HFValue("c", id, source.getAsJsonPrimitive("c")), values.get(2));
-        Assert.assertEquals(new HFValue("d", id, source.getAsJsonPrimitive("d")), values.get(3));
+        Assert.assertEquals(new HFValue(id, "a", source.getAsJsonPrimitive("a")), values.get(0));
+        Assert.assertEquals(new HFValue(id, "b", source.getAsJsonPrimitive("b")), values.get(1));
+        Assert.assertEquals(new HFValue(id, "c", source.getAsJsonPrimitive("c")), values.get(2));
+        Assert.assertEquals(new HFValue(id, "d", source.getAsJsonPrimitive("d")), values.get(3));
     }
 
     @Test
@@ -47,12 +47,12 @@ public class ExtractorTest {
 
         Assert.assertEquals(6, values.size());
 
-        Assert.assertEquals(new HFValue("a", id, source.getAsJsonPrimitive("a")), values.get(0));
-        Assert.assertEquals(new HFValue("b", id, source.getAsJsonPrimitive("b")), values.get(1));
-        Assert.assertEquals(new HFValue("c", id, source.getAsJsonPrimitive("c")), values.get(2));
-        Assert.assertEquals(new HFValue("d", id, source.getAsJsonPrimitive("d")), values.get(3));
-        Assert.assertEquals(new HFValue("e.a", id, e.getAsJsonPrimitive("a")), values.get(4));
-        Assert.assertEquals(new HFValue("e.b", id, e.getAsJsonPrimitive("b")), values.get(5));
+        Assert.assertEquals(new HFValue(id, "a", source.getAsJsonPrimitive("a")), values.get(0));
+        Assert.assertEquals(new HFValue(id, "b", source.getAsJsonPrimitive("b")), values.get(1));
+        Assert.assertEquals(new HFValue(id, "c", source.getAsJsonPrimitive("c")), values.get(2));
+        Assert.assertEquals(new HFValue(id, "d", source.getAsJsonPrimitive("d")), values.get(3));
+        Assert.assertEquals(new HFValue(id, "e.a", e.getAsJsonPrimitive("a")), values.get(4));
+        Assert.assertEquals(new HFValue(id, "e.b", e.getAsJsonPrimitive("b")), values.get(5));
     }
 
     @Test
@@ -77,14 +77,14 @@ public class ExtractorTest {
         List<HFValue> values = Extractor.extract(id, source);
         Assert.assertEquals(8, values.size());
 
-        Assert.assertEquals(new HFValue("a", id, source.getAsJsonPrimitive("a")), values.get(0));
-        Assert.assertEquals(new HFValue("b", id, source.getAsJsonPrimitive("b")), values.get(1));
-        Assert.assertEquals(new HFValue("c", id, source.getAsJsonPrimitive("c")), values.get(2));
-        Assert.assertEquals(new HFValue("d", id, source.getAsJsonPrimitive("d")), values.get(3));
-        Assert.assertEquals(new HFValue("e.a", id, e.getAsJsonPrimitive("a")), values.get(4));
-        Assert.assertEquals(new HFValue("e.b", id, e.getAsJsonPrimitive("b")), values.get(5));
-        Assert.assertEquals(new HFValue("e.c.a", id, c.getAsJsonPrimitive("a")), values.get(6));
-        Assert.assertEquals(new HFValue("e.c.b", id, c.getAsJsonPrimitive("b")), values.get(7));
+        Assert.assertEquals(new HFValue(id, "a", source.getAsJsonPrimitive("a")), values.get(0));
+        Assert.assertEquals(new HFValue(id, "b", source.getAsJsonPrimitive("b")), values.get(1));
+        Assert.assertEquals(new HFValue(id, "c", source.getAsJsonPrimitive("c")), values.get(2));
+        Assert.assertEquals(new HFValue(id, "d", source.getAsJsonPrimitive("d")), values.get(3));
+        Assert.assertEquals(new HFValue(id, "e.a", e.getAsJsonPrimitive("a")), values.get(4));
+        Assert.assertEquals(new HFValue(id, "e.b", e.getAsJsonPrimitive("b")), values.get(5));
+        Assert.assertEquals(new HFValue(id, "e.c.a", c.getAsJsonPrimitive("a")), values.get(6));
+        Assert.assertEquals(new HFValue(id, "e.c.b", c.getAsJsonPrimitive("b")), values.get(7));
     }
 
     @Test
@@ -110,12 +110,12 @@ public class ExtractorTest {
         List<HFValue> values = Extractor.extract(id, source);
         Assert.assertEquals(6, values.size());
 
-        Assert.assertEquals(new HFValue("a", id, source.getAsJsonPrimitive("a")), values.get(0));
-        Assert.assertEquals(new HFValue("b", id, source.getAsJsonPrimitive("b")), values.get(1));
-        Assert.assertEquals(new HFValue("c.a", id, elem0.getAsJsonPrimitive("a")), values.get(2));
-        Assert.assertEquals(new HFValue("c.b", id, elem0.getAsJsonPrimitive("b")), values.get(3));
-        Assert.assertEquals(new HFValue("c.a", id, elem1.getAsJsonPrimitive("a")), values.get(4));
-        Assert.assertEquals(new HFValue("c.b", id, elem1.getAsJsonPrimitive("b")), values.get(5));
+        Assert.assertEquals(new HFValue(id, "a", source.getAsJsonPrimitive("a")), values.get(0));
+        Assert.assertEquals(new HFValue(id, "b", source.getAsJsonPrimitive("b")), values.get(1));
+        Assert.assertEquals(new HFValue(id, "c.a", elem0.getAsJsonPrimitive("a")), values.get(2));
+        Assert.assertEquals(new HFValue(id, "c.b", elem0.getAsJsonPrimitive("b")), values.get(3));
+        Assert.assertEquals(new HFValue(id, "c.a", elem1.getAsJsonPrimitive("a")), values.get(4));
+        Assert.assertEquals(new HFValue(id, "c.b", elem1.getAsJsonPrimitive("b")), values.get(5));
     }
 
     @Test
@@ -145,13 +145,13 @@ public class ExtractorTest {
         List<HFValue> values = Extractor.extract(id, source);
         Assert.assertEquals(7, values.size());
 
-        Assert.assertEquals(new HFValue("a", id, source.getAsJsonPrimitive("a")), values.get(0));
-        Assert.assertEquals(new HFValue("b", id, source.getAsJsonPrimitive("b")), values.get(1));
-        Assert.assertEquals(new HFValue("c.a", id, c.getAsJsonPrimitive("a")), values.get(2));
-        Assert.assertEquals(new HFValue("c.b.a", id, elem0.getAsJsonPrimitive("a")), values.get(3));
-        Assert.assertEquals(new HFValue("c.b.b", id, elem0.getAsJsonPrimitive("b")), values.get(4));
-        Assert.assertEquals(new HFValue("c.b.a", id, elem1.getAsJsonPrimitive("a")), values.get(5));
-        Assert.assertEquals(new HFValue("c.b.b", id, elem1.getAsJsonPrimitive("b")), values.get(6));
+        Assert.assertEquals(new HFValue(id, "a", source.getAsJsonPrimitive("a")), values.get(0));
+        Assert.assertEquals(new HFValue(id, "b", source.getAsJsonPrimitive("b")), values.get(1));
+        Assert.assertEquals(new HFValue(id, "c.a", c.getAsJsonPrimitive("a")), values.get(2));
+        Assert.assertEquals(new HFValue(id, "c.b.a", elem0.getAsJsonPrimitive("a")), values.get(3));
+        Assert.assertEquals(new HFValue(id, "c.b.b", elem0.getAsJsonPrimitive("b")), values.get(4));
+        Assert.assertEquals(new HFValue(id, "c.b.a", elem1.getAsJsonPrimitive("a")), values.get(5));
+        Assert.assertEquals(new HFValue(id, "c.b.b", elem1.getAsJsonPrimitive("b")), values.get(6));
     }
 
     @Test
@@ -182,13 +182,13 @@ public class ExtractorTest {
         List<HFValue> values = Extractor.extract(id, source);
         Assert.assertEquals(8, values.size());
 
-        Assert.assertEquals(new HFValue("a", id, source.getAsJsonPrimitive("a")), values.get(0));
-        Assert.assertEquals(new HFValue("b", id, source.getAsJsonPrimitive("b")), values.get(1));
-        Assert.assertEquals(new HFValue("c.a", id, elem0.getAsJsonPrimitive("a")), values.get(2));
-        Assert.assertEquals(new HFValue("c.b", id, elem0.getAsJsonPrimitive("b")), values.get(3));
-        Assert.assertEquals(new HFValue("c.c.x", id, c.getAsJsonPrimitive("x")), values.get(4));
-        Assert.assertEquals(new HFValue("c.c.y", id, c.getAsJsonPrimitive("y")), values.get(5));
-        Assert.assertEquals(new HFValue("c.a", id, elem1.getAsJsonPrimitive("a")), values.get(6));
-        Assert.assertEquals(new HFValue("c.b", id, elem1.getAsJsonPrimitive("b")), values.get(7));
+        Assert.assertEquals(new HFValue(id, "a", source.getAsJsonPrimitive("a")), values.get(0));
+        Assert.assertEquals(new HFValue(id, "b", source.getAsJsonPrimitive("b")), values.get(1));
+        Assert.assertEquals(new HFValue(id, "c.a", elem0.getAsJsonPrimitive("a")), values.get(2));
+        Assert.assertEquals(new HFValue(id, "c.b", elem0.getAsJsonPrimitive("b")), values.get(3));
+        Assert.assertEquals(new HFValue(id, "c.c.x", c.getAsJsonPrimitive("x")), values.get(4));
+        Assert.assertEquals(new HFValue(id, "c.c.y", c.getAsJsonPrimitive("y")), values.get(5));
+        Assert.assertEquals(new HFValue(id, "c.a", elem1.getAsJsonPrimitive("a")), values.get(6));
+        Assert.assertEquals(new HFValue(id, "c.b", elem1.getAsJsonPrimitive("b")), values.get(7));
     }
 }

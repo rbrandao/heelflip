@@ -8,57 +8,65 @@ import java.util.UUID;
 
 class HFValue {
 
-    private String columnName;
-
     private UUID id;
+
+    private String columnName;
 
     private JsonPrimitive value;
 
-    public HFValue(String columnName, UUID id, JsonPrimitive value) {
-        Objects.requireNonNull(columnName, "columnName should not be null.");
+    public HFValue(UUID id, String columnName, JsonPrimitive value) {
         Objects.requireNonNull(id, "id should not be null.");
+        Objects.requireNonNull(columnName, "columnName should not be null.");
         Objects.requireNonNull(value, "value should not be null.");
 
-        this.columnName = columnName;
         this.id = id;
+        this.columnName = columnName;
         this.value = value;
-    }
-
-    public String getColumnName() {
-        return columnName;
     }
 
     public UUID getId() {
         return id;
     }
 
-    public boolean isNumber() {
-        return value.isNumber();
-    }
-
-    public boolean isDouble() {
-        return value.isNumber() && value.getAsNumber() instanceof Double;
-    }
-
-    public boolean isLong() {
-        return value.isNumber() && (value.getAsNumber() instanceof Long && value.getAsNumber() instanceof Integer);
-    }
-
-    public boolean isBoolean() {
-        return value.isBoolean();
+    public String getColumnName() {
+        return columnName;
     }
 
     public boolean isString() {
         return value.isString();
     }
 
-    public BigDecimal getAsBigDecimal() {
-        return value.getAsBigDecimal();
+    public boolean isBoolean() {
+        return value.isBoolean();
     }
 
-    public Double getAsDouble() {
+    public boolean isNumber() {
+        return value.isNumber();
+    }
+
+    public boolean isInt() {
+        return value.isNumber() && value.getAsNumber() instanceof Integer;
+    }
+
+    public boolean isLong() {
+        return value.isNumber() && value.getAsNumber() instanceof Long;
+    }
+
+    public boolean isDouble() {
+        return value.isNumber() && value.getAsNumber() instanceof Double;
+    }
+
+    public String getAsString() {
+        return value.getAsString();
+    }
+
+    public Boolean getAsBoolean() {
+        return value.isBoolean() ? value.getAsBoolean() : null;
+    }
+
+    public Integer getAsInt() {
         try {
-            return value.getAsDouble();
+            return value.getAsInt();
         } catch (NumberFormatException e) {
             return null;
         }
@@ -72,8 +80,16 @@ class HFValue {
         }
     }
 
-    public String getAsString() {
-        return value.getAsString();
+    public Double getAsDouble() {
+        try {
+            return value.getAsDouble();
+        } catch (NumberFormatException e) {
+            return null;
+        }
+    }
+
+    public BigDecimal getAsBigDecimal() {
+        return value.getAsBigDecimal();
     }
 
     @Override

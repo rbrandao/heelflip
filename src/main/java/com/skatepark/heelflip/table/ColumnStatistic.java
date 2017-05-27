@@ -6,10 +6,13 @@ public class ColumnStatistic {
 
     private String columnName;
     private int count;
+
     private int stringCount;
     private int booleanCount;
+    private int intCount;
     private int longCount;
     private int doubleCount;
+
     private BigDecimal min;
     private BigDecimal max;
     private BigDecimal sum;
@@ -19,6 +22,7 @@ public class ColumnStatistic {
         this.count = 0;
         this.stringCount = 0;
         this.booleanCount = 0;
+        this.intCount = 0;
         this.longCount = 0;
         this.doubleCount = 0;
     }
@@ -27,12 +31,8 @@ public class ColumnStatistic {
         return columnName;
     }
 
-    public int getDoubleCount() {
-        return doubleCount;
-    }
-
-    public int getLongCount() {
-        return longCount;
+    public int getCount() {
+        return count;
     }
 
     public int getStringCount() {
@@ -43,9 +43,19 @@ public class ColumnStatistic {
         return booleanCount;
     }
 
-    public int getCount() {
-        return count;
+    public int getIntCount() {
+        return intCount;
     }
+
+    public int getLongCount() {
+        return longCount;
+    }
+
+
+    public int getDoubleCount() {
+        return doubleCount;
+    }
+
 
     public BigDecimal getMax() {
         return max;
@@ -65,6 +75,9 @@ public class ColumnStatistic {
         }
         if (value.isBoolean()) {
             booleanCount++;
+        }
+        if (value.isInt()) {
+            intCount++;
         }
         if (value.isLong()) {
             longCount++;
