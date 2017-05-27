@@ -60,41 +60,26 @@ public class ColumnStatistic {
     }
 
     void agg(HFValue value) {
-        if (value.isDouble()) {
-            doubleCount++;
-        }
-        if (value.isLong()) {
-            longCount++;
-        }
         if (value.isString()) {
             stringCount++;
         }
         if (value.isBoolean()) {
             booleanCount++;
         }
+        if (value.isLong()) {
+            longCount++;
+        }
+        if (value.isDouble()) {
+            doubleCount++;
+        }
+
         count++;
 
         if (value.isNumber()) {
             BigDecimal v = value.getAsBigDecimal();
-            if (min == null) {
-                min = v;
-            } else {
-                if (min.compareTo(v) > 0) {
-                    min = v;
-                }
-            }
-            if (max == null) {
-                max = v;
-            } else {
-                if (max.compareTo(v) < 0) {
-                    max = v;
-                }
-            }
-            if (sum == null) {
-                sum = v;
-            } else {
-                sum = sum.add(v);
-            }
+            min = min == null || min.compareTo(v) > 0 ? v : min;
+            max = max == null || max.compareTo(v) < 0 ? v : max;
+            sum = sum == null ? v : sum.add(v);
         }
     }
 }

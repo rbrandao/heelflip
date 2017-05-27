@@ -1,5 +1,6 @@
 package com.skatepark.heelflip.util;
 
+import com.skatepark.heelflip.table.ColumnStatistic;
 import com.skatepark.heelflip.table.Heelflip;
 
 import java.io.BufferedWriter;
@@ -23,21 +24,35 @@ public class Report {
 
         for (String name : columnNames) {
             long count = heelflip.count(name);
-            long minAsLong = heelflip.minAsLong(name);
-            long maxAsLong = heelflip.maxAsLong(name);
-            double minAsDouble = heelflip.minAsDouble(name);
-            long sumAsLong = heelflip.sumAsLong(name);
-            double maxAsDouble = heelflip.maxAsDouble(name);
-            double sumAsDouble = heelflip.sumAsDouble(name);
+
+            ColumnStatistic statistics = heelflip.getStatistics(name);
+            int booleanCount = statistics.getBooleanCount();
+            int stringCount = statistics.getStringCount();
+            int longCount = statistics.getLongCount();
+            int doubleCount = statistics.getDoubleCount();
 
             builder.append("-- Column: ").append(name).append(ln);
             builder.append("-- Count: ").append(count).append(ln);
-            builder.append("-- Min as Long: ").append(minAsLong).append(ln);
-            builder.append("-- Max as Long: ").append(maxAsLong).append(ln);
-            builder.append("-- Sum as Long: ").append(sumAsLong).append(ln);
-            builder.append("-- Min as Double: ").append(minAsDouble).append(ln);
-            builder.append("-- Max as Double: ").append(maxAsDouble).append(ln);
-            builder.append("-- Sum as Double: ").append(sumAsDouble).append(ln);
+            builder.append("-- Boolean count: ").append(booleanCount).append(ln);
+            builder.append("-- String count:  ").append(stringCount).append(ln);
+            builder.append("-- Long count:    ").append(longCount).append(ln);
+            builder.append("-- Double count:  ").append(doubleCount).append(ln);
+
+            if (doubleCount > Math.max(Math.max(booleanCount, stringCount), longCount)) {
+                double min = statistics.getMin().doubleValue();
+                double max = statistics.getMax().doubleValue();
+                double sum = statistics.getSum().doubleValue();
+                builder.append("-- Min as Double: ").append(min).append(ln);
+                builder.append("-- Max as Double: ").append(max).append(ln);
+                builder.append("-- Sum as Double: ").append(sum).append(ln);
+            } else {
+                long min = statistics.getMin().longValue();
+                long max = statistics.getMax().longValue();
+                long sum = statistics.getSum().longValue();
+                builder.append("-- Min as Long: ").append(min).append(ln);
+                builder.append("-- Max as Long: ").append(max).append(ln);
+                builder.append("-- Sum as Long: ").append(sum).append(ln);
+            }
             builder.append(ln);
         }
         return builder.toString();

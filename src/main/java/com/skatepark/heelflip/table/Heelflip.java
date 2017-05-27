@@ -98,6 +98,13 @@ public class Heelflip {
                 columnsMap.get(columnName).valuesAsStringSet();
     }
 
+    public ColumnStatistic getStatistics(String columnName) {
+        if (!contains(columnName)) {
+            return null;
+        }
+        return columnsMap.get(columnName).getStatistics();
+    }
+
     /**
      * Add value to respective column.
      *

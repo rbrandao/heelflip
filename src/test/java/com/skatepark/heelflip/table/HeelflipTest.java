@@ -48,17 +48,18 @@ public class HeelflipTest {
 
         Assert.assertEquals(10, heelflip.size());
 
-        Assert.assertEquals(0, heelflip.minAsInt("a"));
-        Assert.assertEquals(1, heelflip.minAsInt("b"));
-        Assert.assertEquals(2, heelflip.minAsInt("c"));
-        Assert.assertEquals(3, heelflip.minAsInt("d"));
-        Assert.assertEquals(4, heelflip.minAsInt("e"));
-        Assert.assertEquals(5, heelflip.minAsInt("f"));
-        Assert.assertEquals(6, heelflip.minAsInt("g"));
-        Assert.assertEquals(7, heelflip.minAsInt("h"));
-        Assert.assertEquals(8, heelflip.minAsInt("i"));
-        Assert.assertEquals(9, heelflip.minAsInt("j"));
-        Assert.assertEquals(-1, heelflip.minAsInt("l"));
+
+        Assert.assertEquals(0, heelflip.getStatistics("a").getMin().intValue());
+        Assert.assertEquals(1, heelflip.getStatistics("b").getMin().intValue());
+        Assert.assertEquals(2, heelflip.getStatistics("c").getMin().intValue());
+        Assert.assertEquals(3, heelflip.getStatistics("d").getMin().intValue());
+        Assert.assertEquals(4, heelflip.getStatistics("e").getMin().intValue());
+        Assert.assertEquals(5, heelflip.getStatistics("f").getMin().intValue());
+        Assert.assertEquals(6, heelflip.getStatistics("g").getMin().intValue());
+        Assert.assertEquals(7, heelflip.getStatistics("h").getMin().intValue());
+        Assert.assertEquals(8, heelflip.getStatistics("i").getMin().intValue());
+        Assert.assertEquals(9, heelflip.getStatistics("j").getMin().intValue());
+        Assert.assertNull(heelflip.getStatistics("l"));
     }
 
     @Test
@@ -70,17 +71,17 @@ public class HeelflipTest {
 
         Assert.assertEquals(10, heelflip.size());
 
-        Assert.assertEquals(0, heelflip.maxAsInt("a"));
-        Assert.assertEquals(1, heelflip.maxAsInt("b"));
-        Assert.assertEquals(2, heelflip.maxAsInt("c"));
-        Assert.assertEquals(3, heelflip.maxAsInt("d"));
-        Assert.assertEquals(4, heelflip.maxAsInt("e"));
-        Assert.assertEquals(5, heelflip.maxAsInt("f"));
-        Assert.assertEquals(6, heelflip.maxAsInt("g"));
-        Assert.assertEquals(7, heelflip.maxAsInt("h"));
-        Assert.assertEquals(8, heelflip.maxAsInt("i"));
-        Assert.assertEquals(9, heelflip.maxAsInt("j"));
-        Assert.assertEquals(-1, heelflip.maxAsInt("l"));
+        Assert.assertEquals(0, heelflip.getStatistics("a").getMax().intValue());
+        Assert.assertEquals(1, heelflip.getStatistics("b").getMax().intValue());
+        Assert.assertEquals(2, heelflip.getStatistics("c").getMax().intValue());
+        Assert.assertEquals(3, heelflip.getStatistics("d").getMax().intValue());
+        Assert.assertEquals(4, heelflip.getStatistics("e").getMax().intValue());
+        Assert.assertEquals(5, heelflip.getStatistics("f").getMax().intValue());
+        Assert.assertEquals(6, heelflip.getStatistics("g").getMax().intValue());
+        Assert.assertEquals(7, heelflip.getStatistics("h").getMax().intValue());
+        Assert.assertEquals(8, heelflip.getStatistics("i").getMax().intValue());
+        Assert.assertEquals(9, heelflip.getStatistics("j").getMax().intValue());
+        Assert.assertNull(heelflip.getStatistics("l"));
     }
 
     @Test
@@ -92,17 +93,17 @@ public class HeelflipTest {
 
         Assert.assertEquals(10, heelflip.size());
 
-        Assert.assertEquals(0, heelflip.sumAsInt("a"));
-        Assert.assertEquals(20, heelflip.sumAsInt("b"));
-        Assert.assertEquals(40, heelflip.sumAsInt("c"));
-        Assert.assertEquals(60, heelflip.sumAsInt("d"));
-        Assert.assertEquals(80, heelflip.sumAsInt("e"));
-        Assert.assertEquals(100, heelflip.sumAsInt("f"));
-        Assert.assertEquals(120, heelflip.sumAsInt("g"));
-        Assert.assertEquals(140, heelflip.sumAsInt("h"));
-        Assert.assertEquals(160, heelflip.sumAsInt("i"));
-        Assert.assertEquals(180, heelflip.sumAsInt("j"));
-        Assert.assertEquals(-1, heelflip.sumAsInt("l"));
+        Assert.assertEquals(0, heelflip.getStatistics("a").getSum().intValue());
+        Assert.assertEquals(20, heelflip.getStatistics("b").getSum().intValue());
+        Assert.assertEquals(40, heelflip.getStatistics("c").getSum().intValue());
+        Assert.assertEquals(60, heelflip.getStatistics("d").getSum().intValue());
+        Assert.assertEquals(80, heelflip.getStatistics("e").getSum().intValue());
+        Assert.assertEquals(100, heelflip.getStatistics("f").getSum().intValue());
+        Assert.assertEquals(120, heelflip.getStatistics("g").getSum().intValue());
+        Assert.assertEquals(140, heelflip.getStatistics("h").getSum().intValue());
+        Assert.assertEquals(160, heelflip.getStatistics("i").getSum().intValue());
+        Assert.assertEquals(180, heelflip.getStatistics("j").getSum().intValue());
+        Assert.assertNull(heelflip.getStatistics("l"));
     }
 
     @Test
@@ -114,17 +115,17 @@ public class HeelflipTest {
 
         Assert.assertEquals(10, heelflip.size());
 
-        Assert.assertEquals(0, heelflip.minAsLong("a"));
-        Assert.assertEquals(1, heelflip.minAsLong("b"));
-        Assert.assertEquals(2, heelflip.minAsLong("c"));
-        Assert.assertEquals(3, heelflip.minAsLong("d"));
-        Assert.assertEquals(4, heelflip.minAsLong("e"));
-        Assert.assertEquals(5, heelflip.minAsLong("f"));
-        Assert.assertEquals(6, heelflip.minAsLong("g"));
-        Assert.assertEquals(7, heelflip.minAsLong("h"));
-        Assert.assertEquals(8, heelflip.minAsLong("i"));
-        Assert.assertEquals(9, heelflip.minAsLong("j"));
-        Assert.assertEquals(-1, heelflip.minAsLong("l"));
+        Assert.assertEquals(0, heelflip.getStatistics("a").getMin().longValue());
+        Assert.assertEquals(1, heelflip.getStatistics("b").getMin().longValue());
+        Assert.assertEquals(2, heelflip.getStatistics("c").getMin().longValue());
+        Assert.assertEquals(3, heelflip.getStatistics("d").getMin().longValue());
+        Assert.assertEquals(4, heelflip.getStatistics("e").getMin().longValue());
+        Assert.assertEquals(5, heelflip.getStatistics("f").getMin().longValue());
+        Assert.assertEquals(6, heelflip.getStatistics("g").getMin().longValue());
+        Assert.assertEquals(7, heelflip.getStatistics("h").getMin().longValue());
+        Assert.assertEquals(8, heelflip.getStatistics("i").getMin().longValue());
+        Assert.assertEquals(9, heelflip.getStatistics("j").getMin().longValue());
+        Assert.assertNull(heelflip.getStatistics("l"));
     }
 
     @Test
@@ -136,17 +137,17 @@ public class HeelflipTest {
 
         Assert.assertEquals(10, heelflip.size());
 
-        Assert.assertEquals(0, heelflip.maxAsLong("a"));
-        Assert.assertEquals(1, heelflip.maxAsLong("b"));
-        Assert.assertEquals(2, heelflip.maxAsLong("c"));
-        Assert.assertEquals(3, heelflip.maxAsLong("d"));
-        Assert.assertEquals(4, heelflip.maxAsLong("e"));
-        Assert.assertEquals(5, heelflip.maxAsLong("f"));
-        Assert.assertEquals(6, heelflip.maxAsLong("g"));
-        Assert.assertEquals(7, heelflip.maxAsLong("h"));
-        Assert.assertEquals(8, heelflip.maxAsLong("i"));
-        Assert.assertEquals(9, heelflip.maxAsLong("j"));
-        Assert.assertEquals(-1, heelflip.maxAsLong("l"));
+        Assert.assertEquals(0, heelflip.getStatistics("a").getMax().longValue());
+        Assert.assertEquals(1, heelflip.getStatistics("b").getMax().longValue());
+        Assert.assertEquals(2, heelflip.getStatistics("c").getMax().longValue());
+        Assert.assertEquals(3, heelflip.getStatistics("d").getMax().longValue());
+        Assert.assertEquals(4, heelflip.getStatistics("e").getMax().longValue());
+        Assert.assertEquals(5, heelflip.getStatistics("f").getMax().longValue());
+        Assert.assertEquals(6, heelflip.getStatistics("g").getMax().longValue());
+        Assert.assertEquals(7, heelflip.getStatistics("h").getMax().longValue());
+        Assert.assertEquals(8, heelflip.getStatistics("i").getMax().longValue());
+        Assert.assertEquals(9, heelflip.getStatistics("j").getMax().longValue());
+        Assert.assertNull(heelflip.getStatistics("l"));
     }
 
     @Test
@@ -158,17 +159,17 @@ public class HeelflipTest {
 
         Assert.assertEquals(10, heelflip.size());
 
-        Assert.assertEquals(0, heelflip.sumAsLong("a"));
-        Assert.assertEquals(20, heelflip.sumAsLong("b"));
-        Assert.assertEquals(40, heelflip.sumAsLong("c"));
-        Assert.assertEquals(60, heelflip.sumAsLong("d"));
-        Assert.assertEquals(80, heelflip.sumAsLong("e"));
-        Assert.assertEquals(100, heelflip.sumAsLong("f"));
-        Assert.assertEquals(120, heelflip.sumAsLong("g"));
-        Assert.assertEquals(140, heelflip.sumAsLong("h"));
-        Assert.assertEquals(160, heelflip.sumAsLong("i"));
-        Assert.assertEquals(180, heelflip.sumAsLong("j"));
-        Assert.assertEquals(-1, heelflip.sumAsLong("l"));
+        Assert.assertEquals(0, heelflip.getStatistics("a").getSum().longValue());
+        Assert.assertEquals(20, heelflip.getStatistics("b").getSum().longValue());
+        Assert.assertEquals(40, heelflip.getStatistics("c").getSum().longValue());
+        Assert.assertEquals(60, heelflip.getStatistics("d").getSum().longValue());
+        Assert.assertEquals(80, heelflip.getStatistics("e").getSum().longValue());
+        Assert.assertEquals(100, heelflip.getStatistics("f").getSum().longValue());
+        Assert.assertEquals(120, heelflip.getStatistics("g").getSum().longValue());
+        Assert.assertEquals(140, heelflip.getStatistics("h").getSum().longValue());
+        Assert.assertEquals(160, heelflip.getStatistics("i").getSum().longValue());
+        Assert.assertEquals(180, heelflip.getStatistics("j").getSum().longValue());
+        Assert.assertNull(heelflip.getStatistics("l"));
     }
 
     @Test
@@ -180,17 +181,17 @@ public class HeelflipTest {
 
         Assert.assertEquals(10, heelflip.size());
 
-        Assert.assertEquals(0, heelflip.minAsDouble("a"), 10E10);
-        Assert.assertEquals(1, heelflip.minAsDouble("b"), 10E10);
-        Assert.assertEquals(2, heelflip.minAsDouble("c"), 10E10);
-        Assert.assertEquals(3, heelflip.minAsDouble("d"), 10E10);
-        Assert.assertEquals(4, heelflip.minAsDouble("e"), 10E10);
-        Assert.assertEquals(5, heelflip.minAsDouble("f"), 10E10);
-        Assert.assertEquals(6, heelflip.minAsDouble("g"), 10E10);
-        Assert.assertEquals(7, heelflip.minAsDouble("h"), 10E10);
-        Assert.assertEquals(8, heelflip.minAsDouble("i"), 10E10);
-        Assert.assertEquals(9, heelflip.minAsDouble("j"), 10E10);
-        Assert.assertEquals(-1, heelflip.minAsDouble("l"), 10E10);
+        Assert.assertEquals(0, heelflip.getStatistics("a").getMin().doubleValue(), 10E10);
+        Assert.assertEquals(1, heelflip.getStatistics("b").getMin().doubleValue(), 10E10);
+        Assert.assertEquals(2, heelflip.getStatistics("c").getMin().doubleValue(), 10E10);
+        Assert.assertEquals(3, heelflip.getStatistics("d").getMin().doubleValue(), 10E10);
+        Assert.assertEquals(4, heelflip.getStatistics("e").getMin().doubleValue(), 10E10);
+        Assert.assertEquals(5, heelflip.getStatistics("f").getMin().doubleValue(), 10E10);
+        Assert.assertEquals(6, heelflip.getStatistics("g").getMin().doubleValue(), 10E10);
+        Assert.assertEquals(7, heelflip.getStatistics("h").getMin().doubleValue(), 10E10);
+        Assert.assertEquals(8, heelflip.getStatistics("i").getMin().doubleValue(), 10E10);
+        Assert.assertEquals(9, heelflip.getStatistics("j").getMin().doubleValue(), 10E10);
+        Assert.assertNull(heelflip.getStatistics("l"));
     }
 
     @Test
@@ -202,17 +203,17 @@ public class HeelflipTest {
 
         Assert.assertEquals(10, heelflip.size());
 
-        Assert.assertEquals(0, heelflip.maxAsDouble("a"), 10E10);
-        Assert.assertEquals(1, heelflip.maxAsDouble("b"), 10E10);
-        Assert.assertEquals(2, heelflip.maxAsDouble("c"), 10E10);
-        Assert.assertEquals(3, heelflip.maxAsDouble("d"), 10E10);
-        Assert.assertEquals(4, heelflip.maxAsDouble("e"), 10E10);
-        Assert.assertEquals(5, heelflip.maxAsDouble("f"), 10E10);
-        Assert.assertEquals(6, heelflip.maxAsDouble("g"), 10E10);
-        Assert.assertEquals(7, heelflip.maxAsDouble("h"), 10E10);
-        Assert.assertEquals(8, heelflip.maxAsDouble("i"), 10E10);
-        Assert.assertEquals(9, heelflip.maxAsDouble("j"), 10E10);
-        Assert.assertEquals(-1, heelflip.maxAsDouble("l"), 10E10);
+        Assert.assertEquals(0, heelflip.getStatistics("a").getMax().doubleValue(), 10E10);
+        Assert.assertEquals(1, heelflip.getStatistics("b").getMax().doubleValue(), 10E10);
+        Assert.assertEquals(2, heelflip.getStatistics("c").getMax().doubleValue(), 10E10);
+        Assert.assertEquals(3, heelflip.getStatistics("d").getMax().doubleValue(), 10E10);
+        Assert.assertEquals(4, heelflip.getStatistics("e").getMax().doubleValue(), 10E10);
+        Assert.assertEquals(5, heelflip.getStatistics("f").getMax().doubleValue(), 10E10);
+        Assert.assertEquals(6, heelflip.getStatistics("g").getMax().doubleValue(), 10E10);
+        Assert.assertEquals(7, heelflip.getStatistics("h").getMax().doubleValue(), 10E10);
+        Assert.assertEquals(8, heelflip.getStatistics("i").getMax().doubleValue(), 10E10);
+        Assert.assertEquals(9, heelflip.getStatistics("j").getMax().doubleValue(), 10E10);
+        Assert.assertNull(heelflip.getStatistics("l"));
     }
 
     @Test
@@ -224,17 +225,17 @@ public class HeelflipTest {
 
         Assert.assertEquals(10, heelflip.size());
 
-        Assert.assertEquals(0, heelflip.sumAsDouble("a"), 10E10);
-        Assert.assertEquals(20, heelflip.sumAsDouble("b"), 10E10);
-        Assert.assertEquals(40, heelflip.sumAsDouble("c"), 10E10);
-        Assert.assertEquals(60, heelflip.sumAsDouble("d"), 10E10);
-        Assert.assertEquals(80, heelflip.sumAsDouble("e"), 10E10);
-        Assert.assertEquals(100, heelflip.sumAsDouble("f"), 10E10);
-        Assert.assertEquals(120, heelflip.sumAsDouble("g"), 10E10);
-        Assert.assertEquals(140, heelflip.sumAsDouble("h"), 10E10);
-        Assert.assertEquals(160, heelflip.sumAsDouble("i"), 10E10);
-        Assert.assertEquals(180, heelflip.sumAsDouble("j"), 10E10);
-        Assert.assertEquals(-1, heelflip.sumAsDouble("l"), 10E10);
+        Assert.assertEquals(0, heelflip.getStatistics("a").getSum().doubleValue(), 10E10);
+        Assert.assertEquals(20, heelflip.getStatistics("b").getSum().doubleValue(), 10E10);
+        Assert.assertEquals(40, heelflip.getStatistics("c").getSum().doubleValue(), 10E10);
+        Assert.assertEquals(60, heelflip.getStatistics("d").getSum().doubleValue(), 10E10);
+        Assert.assertEquals(80, heelflip.getStatistics("e").getSum().doubleValue(), 10E10);
+        Assert.assertEquals(100, heelflip.getStatistics("f").getSum().doubleValue(), 10E10);
+        Assert.assertEquals(120, heelflip.getStatistics("g").getSum().doubleValue(), 10E10);
+        Assert.assertEquals(140, heelflip.getStatistics("h").getSum().doubleValue(), 10E10);
+        Assert.assertEquals(160, heelflip.getStatistics("i").getSum().doubleValue(), 10E10);
+        Assert.assertEquals(180, heelflip.getStatistics("j").getSum().doubleValue(), 10E10);
+        Assert.assertNull(heelflip.getStatistics("l"));
     }
 
     @Test
@@ -382,8 +383,8 @@ public class HeelflipTest {
         Assert.assertEquals(2, heelflip.count("b.x"));
         Assert.assertEquals(2, heelflip.count("b.y"));
 
-        Assert.assertEquals(9, heelflip.minAsInt("b.x"));
-        Assert.assertEquals(10, heelflip.minAsInt("b.y"));
+        Assert.assertEquals(9, heelflip.getStatistics("b.x").getMin().intValue());
+        Assert.assertEquals(10, heelflip.getStatistics("b.y").getMin().intValue());
     }
 
     @Test
