@@ -23,8 +23,7 @@ public class ColumnTest {
         Assert.assertEquals(4, statistics.getCount());
         Assert.assertEquals(0, statistics.getStringCount());
         Assert.assertEquals(0, statistics.getBooleanCount());
-        Assert.assertEquals(0, statistics.getLongCount());
-        Assert.assertEquals(4, statistics.getDoubleCount());
+        Assert.assertEquals(4, statistics.getNumberCount());
         Assert.assertEquals(2.0, statistics.getMin().doubleValue(), 10E10);
         Assert.assertEquals(2.3, statistics.getMax().doubleValue(), 10E10);
         Assert.assertEquals(8.4, statistics.getSum().doubleValue(), 10E10);
@@ -53,9 +52,7 @@ public class ColumnTest {
         Assert.assertEquals(4, statistics.getCount());
         Assert.assertEquals(0, statistics.getStringCount());
         Assert.assertEquals(0, statistics.getBooleanCount());
-        Assert.assertEquals(0, statistics.getLongCount());
-        Assert.assertEquals(0, statistics.getDoubleCount());
-        Assert.assertEquals(4, statistics.getIntCount());
+        Assert.assertEquals(4, statistics.getNumberCount());
         Assert.assertEquals(10, statistics.getMin().intValue());
         Assert.assertEquals(12, statistics.getMax().intValue());
         Assert.assertEquals(45, statistics.getSum().intValue());
@@ -84,9 +81,7 @@ public class ColumnTest {
         Assert.assertEquals(4, statistics.getCount());
         Assert.assertEquals(0, statistics.getStringCount());
         Assert.assertEquals(0, statistics.getBooleanCount());
-        Assert.assertEquals(4, statistics.getLongCount());
-        Assert.assertEquals(0, statistics.getDoubleCount());
-        Assert.assertEquals(0, statistics.getIntCount());
+        Assert.assertEquals(4, statistics.getNumberCount());
         Assert.assertEquals(10, statistics.getMin().intValue());
         Assert.assertEquals(12, statistics.getMax().intValue());
         Assert.assertEquals(45, statistics.getSum().intValue());
@@ -115,8 +110,7 @@ public class ColumnTest {
         Assert.assertEquals(4, statistics.getCount());
         Assert.assertEquals(4, statistics.getStringCount());
         Assert.assertEquals(0, statistics.getBooleanCount());
-        Assert.assertEquals(0, statistics.getLongCount());
-        Assert.assertEquals(0, statistics.getDoubleCount());
+        Assert.assertEquals(0, statistics.getNumberCount());
         Assert.assertNull(statistics.getMin());
         Assert.assertNull(statistics.getMax());
         Assert.assertNull(statistics.getSum());
@@ -145,8 +139,7 @@ public class ColumnTest {
         Assert.assertEquals(4, statistics.getCount());
         Assert.assertEquals(0, statistics.getStringCount());
         Assert.assertEquals(4, statistics.getBooleanCount());
-        Assert.assertEquals(0, statistics.getLongCount());
-        Assert.assertEquals(0, statistics.getDoubleCount());
+        Assert.assertEquals(0, statistics.getNumberCount());
         Assert.assertNull(statistics.getMin());
         Assert.assertNull(statistics.getMax());
         Assert.assertNull(statistics.getSum());
@@ -179,8 +172,7 @@ public class ColumnTest {
         Assert.assertEquals(8, statistics.getCount());
         Assert.assertEquals(5, statistics.getStringCount());
         Assert.assertEquals(0, statistics.getBooleanCount());
-        Assert.assertEquals(1, statistics.getLongCount());
-        Assert.assertEquals(1, statistics.getDoubleCount());
+        Assert.assertEquals(2, statistics.getNumberCount());
         Assert.assertEquals(1.2, statistics.getMin().doubleValue(), 10E10);
         Assert.assertEquals(15, statistics.getMax().longValue());
         Assert.assertEquals(26.2, statistics.getSum().doubleValue(), 10E10);

@@ -9,9 +9,7 @@ public class ColumnStatistic {
 
     private int stringCount;
     private int booleanCount;
-    private int intCount;
-    private int longCount;
-    private int doubleCount;
+    private int numberCount;
 
     private BigDecimal min;
     private BigDecimal max;
@@ -22,9 +20,7 @@ public class ColumnStatistic {
         this.count = 0;
         this.stringCount = 0;
         this.booleanCount = 0;
-        this.intCount = 0;
-        this.longCount = 0;
-        this.doubleCount = 0;
+        this.numberCount = 0;
     }
 
     public String getColumnName() {
@@ -43,19 +39,9 @@ public class ColumnStatistic {
         return booleanCount;
     }
 
-    public int getIntCount() {
-        return intCount;
+    public int getNumberCount() {
+        return numberCount;
     }
-
-    public int getLongCount() {
-        return longCount;
-    }
-
-
-    public int getDoubleCount() {
-        return doubleCount;
-    }
-
 
     public BigDecimal getMax() {
         return max;
@@ -70,25 +56,18 @@ public class ColumnStatistic {
     }
 
     void agg(HFValue value) {
+        count++;
+
         if (value.isString()) {
             stringCount++;
         }
         if (value.isBoolean()) {
             booleanCount++;
         }
-        if (value.isInt()) {
-            intCount++;
-        }
-        if (value.isLong()) {
-            longCount++;
-        }
-        if (value.isDouble()) {
-            doubleCount++;
-        }
-
-        count++;
 
         if (value.isNumber()) {
+            numberCount++;
+
             BigDecimal v = value.getAsBigDecimal();
             min = min == null || min.compareTo(v) > 0 ? v : min;
             max = max == null || max.compareTo(v) < 0 ? v : max;

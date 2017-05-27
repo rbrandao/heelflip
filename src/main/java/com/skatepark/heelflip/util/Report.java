@@ -5,6 +5,7 @@ import com.skatepark.heelflip.table.Heelflip;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -26,32 +27,23 @@ public class Report {
             long count = heelflip.count(name);
 
             ColumnStatistic statistics = heelflip.getStatistics(name);
-            int booleanCount = statistics.getBooleanCount();
             int stringCount = statistics.getStringCount();
-            int longCount = statistics.getLongCount();
-            int doubleCount = statistics.getDoubleCount();
+            int booleanCount = statistics.getBooleanCount();
+            int numberCount = statistics.getNumberCount();
 
             builder.append("-- Column: ").append(name).append(ln);
             builder.append("-- Count: ").append(count).append(ln);
-            builder.append("-- Boolean count: ").append(booleanCount).append(ln);
             builder.append("-- String count:  ").append(stringCount).append(ln);
-            builder.append("-- Long count:    ").append(longCount).append(ln);
-            builder.append("-- Double count:  ").append(doubleCount).append(ln);
+            builder.append("-- Boolean count: ").append(booleanCount).append(ln);
+            builder.append("-- Number count:  ").append(numberCount).append(ln);
 
-            if (doubleCount > Math.max(Math.max(booleanCount, stringCount), longCount)) {
-                double min = statistics.getMin().doubleValue();
-                double max = statistics.getMax().doubleValue();
-                double sum = statistics.getSum().doubleValue();
-                builder.append("-- Min as Double: ").append(min).append(ln);
-                builder.append("-- Max as Double: ").append(max).append(ln);
-                builder.append("-- Sum as Double: ").append(sum).append(ln);
-            } else {
-                long min = statistics.getMin().longValue();
-                long max = statistics.getMax().longValue();
-                long sum = statistics.getSum().longValue();
-                builder.append("-- Min as Long: ").append(min).append(ln);
-                builder.append("-- Max as Long: ").append(max).append(ln);
-                builder.append("-- Sum as Long: ").append(sum).append(ln);
+            BigDecimal min = statistics.getMin();
+            BigDecimal max = statistics.getMax();
+            BigDecimal sum = statistics.getSum();
+            if (min != null && max != null & sum != null) {
+                builder.append("-- Min: ").append(min.longValue()).append(ln);
+                builder.append("-- Max: ").append(max.longValue()).append(ln);
+                builder.append("-- Sum: ").append(sum.longValue()).append(ln);
             }
             builder.append(ln);
         }

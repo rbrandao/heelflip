@@ -44,18 +44,6 @@ class HFValue {
         return value.isNumber();
     }
 
-    public boolean isInt() {
-        return value.isNumber() && value.getAsNumber() instanceof Integer;
-    }
-
-    public boolean isLong() {
-        return value.isNumber() && value.getAsNumber() instanceof Long;
-    }
-
-    public boolean isDouble() {
-        return value.isNumber() && value.getAsNumber() instanceof Double;
-    }
-
     public String getAsString() {
         return value.getAsString();
     }
