@@ -172,7 +172,7 @@ public class ColumnTest {
         Assert.assertEquals(8, statistics.getCount());
         Assert.assertEquals(5, statistics.getStringCount());
         Assert.assertEquals(0, statistics.getBooleanCount());
-        Assert.assertEquals(2, statistics.getNumberCount());
+        Assert.assertEquals(3, statistics.getNumberCount());
         Assert.assertEquals(1.2, statistics.getMin().doubleValue(), 10E10);
         Assert.assertEquals(15, statistics.getMax().longValue());
         Assert.assertEquals(26.2, statistics.getSum().doubleValue(), 10E10);
