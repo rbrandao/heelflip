@@ -1,11 +1,16 @@
-package com.skatepark.heelflip.table;
+package com.skatepark.heelflip.table.agg;
+
+import com.google.gson.JsonPrimitive;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
-public class ColumnStatistic {
+public class ColumnAgg {
 
     private String columnName;
-    private int count;
+    private Map<JsonPrimitive, Integer> countMap;
 
     private int stringCount;
     private int booleanCount;
@@ -15,9 +20,10 @@ public class ColumnStatistic {
     private BigDecimal max;
     private BigDecimal sum;
 
-    ColumnStatistic(String columnName) {
+    public ColumnAgg(String columnName) {
+        Objects.requireNonNull(columnName, "columnName should not be null.");
         this.columnName = columnName;
-        this.count = 0;
+        this.countMap = new HashMap<>();
         this.stringCount = 0;
         this.booleanCount = 0;
         this.numberCount = 0;
@@ -27,8 +33,23 @@ public class ColumnStatistic {
         return columnName;
     }
 
-    public int getCount() {
-        return count;
+    public int count() {
+        return countMap.values().stream()
+                .mapToInt(Integer::intValue)
+                .sum();
+    }
+
+    public int count(Object value) {
+        if (value instanceof String) {
+            return count(new JsonPrimitive((String) value));
+        }
+        if (value instanceof Number) {
+            return count(new JsonPrimitive((Number) value));
+        }
+        if (value instanceof Boolean) {
+            return count(new JsonPrimitive((Boolean) value));
+        }
+        return 0;
     }
 
     public int getStringCount() {
@@ -55,8 +76,9 @@ public class ColumnStatistic {
         return sum;
     }
 
-    void agg(HFValue value) {
-        count++;
+    public void agg(JsonPrimitive value) {
+        countMap.computeIfAbsent(value, key -> 0);
+        countMap.put(value, countMap.get(value) + 1);
 
         if (value.isString()) {
             stringCount++;
@@ -73,5 +95,9 @@ public class ColumnStatistic {
             max = max == null || max.compareTo(v) < 0 ? v : max;
             sum = sum == null ? v : sum.add(v);
         }
+    }
+
+    private int count(JsonPrimitive value) {
+        return !countMap.containsKey(value) ? 0 : countMap.get(value);
     }
 }

@@ -1,10 +1,8 @@
 package com.skatepark.heelflip.table.agg;
 
-public class Aggregation {
-
-    private String groupBy;
+public class GroupByAgg {
 
     private String columnName;
 
-
+    private String groupBy;
 }
