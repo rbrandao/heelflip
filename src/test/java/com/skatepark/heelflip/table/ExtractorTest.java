@@ -2,12 +2,15 @@ package com.skatepark.heelflip.table;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
+
+import com.skatepark.heelflip.table.Extractor;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.List;
-import java.util.UUID;
+import java.util.Map;
 
 public class ExtractorTest {
 
@@ -19,14 +22,18 @@ public class ExtractorTest {
         source.addProperty("c", 10.3);
         source.addProperty("d", "word");
 
-        UUID id = UUID.randomUUID();
-        List<HFValue> values = Extractor.extract(id, source);
-        Assert.assertEquals(4, values.size());
+        Map<String, List<JsonPrimitive>> values = Extractor.extract(source);
 
-        Assert.assertEquals(new HFValue(id, "a", source.getAsJsonPrimitive("a")), values.get(0));
-        Assert.assertEquals(new HFValue(id, "b", source.getAsJsonPrimitive("b")), values.get(1));
-        Assert.assertEquals(new HFValue(id, "c", source.getAsJsonPrimitive("c")), values.get(2));
-        Assert.assertEquals(new HFValue(id, "d", source.getAsJsonPrimitive("d")), values.get(3));
+        Assert.assertEquals(4, values.size());
+        Assert.assertEquals(1, values.get("a").size());
+        Assert.assertEquals(1, values.get("b").size());
+        Assert.assertEquals(1, values.get("c").size());
+        Assert.assertEquals(1, values.get("d").size());
+
+        Assert.assertEquals(new JsonPrimitive(10), values.get("a").get(0));
+        Assert.assertEquals(new JsonPrimitive(true), values.get("b").get(0));
+        Assert.assertEquals(new JsonPrimitive(10.3), values.get("c").get(0));
+        Assert.assertEquals(new JsonPrimitive("word"), values.get("d").get(0));
     }
 
     @Test
@@ -42,17 +49,22 @@ public class ExtractorTest {
         source.addProperty("d", "word");
         source.add("e", e);
 
-        UUID id = UUID.randomUUID();
-        List<HFValue> values = Extractor.extract(id, source);
+        Map<String, List<JsonPrimitive>> values = Extractor.extract(source);
 
         Assert.assertEquals(6, values.size());
+        Assert.assertEquals(1, values.get("a").size());
+        Assert.assertEquals(1, values.get("b").size());
+        Assert.assertEquals(1, values.get("c").size());
+        Assert.assertEquals(1, values.get("d").size());
+        Assert.assertEquals(1, values.get("e.a").size());
+        Assert.assertEquals(1, values.get("e.b").size());
 
-        Assert.assertEquals(new HFValue(id, "a", source.getAsJsonPrimitive("a")), values.get(0));
-        Assert.assertEquals(new HFValue(id, "b", source.getAsJsonPrimitive("b")), values.get(1));
-        Assert.assertEquals(new HFValue(id, "c", source.getAsJsonPrimitive("c")), values.get(2));
-        Assert.assertEquals(new HFValue(id, "d", source.getAsJsonPrimitive("d")), values.get(3));
-        Assert.assertEquals(new HFValue(id, "e.a", e.getAsJsonPrimitive("a")), values.get(4));
-        Assert.assertEquals(new HFValue(id, "e.b", e.getAsJsonPrimitive("b")), values.get(5));
+        Assert.assertEquals(new JsonPrimitive(10), values.get("a").get(0));
+        Assert.assertEquals(new JsonPrimitive(true), values.get("b").get(0));
+        Assert.assertEquals(new JsonPrimitive(10.3), values.get("c").get(0));
+        Assert.assertEquals(new JsonPrimitive("word"), values.get("d").get(0));
+        Assert.assertEquals(new JsonPrimitive(10), values.get("e.a").get(0));
+        Assert.assertEquals(new JsonPrimitive(true), values.get("e.b").get(0));
     }
 
     @Test
@@ -73,18 +85,26 @@ public class ExtractorTest {
         source.addProperty("d", "word");
         source.add("e", e);
 
-        UUID id = UUID.randomUUID();
-        List<HFValue> values = Extractor.extract(id, source);
-        Assert.assertEquals(8, values.size());
+        Map<String, List<JsonPrimitive>> values = Extractor.extract(source);
 
-        Assert.assertEquals(new HFValue(id, "a", source.getAsJsonPrimitive("a")), values.get(0));
-        Assert.assertEquals(new HFValue(id, "b", source.getAsJsonPrimitive("b")), values.get(1));
-        Assert.assertEquals(new HFValue(id, "c", source.getAsJsonPrimitive("c")), values.get(2));
-        Assert.assertEquals(new HFValue(id, "d", source.getAsJsonPrimitive("d")), values.get(3));
-        Assert.assertEquals(new HFValue(id, "e.a", e.getAsJsonPrimitive("a")), values.get(4));
-        Assert.assertEquals(new HFValue(id, "e.b", e.getAsJsonPrimitive("b")), values.get(5));
-        Assert.assertEquals(new HFValue(id, "e.c.a", c.getAsJsonPrimitive("a")), values.get(6));
-        Assert.assertEquals(new HFValue(id, "e.c.b", c.getAsJsonPrimitive("b")), values.get(7));
+        Assert.assertEquals(8, values.size());
+        Assert.assertEquals(1, values.get("a").size());
+        Assert.assertEquals(1, values.get("b").size());
+        Assert.assertEquals(1, values.get("c").size());
+        Assert.assertEquals(1, values.get("d").size());
+        Assert.assertEquals(1, values.get("e.a").size());
+        Assert.assertEquals(1, values.get("e.b").size());
+        Assert.assertEquals(1, values.get("e.c.a").size());
+        Assert.assertEquals(1, values.get("e.c.b").size());
+
+        Assert.assertEquals(new JsonPrimitive(10), values.get("a").get(0));
+        Assert.assertEquals(new JsonPrimitive(true), values.get("b").get(0));
+        Assert.assertEquals(new JsonPrimitive(10.3), values.get("c").get(0));
+        Assert.assertEquals(new JsonPrimitive("word"), values.get("d").get(0));
+        Assert.assertEquals(new JsonPrimitive(10), values.get("e.a").get(0));
+        Assert.assertEquals(new JsonPrimitive(true), values.get("e.b").get(0));
+        Assert.assertEquals(new JsonPrimitive(100), values.get("e.c.a").get(0));
+        Assert.assertEquals(new JsonPrimitive("other"), values.get("e.c.b").get(0));
     }
 
     @Test
@@ -106,16 +126,20 @@ public class ExtractorTest {
         source.addProperty("b", true);
         source.add("c", array);
 
-        UUID id = UUID.randomUUID();
-        List<HFValue> values = Extractor.extract(id, source);
-        Assert.assertEquals(6, values.size());
+        Map<String, List<JsonPrimitive>> values = Extractor.extract(source);
 
-        Assert.assertEquals(new HFValue(id, "a", source.getAsJsonPrimitive("a")), values.get(0));
-        Assert.assertEquals(new HFValue(id, "b", source.getAsJsonPrimitive("b")), values.get(1));
-        Assert.assertEquals(new HFValue(id, "c.a", elem0.getAsJsonPrimitive("a")), values.get(2));
-        Assert.assertEquals(new HFValue(id, "c.b", elem0.getAsJsonPrimitive("b")), values.get(3));
-        Assert.assertEquals(new HFValue(id, "c.a", elem1.getAsJsonPrimitive("a")), values.get(4));
-        Assert.assertEquals(new HFValue(id, "c.b", elem1.getAsJsonPrimitive("b")), values.get(5));
+        Assert.assertEquals(4, values.size());
+        Assert.assertEquals(1, values.get("a").size());
+        Assert.assertEquals(1, values.get("b").size());
+        Assert.assertEquals(2, values.get("c.a").size());
+        Assert.assertEquals(2, values.get("c.b").size());
+
+        Assert.assertEquals(new JsonPrimitive(10), values.get("a").get(0));
+        Assert.assertEquals(new JsonPrimitive(true), values.get("b").get(0));
+        Assert.assertEquals(new JsonPrimitive(10), values.get("c.a").get(0));
+        Assert.assertEquals(new JsonPrimitive(true), values.get("c.b").get(0));
+        Assert.assertEquals(new JsonPrimitive(20), values.get("c.a").get(1));
+        Assert.assertEquals(new JsonPrimitive(false), values.get("c.b").get(1));
     }
 
     @Test
@@ -141,17 +165,22 @@ public class ExtractorTest {
         source.addProperty("b", true);
         source.add("c", c);
 
-        UUID id = UUID.randomUUID();
-        List<HFValue> values = Extractor.extract(id, source);
-        Assert.assertEquals(7, values.size());
+        Map<String, List<JsonPrimitive>> values = Extractor.extract(source);
 
-        Assert.assertEquals(new HFValue(id, "a", source.getAsJsonPrimitive("a")), values.get(0));
-        Assert.assertEquals(new HFValue(id, "b", source.getAsJsonPrimitive("b")), values.get(1));
-        Assert.assertEquals(new HFValue(id, "c.a", c.getAsJsonPrimitive("a")), values.get(2));
-        Assert.assertEquals(new HFValue(id, "c.b.a", elem0.getAsJsonPrimitive("a")), values.get(3));
-        Assert.assertEquals(new HFValue(id, "c.b.b", elem0.getAsJsonPrimitive("b")), values.get(4));
-        Assert.assertEquals(new HFValue(id, "c.b.a", elem1.getAsJsonPrimitive("a")), values.get(5));
-        Assert.assertEquals(new HFValue(id, "c.b.b", elem1.getAsJsonPrimitive("b")), values.get(6));
+        Assert.assertEquals(5, values.size());
+        Assert.assertEquals(1, values.get("a").size());
+        Assert.assertEquals(1, values.get("b").size());
+        Assert.assertEquals(1, values.get("c.a").size());
+        Assert.assertEquals(2, values.get("c.b.a").size());
+        Assert.assertEquals(2, values.get("c.b.b").size());
+
+        Assert.assertEquals(new JsonPrimitive(10), values.get("a").get(0));
+        Assert.assertEquals(new JsonPrimitive(true), values.get("b").get(0));
+        Assert.assertEquals(new JsonPrimitive(15), values.get("c.a").get(0));
+        Assert.assertEquals(new JsonPrimitive(10), values.get("c.b.a").get(0));
+        Assert.assertEquals(new JsonPrimitive(true), values.get("c.b.b").get(0));
+        Assert.assertEquals(new JsonPrimitive(20), values.get("c.b.a").get(1));
+        Assert.assertEquals(new JsonPrimitive(false), values.get("c.b.b").get(1));
     }
 
     @Test
@@ -178,17 +207,23 @@ public class ExtractorTest {
         source.addProperty("b", true);
         source.add("c", array);
 
-        UUID id = UUID.randomUUID();
-        List<HFValue> values = Extractor.extract(id, source);
-        Assert.assertEquals(8, values.size());
+        Map<String, List<JsonPrimitive>> values = Extractor.extract(source);
 
-        Assert.assertEquals(new HFValue(id, "a", source.getAsJsonPrimitive("a")), values.get(0));
-        Assert.assertEquals(new HFValue(id, "b", source.getAsJsonPrimitive("b")), values.get(1));
-        Assert.assertEquals(new HFValue(id, "c.a", elem0.getAsJsonPrimitive("a")), values.get(2));
-        Assert.assertEquals(new HFValue(id, "c.b", elem0.getAsJsonPrimitive("b")), values.get(3));
-        Assert.assertEquals(new HFValue(id, "c.c.x", c.getAsJsonPrimitive("x")), values.get(4));
-        Assert.assertEquals(new HFValue(id, "c.c.y", c.getAsJsonPrimitive("y")), values.get(5));
-        Assert.assertEquals(new HFValue(id, "c.a", elem1.getAsJsonPrimitive("a")), values.get(6));
-        Assert.assertEquals(new HFValue(id, "c.b", elem1.getAsJsonPrimitive("b")), values.get(7));
+        Assert.assertEquals(6, values.size());
+        Assert.assertEquals(1, values.get("a").size());
+        Assert.assertEquals(1, values.get("b").size());
+        Assert.assertEquals(2, values.get("c.a").size());
+        Assert.assertEquals(2, values.get("c.b").size());
+        Assert.assertEquals(1, values.get("c.c.x").size());
+        Assert.assertEquals(1, values.get("c.c.y").size());
+
+        Assert.assertEquals(new JsonPrimitive(10), values.get("a").get(0));
+        Assert.assertEquals(new JsonPrimitive(true), values.get("b").get(0));
+        Assert.assertEquals(new JsonPrimitive(10), values.get("c.a").get(0));
+        Assert.assertEquals(new JsonPrimitive(true), values.get("c.b").get(0));
+        Assert.assertEquals(new JsonPrimitive(15), values.get("c.c.x").get(0));
+        Assert.assertEquals(new JsonPrimitive(35), values.get("c.c.y").get(0));
+        Assert.assertEquals(new JsonPrimitive(20), values.get("c.a").get(1));
+        Assert.assertEquals(new JsonPrimitive(false), values.get("c.b").get(1));
     }
 }

@@ -1,7 +1,7 @@
 package com.skatepark.heelflip.util;
 
-import com.skatepark.heelflip.table.ColumnStatistic;
 import com.skatepark.heelflip.table.Heelflip;
+import com.skatepark.heelflip.table.agg.ColumnAgg;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -24,12 +24,11 @@ public class Report {
         builder.append(ln);
 
         for (String name : columnNames) {
-            long count = heelflip.count(name);
-
-            ColumnStatistic statistics = heelflip.getStatistics(name);
-            int stringCount = statistics.getStringCount();
-            int booleanCount = statistics.getBooleanCount();
-            int numberCount = statistics.getNumberCount();
+            ColumnAgg columnAgg = heelflip.getColumnAgg(name);
+            int count = columnAgg.count();
+            int stringCount = columnAgg.getStringCount();
+            int booleanCount = columnAgg.getBooleanCount();
+            int numberCount = columnAgg.getNumberCount();
 
             builder.append("-- Column: ").append(name).append(ln);
             builder.append("-- Count: ").append(count).append(ln);
@@ -37,9 +36,9 @@ public class Report {
             builder.append("-- Boolean count: ").append(booleanCount).append(ln);
             builder.append("-- Number count:  ").append(numberCount).append(ln);
 
-            BigDecimal min = statistics.getMin();
-            BigDecimal max = statistics.getMax();
-            BigDecimal sum = statistics.getSum();
+            BigDecimal min = columnAgg.getMin();
+            BigDecimal max = columnAgg.getMax();
+            BigDecimal sum = columnAgg.getSum();
             if (min != null && max != null & sum != null) {
                 builder.append("-- Min: ").append(min.longValue()).append(ln);
                 builder.append("-- Max: ").append(max.longValue()).append(ln);

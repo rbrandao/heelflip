@@ -3,6 +3,10 @@ package com.skatepark.heelflip.table;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.google.gson.JsonPrimitive;
+
+import com.skatepark.heelflip.table.agg.ColumnAgg;
+import com.skatepark.heelflip.table.agg.GroupByAgg;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,110 +18,46 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.UUID;
 
 public class Heelflip {
 
-    private Map<String, ObjectColumn> columnsMap;
+    private Map<String, ColumnAgg> columnAggMap;
+
+    private Map<String, Map<String, GroupByAgg>> groupByAggMap;
 
     public Heelflip() {
-        this.columnsMap = new HashMap<>();
+        this.columnAggMap = new HashMap<>();
+        this.groupByAggMap = new HashMap<>();
     }
 
     public void add(JsonObject json) {
         Objects.requireNonNull(json, "json should not be null.");
 
-        UUID id = UUID.randomUUID();
-        List<HFValue> values = Extractor.extract(id, json);
-        values.stream().forEach(this::addValue);
+        Map<String, List<JsonPrimitive>> valueMap = Extractor.extract(json);
+
+        for (Map.Entry<String, List<JsonPrimitive>> entry : valueMap.entrySet()) {
+            String columnName = entry.getKey();
+            List<JsonPrimitive> valueList = entry.getValue();
+            ColumnAgg columnAgg = columnAggMap.computeIfAbsent(columnName, key -> new ColumnAgg(key));
+
+            valueList.stream().forEach(columnAgg::agg);
+        }
     }
 
     public int size() {
-        return columnsMap.size();
+        return columnAggMap.size();
     }
 
     public Set<String> columnNames() {
-        return Collections.unmodifiableSet(columnsMap.keySet());
+        return Collections.unmodifiableSet(columnAggMap.keySet());
     }
 
-    public boolean contains(String columnName) {
-        return columnName != null && columnsMap.containsKey(columnName);
+    public boolean hasColumnAgg(String columnName) {
+        return columnName != null && columnAggMap.containsKey(columnName);
     }
 
-    public long count(String columnName) {
-        return !contains(columnName) ?
-                -1 :
-                columnsMap.get(columnName).count();
-    }
-
-    public long count(String columnName, int value) {
-        return !contains(columnName) ?
-                -1 :
-                columnsMap.get(columnName).count(value);
-    }
-
-    public long count(String columnName, long value) {
-        return !contains(columnName) ?
-                -1 :
-                columnsMap.get(columnName).count(value);
-    }
-
-    public long count(String columnName, double value) {
-        return !contains(columnName) ?
-                -1 :
-                columnsMap.get(columnName).count(value);
-    }
-
-    public long count(String columnName, String value) {
-        return !contains(columnName) ?
-                -1 :
-                columnsMap.get(columnName).count(value);
-    }
-
-    public Set<Integer> valuesAsIntSet(String columnName) {
-        return !contains(columnName) ?
-                Collections.emptySet() :
-                columnsMap.get(columnName).valuesAsIntSet();
-    }
-
-    public Set<Long> valuesAsLongSet(String columnName) {
-        return !contains(columnName) ?
-                Collections.emptySet() :
-                columnsMap.get(columnName).valuesAsLongSet();
-    }
-
-    public Set<Double> valuesAsDoubleSet(String columnName) {
-        return !contains(columnName) ?
-                Collections.emptySet() :
-                columnsMap.get(columnName).valuesAsDoubleSet();
-    }
-
-    public Set<String> valuesAsStringSet(String columnName) {
-        return !contains(columnName) ?
-                Collections.emptySet() :
-                columnsMap.get(columnName).valuesAsStringSet();
-    }
-
-    public ColumnStatistic getStatistics(String columnName) {
-        if (!contains(columnName)) {
-            return null;
-        }
-        return columnsMap.get(columnName).getStatistics();
-    }
-
-    /**
-     * Add value to respective column.
-     *
-     * @param value value.
-     */
-    private void addValue(HFValue value) {
-        Objects.requireNonNull(value, "value should not be null.");
-
-        String columnName = value.getColumnName();
-        if (!contains(columnName)) {
-            columnsMap.put(columnName, new ObjectColumn(columnName));
-        }
-        columnsMap.get(columnName).add(value);
+    public ColumnAgg getColumnAgg(String columnName) {
+        return !hasColumnAgg(columnName) ? null : columnAggMap.get(columnName);
     }
 
     /**
@@ -145,10 +85,7 @@ public class Heelflip {
      */
     public void loadJSONArray(InputStream stream) throws IOException {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream))) {
-            JsonParser parser = new JsonParser();
-
-
-            JsonElement result = new JsonParser().parse(new InputStreamReader(stream));
+            JsonElement result = new JsonParser().parse(reader);
             if (!result.isJsonArray()) {
                 throw new IllegalArgumentException("result is not a JSON array.");
             }
