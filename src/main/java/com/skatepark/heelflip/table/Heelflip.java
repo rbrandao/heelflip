@@ -145,10 +145,7 @@ public class Heelflip {
      */
     public void loadJSONArray(InputStream stream) throws IOException {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream))) {
-            JsonParser parser = new JsonParser();
-
-
-            JsonElement result = new JsonParser().parse(new InputStreamReader(stream));
+            JsonElement result = new JsonParser().parse(reader);
             if (!result.isJsonArray()) {
                 throw new IllegalArgumentException("result is not a JSON array.");
             }
