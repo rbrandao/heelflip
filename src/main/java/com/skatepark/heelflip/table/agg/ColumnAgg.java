@@ -33,6 +33,10 @@ public class ColumnAgg {
         return columnName;
     }
 
+    public int cardinality() {
+        return countMap.keySet().size();
+    }
+
     public int count() {
         return countMap.values().stream()
                 .mapToInt(Integer::intValue)

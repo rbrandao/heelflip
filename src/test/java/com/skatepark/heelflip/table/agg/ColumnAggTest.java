@@ -18,6 +18,7 @@ public class ColumnAggTest {
         Assert.assertEquals("a", columnAgg.getColumnName());
 
         Assert.assertEquals(4, columnAgg.count());
+        Assert.assertEquals(3, columnAgg.cardinality());
         Assert.assertEquals(0, columnAgg.getStringCount());
         Assert.assertEquals(0, columnAgg.getBooleanCount());
         Assert.assertEquals(4, columnAgg.getNumberCount());
@@ -43,6 +44,7 @@ public class ColumnAggTest {
         Assert.assertEquals("a", columnAgg.getColumnName());
 
         Assert.assertEquals(4, columnAgg.count());
+        Assert.assertEquals(3, columnAgg.cardinality());
         Assert.assertEquals(0, columnAgg.getStringCount());
         Assert.assertEquals(0, columnAgg.getBooleanCount());
         Assert.assertEquals(4, columnAgg.getNumberCount());
@@ -68,6 +70,7 @@ public class ColumnAggTest {
         Assert.assertEquals("a", columnAgg.getColumnName());
 
         Assert.assertEquals(4, columnAgg.count());
+        Assert.assertEquals(3, columnAgg.cardinality());
         Assert.assertEquals(0, columnAgg.getStringCount());
         Assert.assertEquals(0, columnAgg.getBooleanCount());
         Assert.assertEquals(4, columnAgg.getNumberCount());
@@ -93,6 +96,7 @@ public class ColumnAggTest {
         Assert.assertEquals("a", columnAgg.getColumnName());
 
         Assert.assertEquals(4, columnAgg.count());
+        Assert.assertEquals(3, columnAgg.cardinality());
         Assert.assertEquals(4, columnAgg.getStringCount());
         Assert.assertEquals(0, columnAgg.getBooleanCount());
         Assert.assertEquals(0, columnAgg.getNumberCount());
@@ -118,6 +122,7 @@ public class ColumnAggTest {
         Assert.assertEquals("a", columnAgg.getColumnName());
 
         Assert.assertEquals(4, columnAgg.count());
+        Assert.assertEquals(2, columnAgg.cardinality());
         Assert.assertEquals(0, columnAgg.getStringCount());
         Assert.assertEquals(4, columnAgg.getBooleanCount());
         Assert.assertEquals(0, columnAgg.getNumberCount());
@@ -146,6 +151,7 @@ public class ColumnAggTest {
         Assert.assertEquals("a", columnAgg.getColumnName());
 
         Assert.assertEquals(8, columnAgg.count());
+        Assert.assertEquals(8, columnAgg.cardinality());
         Assert.assertEquals(5, columnAgg.getStringCount());
         Assert.assertEquals(0, columnAgg.getBooleanCount());
         Assert.assertEquals(3, columnAgg.getNumberCount());
