@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e7b9f98c-d72e-423a-91e6-aa149e7231bc" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/table/agg/GroupByAggTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/Heelflip.java" afterPath="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/Heelflip.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/agg/ColumnAgg.java" afterPath="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/agg/ColumnAgg.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/agg/GroupByAgg.java" afterPath="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/agg/GroupByAgg.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/table/HeelflipTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/table/HeelflipTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/table/agg/ColumnAggTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/table/agg/ColumnAggTest.java" />
     </list>
     <ignored path="heelflip.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,43 +31,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ColumnAggTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/table/agg/ColumnAggTest.java">
+      <file leaf-file-name="sample00.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/sample00.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="28" column="33" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ColumnAgg.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/agg/ColumnAgg.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="122" column="72" selection-start-line="122" selection-start-column="72" selection-end-line="122" selection-end-column="72" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Heelflip.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/Heelflip.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="117" column="85" selection-start-line="117" selection-start-column="85" selection-end-line="117" selection-end-column="85" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Dumper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/Dumper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="373">
-              <caret line="32" column="53" selection-start-line="32" selection-start-column="53" selection-end-line="32" selection-end-column="53" />
+            <state relative-caret-position="18">
+              <caret line="1" column="79" selection-start-line="1" selection-start-column="79" selection-end-line="1" selection-end-column="79" />
               <folding />
             </state>
           </provider>
@@ -70,23 +44,31 @@
       <file leaf-file-name="HeelflipTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/table/HeelflipTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="445">
-              <caret line="227" column="8" selection-start-line="227" selection-start-column="8" selection-end-line="227" selection-end-column="8" />
+            <state relative-caret-position="229">
+              <caret line="218" column="11" selection-start-line="218" selection-start-column="11" selection-end-line="218" selection-end-column="11" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GroupByAgg.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/agg/GroupByAgg.java">
+      <file leaf-file-name="Heelflip.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/Heelflip.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+            <state relative-caret-position="499">
+              <caret line="60" column="91" selection-start-line="60" selection-start-column="91" selection-end-line="60" selection-end-column="91" />
               <folding>
-                <element signature="e#511#512#0" expanded="true" />
-                <element signature="e#545#546#0" expanded="true" />
-                <element signature="e#575#576#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sample01.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/sample01.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -111,7 +93,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/MetaValue.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/ColumnTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/column/AbstractColumn.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/column/type/NumericColumn.java" />
@@ -150,17 +131,18 @@
         <option value="$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/table/value/ExtractorTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/value/Extractor.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/Extractor.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/table/agg/ColumnAggTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/util/Report.java" />
         <option value="$PROJECT_DIR$/src/test/resources/sample01.json" />
         <option value="$PROJECT_DIR$/src/test/resources/sample02.json" />
         <option value="$PROJECT_DIR$/src/test/resources/sample03.json" />
         <option value="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/Report.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/Dump.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/Heelflip.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/agg/GroupByAgg.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/agg/ColumnAgg.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/Dumper.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/table/agg/ColumnAggTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/table/agg/GroupByAggTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/agg/ColumnAgg.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/agg/GroupByAgg.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/Heelflip.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/table/HeelflipTest.java" />
       </list>
     </option>
@@ -246,10 +228,6 @@
               <option name="myItemId" value="test" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -288,48 +266,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="table" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="agg" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="heelflip" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="heelflip" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="table" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -344,7 +280,7 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="SearchEverywhereHistoryKey" value="DUmper&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/src/main/java/com/skatepark/heelflip/table/Dumper.java&#10;COlum&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/src/main/java/com/skatepark/heelflip/table/agg/ColumnAgg.java&#10;extr&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/src/test/java/com/skatepark/heelflip/table/ExtractorTest.java&#10;sample&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/src/test/resources/sample01.json&#10;out&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/out.txt&#10;Extra&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/src/main/java/com/skatepark/heelflip/table/value/Extractor.java&#10;sto&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/src/test/resources/stocks.json&#10;colsta&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/src/main/java/com/skatepark/heelflip/table/ColumnStatistic.java&#10;HFV&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/src/main/java/com/skatepark/heelflip/table/HFValue.java&#10;Columstat&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/src/main/java/com/skatepark/heelflip/table/ColumnStatistic.java&#10;samp&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/src/test/resources/sample.json&#10;Columntest&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/src/test/java/com/skatepark/heelflip/table/ColumnTest.java&#10;Column&#9;FILE&#9;file:///home/moikawa/IdeaProjects/heelflip/src/main/java/com/skatepark/heelflip/table/ObjectColumn.java&#10;ICol&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/src/main/java/com/skatepark/heelflip/column/IColumn.java&#10;Heelfl&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/src/main/java/com/skatepark/heelflip/table/Heelflip.java&#10;hee&#9;FILE&#9;file:///home/moikawa/IdeaProjects/heelflip/src/test/java/com/skatepark/heelflip/table/HeelflipTest.java" />
+    <property name="SearchEverywhereHistoryKey" value="he&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/src/main/java/com/skatepark/heelflip/table/Heelflip.java&#10;sample&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/src/test/resources/sample01.json&#10;Hee&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/src/test/java/com/skatepark/heelflip/table/HeelflipTest.java&#10;sam&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/src/test/resources/sample00.json&#10;He&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/src/test/java/com/skatepark/heelflip/table/HeelflipTest.java&#10;DUmper&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/src/main/java/com/skatepark/heelflip/table/Dumper.java&#10;COlum&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/src/main/java/com/skatepark/heelflip/table/agg/ColumnAgg.java&#10;extr&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/src/test/java/com/skatepark/heelflip/table/ExtractorTest.java&#10;out&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/out.txt&#10;Extra&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/src/main/java/com/skatepark/heelflip/table/value/Extractor.java&#10;sto&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/src/test/resources/stocks.json&#10;colsta&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/src/main/java/com/skatepark/heelflip/table/ColumnStatistic.java&#10;HFV&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/src/main/java/com/skatepark/heelflip/table/HFValue.java&#10;Columstat&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/src/main/java/com/skatepark/heelflip/table/ColumnStatistic.java&#10;samp&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/src/test/resources/sample.json&#10;Columntest&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/src/test/java/com/skatepark/heelflip/table/ColumnTest.java&#10;Column&#9;FILE&#9;file:///home/moikawa/IdeaProjects/heelflip/src/main/java/com/skatepark/heelflip/table/ObjectColumn.java&#10;ICol&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/src/main/java/com/skatepark/heelflip/column/IColumn.java&#10;Heelfl&#9;FILE&#9;file:///home/moikawa/Applications/IdeaProjects/heelflip/src/main/java/com/skatepark/heelflip/table/Heelflip.java&#10;hee&#9;FILE&#9;file:///home/moikawa/IdeaProjects/heelflip/src/test/java/com/skatepark/heelflip/table/HeelflipTest.java" />
     <property name="extract.method.default.visibility" value="private" />
   </component>
   <component name="RecentsManager">
@@ -367,8 +303,8 @@
       <recent name="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/column" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.HeelflipTest.testLoadLargeFiles">
-    <configuration default="false" name="HeelflipTest.testMinMaxSumJsonArrayWithPrimitives" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.All in heelflip">
+    <configuration default="false" name="HeelflipTest.testColumnNamesOnJsonWithObject" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.skatepark.heelflip.table.*" />
@@ -380,7 +316,7 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.skatepark.heelflip.table" />
       <option name="MAIN_CLASS_NAME" value="com.skatepark.heelflip.table.HeelflipTest" />
-      <option name="METHOD_NAME" value="testMinMaxSumJsonArrayWithPrimitives" />
+      <option name="METHOD_NAME" value="testColumnNamesOnJsonWithObject" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -394,7 +330,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="HeelflipTest.testColumnNamesJsonObject" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="HeelflipTest.testGetColumnAggOnJsonWithObject" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.skatepark.heelflip.table.*" />
@@ -406,33 +342,7 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.skatepark.heelflip.table" />
       <option name="MAIN_CLASS_NAME" value="com.skatepark.heelflip.table.HeelflipTest" />
-      <option name="METHOD_NAME" value="testColumnNamesJsonObject" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="HeelflipTest.testMinMaxSumJsonObject" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.skatepark.heelflip.table.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="heelflip" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.skatepark.heelflip.table" />
-      <option name="MAIN_CLASS_NAME" value="com.skatepark.heelflip.table.HeelflipTest" />
-      <option name="METHOD_NAME" value="testMinMaxSumJsonObject" />
+      <option name="METHOD_NAME" value="testGetColumnAggOnJsonWithObject" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -481,6 +391,32 @@
       <option name="MAIN_CLASS_NAME" value="com.skatepark.heelflip.table.HeelflipTest" />
       <option name="METHOD_NAME" value="testLoadLargeFiles" />
       <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="GroupByAggTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.skatepark.heelflip.table.agg.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="heelflip" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.skatepark.heelflip.table.agg" />
+      <option name="MAIN_CLASS_NAME" value="com.skatepark.heelflip.table.agg.GroupByAggTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -763,19 +699,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testMinMaxSumJsonArrayWithPrimitives" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testColumnNamesJsonObject" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testMinMaxSumJsonObject" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.All in heelflip" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testLoadLargeFiles" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testColumnNamesOnJsonWithObject" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testGetColumnAggOnJsonWithObject" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.All in heelflip" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testLoadLargeFiles" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.GroupByAggTest" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testLoadLargeFiles" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.All in heelflip" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testMinMaxSumJsonObject" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testColumnNamesJsonObject" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testMinMaxSumJsonArrayWithPrimitives" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.All in heelflip" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.GroupByAggTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testLoadLargeFiles" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testGetColumnAggOnJsonWithObject" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.HeelflipTest.testColumnNamesOnJsonWithObject" />
       </list>
     </recent_temporary>
   </component>
@@ -802,20 +738,20 @@
     <history-entry file="All_in_heelflip - 2017.05.28 at 22h 08m 14s.xml">
       <configuration name="All in heelflip" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="All_in_heelflip - 2017.05.29 at 00h 26m 18s.xml">
+      <configuration name="All in heelflip" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_heelflip - 2017.05.29 at 00h 26m 36s.xml">
+      <configuration name="All in heelflip" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GroupByAggTest - 2017.05.29 at 00h 05m 39s.xml">
+      <configuration name="GroupByAggTest" configurationId="JUnit" />
+    </history-entry>
     <history-entry file="HeelflipTest_testColumnNamesJsonObject - 2017.05.28 at 22h 06m 05s.xml">
       <configuration name="HeelflipTest.testColumnNamesJsonObject" configurationId="JUnit" />
     </history-entry>
     <history-entry file="HeelflipTest_testLoadLargeFiles - 2017.05.28 at 23h 04m 49s.xml">
       <configuration name="HeelflipTest.testLoadLargeFiles" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="HeelflipTest_testMinMaxSumJsonArrayWithPrimitives - 2017.05.28 at 22h 01m 28s.xml">
-      <configuration name="HeelflipTest.testMinMaxSumJsonArrayWithPrimitives" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="HeelflipTest_testMinMaxSumJsonArrayWithPrimitives - 2017.05.28 at 22h 01m 41s.xml">
-      <configuration name="HeelflipTest.testMinMaxSumJsonArrayWithPrimitives" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="HeelflipTest_testMinMaxSumJsonArrayWithPrimitives - 2017.05.28 at 22h 02m 32s.xml">
-      <configuration name="HeelflipTest.testMinMaxSumJsonArrayWithPrimitives" configurationId="JUnit" />
     </history-entry>
     <history-entry file="HeelflipTest_testMinMaxSumJsonObject - 2017.05.28 at 22h 07m 10s.xml">
       <configuration name="HeelflipTest.testMinMaxSumJsonObject" configurationId="JUnit" />
@@ -829,7 +765,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1366" height="741" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -839,7 +775,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32852808" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.50912106" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.50912106" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -879,7 +815,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/column/INumericColumn.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/column/AbstractColumn.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/column/type/StringColumn.java" />
     <entry file="jar://$USER_HOME$/jdk1.8.0_73/src.zip!/java/lang/Integer.java" />
@@ -945,13 +880,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/agg/IAggregation.java" />
-    <entry file="jar:///usr/lib/jvm/java-1.8.0/jre/lib/rt.jar!/java/util/Map.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="135" column="14" selection-start-line="135" selection-start-column="14" selection-end-line="135" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/ColumnStatistic.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/ObjectColumn.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/table/agg/ColumnAggTest.java">
@@ -969,19 +897,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.8.0/gson-2.8.0-sources.jar!/com/google/gson/JsonPrimitive.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="92" column="7" selection-start-line="92" selection-start-column="7" selection-end-line="92" selection-end-column="7" />
-          <folding>
-            <element signature="e#1712#1713#0" expanded="false" />
-            <element signature="e#1738#1739#0" expanded="false" />
-            <element signature="e#2452#2453#0" expanded="false" />
-            <element signature="e#2481#2482#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/value/HFValue.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/Extractor.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -995,22 +910,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="66" column="9" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/sample00.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="49" selection-start-line="6" selection-start-column="49" selection-end-line="6" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/sample01.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1039,36 +938,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/Heelflip.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="117" column="85" selection-start-line="117" selection-start-column="85" selection-end-line="117" selection-end-column="85" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/agg/GroupByAgg.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
-          <folding>
-            <element signature="e#511#512#0" expanded="true" />
-            <element signature="e#545#546#0" expanded="true" />
-            <element signature="e#575#576#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/agg/ColumnAgg.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="122" column="72" selection-start-line="122" selection-start-column="72" selection-end-line="122" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/Dumper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="373">
@@ -1085,18 +954,95 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.8.0/gson-2.8.0-sources.jar!/com/google/gson/JsonPrimitive.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="54" column="9" selection-start-line="54" selection-start-column="9" selection-end-line="54" selection-end-column="9" />
+          <folding>
+            <element signature="e#1712#1713#0" expanded="false" />
+            <element signature="e#1738#1739#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-1.8.0/jre/lib/rt.jar!/java/util/Map.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="143" column="21" selection-start-line="143" selection-start-column="21" selection-end-line="143" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/table/agg/ColumnAggTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="28" column="33" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
+        <state relative-caret-position="144">
+          <caret line="29" column="71" selection-start-line="29" selection-start-column="71" selection-end-line="29" selection-end-column="71" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/agg/ColumnAgg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="74" column="66" selection-start-line="74" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/agg/GroupByAgg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="715">
+          <caret line="47" column="16" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#790#791#0" expanded="true" />
+            <element signature="e#823#824#0" expanded="true" />
+            <element signature="e#857#858#0" expanded="true" />
+            <element signature="e#887#888#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/table/agg/GroupByAggTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/sample00.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="79" selection-start-line="1" selection-start-column="79" selection-end-line="1" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/sample01.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/Heelflip.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="499">
+          <caret line="60" column="91" selection-start-line="60" selection-start-column="91" selection-end-line="60" selection-end-column="91" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/table/HeelflipTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="227" column="8" selection-start-line="227" selection-start-column="8" selection-end-line="227" selection-end-column="8" />
+        <state relative-caret-position="229">
+          <caret line="218" column="11" selection-start-line="218" selection-start-column="11" selection-end-line="218" selection-end-column="11" />
           <folding />
         </state>
       </provider>

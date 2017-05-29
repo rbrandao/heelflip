@@ -19,7 +19,7 @@ public class HeelflipTest {
     private static final String ZIPS_FILE_PATH = "zips.json";
 
     @Test
-    public void testColumnNamesPlainJson() throws IOException {
+    public void testColumnNamesOnPlainJson() throws IOException {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_00);
 
         Heelflip heelflip = new Heelflip();
@@ -42,7 +42,7 @@ public class HeelflipTest {
     }
 
     @Test
-    public void testMinMaxSumPlainJson() throws IOException {
+    public void testGetColumnAggOnPlainJson() throws IOException {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_00);
 
         Heelflip heelflip = new Heelflip();
@@ -92,7 +92,7 @@ public class HeelflipTest {
     }
 
     @Test
-    public void testColumnNamesJsonArrayWithObjects() throws IOException {
+    public void testColumnNamesOnJsonArrayWithObject() throws IOException {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_01);
 
         Heelflip heelflip = new Heelflip();
@@ -108,7 +108,7 @@ public class HeelflipTest {
     }
 
     @Test
-    public void testMinMaxSumJsonArrayWithObjects() throws IOException {
+    public void testGetColumnAggOnJsonArrayWithObject() throws IOException {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_01);
 
         Heelflip heelflip = new Heelflip();
@@ -130,7 +130,7 @@ public class HeelflipTest {
     }
 
     @Test
-    public void testColumnNamesJsonArrayWithPrimitives() throws IOException {
+    public void testColumnNamesOnJsonArrayWithPrimitive() throws IOException {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_02);
 
         Heelflip heelflip = new Heelflip();
@@ -148,7 +148,7 @@ public class HeelflipTest {
     }
 
     @Test
-    public void testMinMaxSumJsonArrayWithPrimitives() throws IOException {
+    public void testGetColumnAggOnJsonArrayWithPrimitive() throws IOException {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_02);
 
         Heelflip heelflip = new Heelflip();
@@ -178,7 +178,7 @@ public class HeelflipTest {
     }
 
     @Test
-    public void testColumnNamesJsonObject() throws IOException {
+    public void testColumnNamesOnJsonWithObject() throws IOException {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_03);
 
         Heelflip heelflip = new Heelflip();
@@ -194,7 +194,7 @@ public class HeelflipTest {
     }
 
     @Test
-    public void testMinMaxSumJsonObject() throws IOException {
+    public void testGetColumnAggOnJsonWithObject() throws IOException {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_03);
 
         Heelflip heelflip = new Heelflip();
@@ -215,7 +215,7 @@ public class HeelflipTest {
         Assert.assertEquals(12, heelflip.getColumnAgg("b.y").getSum().intValue());
     }
 
-    @Test
+//    @Test
     public void testLoadLargeFiles() throws IOException {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(STOCKS_FILE_PATH);
 
@@ -225,7 +225,7 @@ public class HeelflipTest {
 
         stream = getClass().getClassLoader().getResourceAsStream(ZIPS_FILE_PATH);
         heelflip.loadNDJSON(stream);
-        
+
         Assert.assertEquals(75, heelflip.size());
     }
 }

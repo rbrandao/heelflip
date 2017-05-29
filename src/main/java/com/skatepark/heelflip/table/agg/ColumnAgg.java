@@ -43,17 +43,8 @@ public class ColumnAgg {
                 .sum();
     }
 
-    public int count(Object value) {
-        if (value instanceof String) {
-            return count(new JsonPrimitive((String) value));
-        }
-        if (value instanceof Number) {
-            return count(new JsonPrimitive((Number) value));
-        }
-        if (value instanceof Boolean) {
-            return count(new JsonPrimitive((Boolean) value));
-        }
-        return 0;
+    public int count(JsonPrimitive value) {
+        return !countMap.containsKey(value) ? 0 : countMap.get(value);
     }
 
     public int getStringCount() {
@@ -81,6 +72,8 @@ public class ColumnAgg {
     }
 
     public void agg(JsonPrimitive value) {
+        Objects.requireNonNull(value, "value should not be null.");
+
         countMap.computeIfAbsent(value, key -> 0);
         countMap.put(value, countMap.get(value) + 1);
 
@@ -99,10 +92,6 @@ public class ColumnAgg {
             max = max == null || max.compareTo(v) < 0 ? v : max;
             sum = sum == null ? v : sum.add(v);
         }
-    }
-
-    private int count(JsonPrimitive value) {
-        return !countMap.containsKey(value) ? 0 : countMap.get(value);
     }
 
     @Override
