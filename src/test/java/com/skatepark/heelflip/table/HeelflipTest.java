@@ -202,12 +202,30 @@ public class HeelflipTest {
         GroupByAgg groupByAgg = heelflip.getGroupBy("b.x", "a");
         Set<String> values = groupByAgg.groupBy("true");
         Assert.assertEquals(3, values.size());
-
         Assert.assertTrue(values.contains("9"));
         Assert.assertTrue(values.contains("10"));
         Assert.assertTrue(values.contains("12"));
 
-        //TODO
+        groupByAgg = heelflip.getGroupBy("b.y", "a");
+        values = groupByAgg.groupBy("false");
+        Assert.assertEquals(4, values.size());
+        Assert.assertTrue(values.contains("-12"));
+        Assert.assertTrue(values.contains("-13"));
+        Assert.assertTrue(values.contains("-2"));
+        Assert.assertTrue(values.contains("-1"));
+
+        groupByAgg = heelflip.getGroupBy("b.y", "b.x");
+        values = groupByAgg.groupBy("10");
+        Assert.assertEquals(4, values.size());
+        Assert.assertTrue(values.contains("-20"));
+        Assert.assertTrue(values.contains("-11"));
+        Assert.assertTrue(values.contains("-10"));
+        Assert.assertTrue(values.contains("-14"));
+
+        values = groupByAgg.groupBy("9");
+        Assert.assertEquals(2, values.size());
+        Assert.assertTrue(values.contains("-20"));
+        Assert.assertTrue(values.contains("-10"));//TODO
     }
 
     @Test
