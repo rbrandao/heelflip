@@ -31,11 +31,11 @@ public class GroupByAggTest {
         groupByAgg.agg(new JsonPrimitive(-1), new JsonPrimitive(false));
         groupByAgg.agg(new JsonPrimitive(-1), new JsonPrimitive(false));
 
-        Set<JsonPrimitive> values = groupByAgg.values();
+        Set<String> values = groupByAgg.values();
         Assert.assertEquals(3, values.size());
-        Assert.assertTrue(values.contains(new JsonPrimitive(10)));
-        Assert.assertTrue(values.contains(new JsonPrimitive(20)));
-        Assert.assertTrue(values.contains(new JsonPrimitive(-1)));
+        Assert.assertTrue(values.contains("10"));
+        Assert.assertTrue(values.contains("20"));
+        Assert.assertTrue(values.contains("-1"));
     }
 
     @Test
@@ -46,13 +46,13 @@ public class GroupByAggTest {
         groupByAgg.agg(new JsonPrimitive(-1), new JsonPrimitive(false));
         groupByAgg.agg(new JsonPrimitive(-1), new JsonPrimitive(false));
 
-        Set<JsonPrimitive> values = groupByAgg.groupBy("true");
+        Set<String> values = groupByAgg.groupBy("true");
         Assert.assertEquals(2, values.size());
-        Assert.assertTrue(values.contains(new JsonPrimitive(10)));
-        Assert.assertTrue(values.contains(new JsonPrimitive(20)));
+        Assert.assertTrue(values.contains("10"));
+        Assert.assertTrue(values.contains("20"));
 
         values = groupByAgg.groupBy("false");
         Assert.assertEquals(1, values.size());
-        Assert.assertTrue(values.contains(new JsonPrimitive(-1)));
+        Assert.assertTrue(values.contains("-1"));
     }
 }

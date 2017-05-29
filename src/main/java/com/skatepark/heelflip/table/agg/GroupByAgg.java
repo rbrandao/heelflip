@@ -16,7 +16,7 @@ public class GroupByAgg {
 
     private String groupBy;
 
-    private Map<String, Set<JsonPrimitive>> relationship;
+    private Map<String, Set<String>> relationship;
 
     public GroupByAgg(String columnName, String groupBy) {
         Objects.requireNonNull(columnName, "columnName should not be null.");
@@ -41,11 +41,11 @@ public class GroupByAgg {
         Objects.requireNonNull(columnValue, "columnValue should not be null.");
         Objects.requireNonNull(groupByValue, "groupByValue should not be null.");
 
-        Set<JsonPrimitive> values = relationship.computeIfAbsent(groupByValue.getAsString(), key -> new HashSet<>());
-        values.add(columnValue);
+        Set<String> values = relationship.computeIfAbsent(groupByValue.getAsString(), key -> new HashSet<>());
+        values.add(columnValue.getAsString());
     }
 
-    public Set<JsonPrimitive> groupBy(String value) {
+    public Set<String> groupBy(String value) {
         return value == null || !relationship.containsKey(value) ?
                 Collections.emptySet() :
                 Collections.unmodifiableSet(relationship.get(value));
@@ -55,7 +55,7 @@ public class GroupByAgg {
         return Collections.unmodifiableSet(relationship.keySet());
     }
 
-    public Set<JsonPrimitive> values() {
+    public Set<String> values() {
         return relationship.values().stream()
                 .flatMap(Set::stream)
                 .collect(Collectors.toSet());

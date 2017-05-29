@@ -3,9 +3,11 @@ package com.skatepark.heelflip.table.agg;
 import com.google.gson.JsonPrimitive;
 
 import java.math.BigDecimal;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 
 public class ColumnAgg {
 
@@ -45,6 +47,10 @@ public class ColumnAgg {
 
     public int count(String value) {
         return value == null || !countMap.containsKey(value) ? 0 : countMap.get(value);
+    }
+
+    public Set<String> distinctValues() {
+        return Collections.unmodifiableSet(countMap.keySet());
     }
 
     public int getStringCount() {

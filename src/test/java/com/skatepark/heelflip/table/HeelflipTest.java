@@ -145,9 +145,9 @@ public class HeelflipTest {
                 Assert.assertEquals(1, groupByAgg.values().size());
                 Assert.assertEquals(1, groupByAgg.groupByValues().size());
 
-                Set<JsonPrimitive> groupBySet = groupByAgg.groupBy(groupByValue);
+                Set<String> groupBySet = groupByAgg.groupBy(groupByValue);
                 Assert.assertEquals(1, groupBySet.size());
-                Assert.assertEquals(value, groupBySet.iterator().next().getAsString());
+                Assert.assertEquals(value, groupBySet.iterator().next());
             }
         }
     }
@@ -200,18 +200,14 @@ public class HeelflipTest {
         Assert.assertEquals(3, heelflip.size());
 
         GroupByAgg groupByAgg = heelflip.getGroupBy("b.x", "a");
-        Set<JsonPrimitive> values = groupByAgg.groupBy("true");
+        Set<String> values = groupByAgg.groupBy("true");
         Assert.assertEquals(3, values.size());
 
-        Set<String> valuesStr = values.stream()
-                .map(JsonPrimitive::getAsString)
-                .collect(Collectors.toSet());
+        Assert.assertTrue(values.contains("9"));
+        Assert.assertTrue(values.contains("10"));
+        Assert.assertTrue(values.contains("12"));
 
-        Assert.assertTrue(valuesStr.contains("9"));
-        Assert.assertTrue(valuesStr.contains("10"));
-        Assert.assertTrue(valuesStr.contains("12"));
-
-        //TODO add more unit tests
+        //TODO
     }
 
     @Test
