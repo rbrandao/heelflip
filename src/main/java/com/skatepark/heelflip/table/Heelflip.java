@@ -94,4 +94,8 @@ public class Heelflip {
             }
         }
     }
+
+    public void dump(String filePath) throws IOException {
+        Report.write(this, filePath);
+    }
 }
