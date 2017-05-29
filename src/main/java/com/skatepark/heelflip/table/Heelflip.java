@@ -34,14 +34,7 @@ public class Heelflip {
         Objects.requireNonNull(json, "json should not be null.");
 
         Map<String, List<JsonPrimitive>> valueMap = Extractor.extract(json);
-
-        for (Map.Entry<String, List<JsonPrimitive>> entry : valueMap.entrySet()) {
-            String columnName = entry.getKey();
-            List<JsonPrimitive> valueList = entry.getValue();
-            ColumnAgg columnAgg = columnAggMap.computeIfAbsent(columnName, key -> new ColumnAgg(key));
-
-            valueList.stream().forEach(columnAgg::agg);
-        }
+        aggregate(valueMap);
     }
 
     public int size() {
@@ -95,7 +88,23 @@ public class Heelflip {
         }
     }
 
+    /**
+     * Dump a all aggregation values in a single file.
+     *
+     * @param filePath file path.
+     * @throws IOException if IO errors occurs.
+     */
     public void dump(String filePath) throws IOException {
         Report.write(this, filePath);
+    }
+
+    private void aggregate(Map<String, List<JsonPrimitive>> valueMap) {
+        for (Map.Entry<String, List<JsonPrimitive>> entry : valueMap.entrySet()) {
+            String columnName = entry.getKey();
+            List<JsonPrimitive> valueList = entry.getValue();
+            ColumnAgg columnAgg = columnAggMap.computeIfAbsent(columnName, key -> new ColumnAgg(key));
+
+            valueList.stream().forEach(columnAgg::agg);
+        }
     }
 }
