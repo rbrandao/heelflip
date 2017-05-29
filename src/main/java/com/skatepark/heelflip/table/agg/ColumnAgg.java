@@ -1,5 +1,8 @@
 package com.skatepark.heelflip.table.agg;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 
@@ -103,22 +106,8 @@ public class ColumnAgg {
 
     @Override
     public String toString() {
-        String ln = System.lineSeparator();
-
-        StringBuilder result = new StringBuilder();
-        result.append("-- Column: ").append(columnName).append(ln);
-        result.append("** Count:       ").append(count()).append(ln);
-        result.append("** Cardinality: ").append(cardinality()).append(ln);
-        result.append("** String:      ").append(stringCount).append(ln);
-        result.append("** Boolean:     ").append(booleanCount).append(ln);
-        result.append("** Number:      ").append(numberCount).append(ln);
-
-        if (min != null && max != null & sum != null) {
-            result.append("-> Min: ").append(min.longValue()).append(ln);
-            result.append("-> Max: ").append(max.longValue()).append(ln);
-            result.append("-> Sum: ").append(sum.longValue()).append(ln);
-        }
-        return result.toString();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        return gson.toJson(toJSON());
     }
 
     public JsonObject toJSON() {
@@ -134,6 +123,9 @@ public class ColumnAgg {
             json.addProperty("max", max.longValue());
             json.addProperty("sum", sum.longValue());
         }
+        JsonArray valuesArray = new JsonArray();
+        distinctValues().stream().forEach(valuesArray::add);
+        json.add("values", valuesArray);
         return json;
     }
 }

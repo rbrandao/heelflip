@@ -1,12 +1,13 @@
 package com.skatepark.heelflip.table.agg;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -18,7 +19,7 @@ public class GroupByAgg {
 
     private String groupBy;
 
-    private Map<String, Set<String>> relationship;
+    private Map<String, ColumnAgg> relationship;
 
     public GroupByAgg(String columnName, String groupBy) {
         Objects.requireNonNull(columnName, "columnName should not be null.");
@@ -43,14 +44,14 @@ public class GroupByAgg {
         Objects.requireNonNull(columnValue, "columnValue should not be null.");
         Objects.requireNonNull(groupByValue, "groupByValue should not be null.");
 
-        Set<String> values = relationship.computeIfAbsent(groupByValue.getAsString(), key -> new HashSet<>());
-        values.add(columnValue.getAsString());
+        ColumnAgg columnAgg = relationship.computeIfAbsent(groupByValue.getAsString(), key -> new ColumnAgg(columnName));
+        columnAgg.agg(columnValue);
     }
 
     public Set<String> groupBy(String value) {
         return value == null || !relationship.containsKey(value) ?
                 Collections.emptySet() :
-                Collections.unmodifiableSet(relationship.get(value));
+                Collections.unmodifiableSet(relationship.get(value).distinctValues());
     }
 
     public Set<String> groupByValues() {
@@ -59,34 +60,21 @@ public class GroupByAgg {
 
     public Set<String> values() {
         return relationship.values().stream()
-                .flatMap(Set::stream)
+                .flatMap(columnAgg -> columnAgg.distinctValues().stream())
                 .collect(Collectors.toSet());
     }
 
     @Override
     public String toString() {
-        String ln = System.lineSeparator();
-
-        StringBuilder result = new StringBuilder();
-        result.append("-- GroupBy: ").append(groupBy);
-        result.append("; ColumnName: ").append(columnName).append(ln);
-        for (Map.Entry<String, Set<String>> entry : relationship.entrySet()) {
-            String groupByValue = entry.getKey();
-            Set<String> values = entry.getValue();
-
-            result.append(groupByValue).append(" -> ").append(values).append(ln);
-        }
-        return result.toString();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        return gson.toJson(toJSON());
     }
 
     public JsonObject toJSON() {
         JsonArray values = new JsonArray();
-        for (Map.Entry<String, Set<String>> entry : relationship.entrySet()) {
-            JsonArray array = new JsonArray();
-            entry.getValue().stream().forEach(array::add);
-
+        for (Map.Entry<String, ColumnAgg> entry : relationship.entrySet()) {
             JsonObject obj = new JsonObject();
-            obj.add(entry.getKey(), array);
+            obj.add(entry.getKey(), entry.getValue().toJSON());
             values.add(obj);
         }
 

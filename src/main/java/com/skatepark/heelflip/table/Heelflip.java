@@ -97,16 +97,6 @@ public class Heelflip {
     }
 
     /**
-     * TXTDumper a all aggregation values in a single TXT file.
-     *
-     * @param filePath file path.
-     * @throws IOException if IO errors occurs.
-     */
-    public void dumpAsTxt(String filePath) throws IOException {
-        TXTDumper.dump(this, filePath);
-    }
-
-    /**
      * TXTDumper a all aggregation values in a single JSON file.
      *
      * @param filePath file path.
