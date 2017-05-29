@@ -89,13 +89,13 @@ public class Heelflip {
     }
 
     /**
-     * Dump a all aggregation values in a single file.
+     * Dumper a all aggregation values in a single file.
      *
      * @param filePath file path.
      * @throws IOException if IO errors occurs.
      */
-    public void dump(String filePath) throws IOException {
-        Report.write(this, filePath);
+    public void dumpAsTxt(String filePath) throws IOException {
+        Dumper.dumpAsTxt(this, filePath);
     }
 
     private void aggregate(Map<String, List<JsonPrimitive>> valueMap) {
@@ -106,5 +106,7 @@ public class Heelflip {
 
             valueList.stream().forEach(columnAgg::agg);
         }
+
+
     }
 }

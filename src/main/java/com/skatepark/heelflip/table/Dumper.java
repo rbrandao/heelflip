@@ -11,9 +11,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Set;
 
-class Report {
+class Dumper {
 
-    static void write(Heelflip heelflip, String pathStr) throws IOException {
+    static void dumpAsTxt(Heelflip heelflip, String pathStr) throws IOException {
         Path path = Paths.get(pathStr);
         try (BufferedWriter writer = Files.newBufferedWriter(path)) {
 
