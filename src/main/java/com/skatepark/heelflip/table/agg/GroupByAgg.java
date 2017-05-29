@@ -1,5 +1,7 @@
 package com.skatepark.heelflip.table.agg;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 
 import java.util.Collections;
@@ -75,5 +77,24 @@ public class GroupByAgg {
             result.append(groupByValue).append(" -> ").append(values).append(ln);
         }
         return result.toString();
+    }
+
+    public JsonObject toJSON() {
+        JsonArray values = new JsonArray();
+        for (Map.Entry<String, Set<String>> entry : relationship.entrySet()) {
+            JsonArray array = new JsonArray();
+            entry.getValue().stream().forEach(array::add);
+
+            JsonObject obj = new JsonObject();
+            obj.add(entry.getKey(), array);
+            values.add(obj);
+        }
+
+        JsonObject json = new JsonObject();
+        json.addProperty("groupBy", groupBy);
+        json.addProperty("columnName", columnName);
+        json.add("values", values);
+
+        return json;
     }
 }

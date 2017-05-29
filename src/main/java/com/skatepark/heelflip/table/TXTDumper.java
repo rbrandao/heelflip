@@ -10,18 +10,20 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Set;
 
-class Dumper {
+class TXTDumper {
 
-    static void dumpAsTxt(Heelflip heelflip, String pathStr) throws IOException {
+    static void dump(Heelflip heelflip, String pathStr) throws IOException {
         Path path = Paths.get(pathStr);
         try (BufferedWriter writer = Files.newBufferedWriter(path)) {
 
             Set<String> columnNames = heelflip.columnNames();
+
             writer.write("-- Number of columns: ");
-            writer.write(columnNames.size());
+            writer.write(Integer.toString(columnNames.size()));
             writer.write(System.lineSeparator());
 
             writer.write("-- Column names: ");
+            writer.write(System.lineSeparator());
             for (String columnName : columnNames) {
                 writer.write(columnName);
                 writer.write(System.lineSeparator());
@@ -46,6 +48,16 @@ class Dumper {
                         continue;
                     }
                     GroupByAgg groupByAgg = heelflip.getGroupBy(columnName, groupByColumn);
+                    if (groupByAgg == null) {
+                        writer.write("-- GroupBy: ");
+                        writer.write(groupByColumn);
+                        writer.write("; ColumnName: ");
+                        writer.write(columnName);
+                        writer.write("; [NOT FOUND]");
+                        writer.write(System.lineSeparator());
+                        continue;
+                    }
+
                     writer.write(groupByAgg.toString());
                     writer.write(System.lineSeparator());
                 }

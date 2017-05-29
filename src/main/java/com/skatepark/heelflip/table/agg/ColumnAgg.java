@@ -1,5 +1,6 @@
 package com.skatepark.heelflip.table.agg;
 
+import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 
 import java.math.BigDecimal;
@@ -118,5 +119,21 @@ public class ColumnAgg {
             result.append("-> Sum: ").append(sum.longValue()).append(ln);
         }
         return result.toString();
+    }
+
+    public JsonObject toJSON() {
+        JsonObject json = new JsonObject();
+        json.addProperty("columnName", columnName);
+        json.addProperty("count", count());
+        json.addProperty("cardinality", cardinality());
+        json.addProperty("string", stringCount);
+        json.addProperty("boolean", booleanCount);
+        json.addProperty("number", numberCount);
+        if (min != null && max != null & sum != null) {
+            json.addProperty("min", min.longValue());
+            json.addProperty("max", max.longValue());
+            json.addProperty("sum", sum.longValue());
+        }
+        return json;
     }
 }
