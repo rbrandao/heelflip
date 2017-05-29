@@ -1,7 +1,5 @@
 package com.skatepark.heelflip.table;
 
-import com.google.gson.JsonPrimitive;
-
 import com.skatepark.heelflip.table.agg.GroupByAgg;
 
 import org.junit.Assert;
@@ -12,7 +10,6 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class HeelflipTest {
 
@@ -366,17 +363,26 @@ public class HeelflipTest {
         Assert.assertTrue(values.contains("4"));
     }
 
-    //    @Test
-    public void testLoadLargeFiles() throws IOException {
+    @Test
+    public void testLargeFileStocks() throws IOException {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(STOCKS_FILE_PATH);
 
         Heelflip heelflip = new Heelflip();
+
+        long time = System.currentTimeMillis();
         heelflip.loadNDJSON(stream);
+        System.out.println("stocks takes (seconds): " + (System.currentTimeMillis() - time) / 1000);
         Assert.assertEquals(69, heelflip.size());
+    }
 
-        stream = getClass().getClassLoader().getResourceAsStream(ZIPS_FILE_PATH);
+    @Test
+    public void testLargeFileZips() throws IOException {
+        InputStream stream = getClass().getClassLoader().getResourceAsStream(ZIPS_FILE_PATH);
+        Heelflip heelflip = new Heelflip();
+        long time = System.currentTimeMillis();
         heelflip.loadNDJSON(stream);
+        System.out.println("zips takes (seconds): " + (System.currentTimeMillis() - time) / 1000);
 
-        Assert.assertEquals(75, heelflip.size());
+        Assert.assertEquals(6, heelflip.size());
     }
 }
