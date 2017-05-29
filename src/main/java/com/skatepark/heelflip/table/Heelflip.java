@@ -97,13 +97,23 @@ public class Heelflip {
     }
 
     /**
-     * TXTDumper a all aggregation values in a single JSON file.
+     * Dump column aggregations in a single JSON file.
      *
      * @param filePath file path.
      * @throws IOException if IO errors occurs.
      */
-    public void dumpAsJSON(String filePath) throws IOException {
-        JSONDumper.dump(this, filePath);
+    public void dumpColumnAgg(String filePath) throws IOException {
+        JSONDumper.dumpColumnAgg(this, filePath);
+    }
+
+    /**
+     * Dump group by aggregations in a single JSON file.
+     *
+     * @param filePath file path.
+     * @throws IOException if IO errors occurs.
+     */
+    public void dumpGroupByAgg(String filePath) throws IOException {
+        JSONDumper.dumpGroupByAgg(this, filePath);
     }
 
     private void aggregate(Map<String, List<JsonPrimitive>> valueMap) {

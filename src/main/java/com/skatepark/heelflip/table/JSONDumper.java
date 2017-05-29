@@ -17,17 +17,11 @@ import java.util.Set;
 
 class JSONDumper {
 
-    static void dump(Heelflip heelflip, String pathStr) throws IOException {
+    static void dumpGroupByAgg(Heelflip heelflip, String pathStr) throws IOException {
         Path path = Paths.get(pathStr);
         try (BufferedWriter writer = Files.newBufferedWriter(path)) {
 
             Set<String> columnNames = heelflip.columnNames();
-
-            JsonArray columnAggArray = new JsonArray();
-            for (String name : columnNames) {
-                ColumnAgg columnAgg = heelflip.getColumnAgg(name);
-                columnAggArray.add(columnAgg.toJSON());
-            }
 
             JsonArray groupByArray = new JsonArray();
             for (String columnName : columnNames) {
@@ -43,12 +37,23 @@ class JSONDumper {
                 }
             }
 
-            JsonObject result = new JsonObject();
-            result.add("columnAggs", columnAggArray);
-            result.add("groupByAggs", groupByArray);
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            writer.write(gson.toJson(groupByArray));
+        }
+    }
+
+    static void dumpColumnAgg(Heelflip heelflip, String pathStr) throws IOException {
+        Path path = Paths.get(pathStr);
+        try (BufferedWriter writer = Files.newBufferedWriter(path)) {
+
+            JsonArray columnAggArray = new JsonArray();
+            for (String name : heelflip.columnNames()) {
+                ColumnAgg columnAgg = heelflip.getColumnAgg(name);
+                columnAggArray.add(columnAgg.toJSON());
+            }
 
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            writer.write(gson.toJson(result));
+            writer.write(gson.toJson(columnAggArray));
         }
     }
 }
