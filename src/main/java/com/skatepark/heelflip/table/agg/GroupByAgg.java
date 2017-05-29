@@ -60,4 +60,20 @@ public class GroupByAgg {
                 .flatMap(Set::stream)
                 .collect(Collectors.toSet());
     }
+
+    @Override
+    public String toString() {
+        String ln = System.lineSeparator();
+
+        StringBuilder result = new StringBuilder();
+        result.append("-- GroupBy: ").append(groupBy);
+        result.append("; ColumnName: ").append(columnName).append(ln);
+        for (Map.Entry<String, Set<String>> entry : relationship.entrySet()) {
+            String groupByValue = entry.getKey();
+            Set<String> values = entry.getValue();
+
+            result.append(groupByValue).append(" -> ").append(values).append(ln);
+        }
+        return result.toString();
+    }
 }

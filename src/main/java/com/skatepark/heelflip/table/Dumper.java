@@ -1,6 +1,7 @@
 package com.skatepark.heelflip.table;
 
 import com.skatepark.heelflip.table.agg.ColumnAgg;
+import com.skatepark.heelflip.table.agg.GroupByAgg;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -27,10 +28,27 @@ class Dumper {
             }
             writer.write(System.lineSeparator());
 
+            writer.write(" ================= Column Aggregations ================= ");
+            writer.write(System.lineSeparator());
+
             for (String name : columnNames) {
                 ColumnAgg columnAgg = heelflip.getColumnAgg(name);
                 writer.write(columnAgg.toString());
                 writer.write(System.lineSeparator());
+            }
+
+            writer.write(" ================= Group By Aggregations ================= ");
+            writer.write(System.lineSeparator());
+
+            for (String columnName : columnNames) {
+                for (String groupByColumn : columnNames) {
+                    if (groupByColumn.equals(columnName)) {
+                        continue;
+                    }
+                    GroupByAgg groupByAgg = heelflip.getGroupBy(columnName, groupByColumn);
+                    writer.write(groupByAgg.toString());
+                    writer.write(System.lineSeparator());
+                }
             }
         }
     }
