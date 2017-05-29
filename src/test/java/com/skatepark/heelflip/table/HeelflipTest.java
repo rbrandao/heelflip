@@ -225,9 +225,7 @@ public class HeelflipTest {
 
         stream = getClass().getClassLoader().getResourceAsStream(ZIPS_FILE_PATH);
         heelflip.loadNDJSON(stream);
-
-        heelflip.dumpAsTxt("out.txt");
-
+        
         Assert.assertEquals(75, heelflip.size());
     }
 }
