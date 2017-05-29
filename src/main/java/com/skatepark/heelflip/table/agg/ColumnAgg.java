@@ -104,4 +104,24 @@ public class ColumnAgg {
     private int count(JsonPrimitive value) {
         return !countMap.containsKey(value) ? 0 : countMap.get(value);
     }
+
+    @Override
+    public String toString() {
+        String ln = System.lineSeparator();
+
+        StringBuilder result = new StringBuilder();
+        result.append("-- Column: ").append(columnName).append(ln);
+        result.append("** Count:       ").append(count()).append(ln);
+        result.append("** Cardinality: ").append(cardinality()).append(ln);
+        result.append("** String:      ").append(stringCount).append(ln);
+        result.append("** Boolean:     ").append(booleanCount).append(ln);
+        result.append("** Number:      ").append(numberCount).append(ln);
+
+        if (min != null && max != null & sum != null) {
+            result.append("-> Min: ").append(min.longValue()).append(ln);
+            result.append("-> Max: ").append(max.longValue()).append(ln);
+            result.append("-> Sum: ").append(sum.longValue()).append(ln);
+        }
+        return result.toString();
+    }
 }

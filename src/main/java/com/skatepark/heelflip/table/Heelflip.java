@@ -12,6 +12,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -107,6 +108,16 @@ public class Heelflip {
             valueList.stream().forEach(columnAgg::agg);
         }
 
+        List<String> columnNames = new ArrayList<>(valueMap.keySet());
+        for (String columnName : columnNames) {
+            for (String groupBy : columnNames) {
+                if (columnName.equals(groupBy)) {
+                    continue;
+                }
+                Map<String, GroupByAgg> map = groupByAggMap.computeIfAbsent(columnName, key -> new HashMap<>());
+                GroupByAgg groupByAgg = map.computeIfAbsent(groupBy, key -> new GroupByAgg(columnName, groupBy));
 
+            }
+        }
     }
 }

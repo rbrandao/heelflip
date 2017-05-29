@@ -215,7 +215,7 @@ public class HeelflipTest {
         Assert.assertEquals(12, heelflip.getColumnAgg("b.y").getSum().intValue());
     }
 
-        @Test
+    @Test
     public void testLoadLargeFiles() throws IOException {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(STOCKS_FILE_PATH);
 
@@ -225,6 +225,8 @@ public class HeelflipTest {
 
         stream = getClass().getClassLoader().getResourceAsStream(ZIPS_FILE_PATH);
         heelflip.loadNDJSON(stream);
+
+        heelflip.dumpAsTxt("out.txt");
 
         Assert.assertEquals(75, heelflip.size());
     }
