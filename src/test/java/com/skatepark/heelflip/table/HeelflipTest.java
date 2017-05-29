@@ -225,7 +225,12 @@ public class HeelflipTest {
         values = groupByAgg.groupBy("9");
         Assert.assertEquals(2, values.size());
         Assert.assertTrue(values.contains("-20"));
-        Assert.assertTrue(values.contains("-10"));//TODO
+        Assert.assertTrue(values.contains("-10"));
+
+        groupByAgg = heelflip.getGroupBy("a", "b.x");
+        values = groupByAgg.groupBy("10");
+        Assert.assertEquals(1, values.size());
+        Assert.assertTrue(values.contains("true"));
     }
 
     @Test
@@ -277,6 +282,31 @@ public class HeelflipTest {
     }
 
     @Test
+    public void testGetGroupByOnJsonArrayWithPrimitive() throws IOException {
+        InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_02);
+
+        Heelflip heelflip = new Heelflip();
+        heelflip.loadNDJSON(stream);
+
+        Assert.assertEquals(5, heelflip.size());
+
+        GroupByAgg groupByAgg = heelflip.getGroupBy("b_0", "a");
+        Set<String> values = groupByAgg.groupBy("true");
+        Assert.assertEquals(2, values.size());
+        Assert.assertTrue(values.contains("9"));
+        Assert.assertTrue(values.contains("8"));
+
+
+        groupByAgg = heelflip.getGroupBy("b_0", "b_2");
+        values = groupByAgg.groupBy("10");
+        Assert.assertEquals(4, values.size());
+        Assert.assertTrue(values.contains("9"));
+        Assert.assertTrue(values.contains("9"));
+        Assert.assertTrue(values.contains("2"));
+        Assert.assertTrue(values.contains("5"));
+    }
+
+    @Test
     public void testColumnNamesOnJsonWithObject() throws IOException {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_03);
 
@@ -312,6 +342,28 @@ public class HeelflipTest {
         Assert.assertEquals(2, heelflip.getColumnAgg("b.y").getMin().intValue());
         Assert.assertEquals(6, heelflip.getColumnAgg("b.y").getMax().intValue());
         Assert.assertEquals(12, heelflip.getColumnAgg("b.y").getSum().intValue());
+    }
+
+    @Test
+    public void testGetGroupByOnJsonWithObject() throws IOException {
+        InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_03);
+
+        Heelflip heelflip = new Heelflip();
+        heelflip.loadNDJSON(stream);
+
+        Assert.assertEquals(3, heelflip.size());
+
+        GroupByAgg groupByAgg = heelflip.getGroupBy("b.x", "a");
+        Set<String> values = groupByAgg.groupBy("true");
+        Assert.assertEquals(3, values.size());
+        Assert.assertTrue(values.contains("-1"));
+        Assert.assertTrue(values.contains("0"));
+        Assert.assertTrue(values.contains("1"));
+
+        groupByAgg = heelflip.getGroupBy("b.y", "b.x");
+        values = groupByAgg.groupBy("0");
+        Assert.assertEquals(1, values.size());
+        Assert.assertTrue(values.contains("4"));
     }
 
     //    @Test
