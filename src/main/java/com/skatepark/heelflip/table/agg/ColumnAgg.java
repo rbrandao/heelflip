@@ -10,7 +10,7 @@ import java.util.Objects;
 public class ColumnAgg {
 
     private String columnName;
-    private Map<JsonPrimitive, Integer> countMap;
+    private Map<String, Integer> countMap;
 
     private int stringCount;
     private int booleanCount;
@@ -43,8 +43,8 @@ public class ColumnAgg {
                 .sum();
     }
 
-    public int count(JsonPrimitive value) {
-        return !countMap.containsKey(value) ? 0 : countMap.get(value);
+    public int count(String value) {
+        return value == null || !countMap.containsKey(value) ? 0 : countMap.get(value);
     }
 
     public int getStringCount() {
@@ -74,8 +74,8 @@ public class ColumnAgg {
     public void agg(JsonPrimitive value) {
         Objects.requireNonNull(value, "value should not be null.");
 
-        countMap.computeIfAbsent(value, key -> 0);
-        countMap.put(value, countMap.get(value) + 1);
+        countMap.computeIfAbsent(value.getAsString(), key -> 0);
+        countMap.put(value.getAsString(), countMap.get(value.getAsString()) + 1);
 
         if (value.isString()) {
             stringCount++;

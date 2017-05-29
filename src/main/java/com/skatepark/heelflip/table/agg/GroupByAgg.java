@@ -16,11 +16,14 @@ public class GroupByAgg {
 
     private String groupBy;
 
-    private Map<JsonPrimitive, Set<JsonPrimitive>> relationship;
+    private Map<String, Set<JsonPrimitive>> relationship;
 
     public GroupByAgg(String columnName, String groupBy) {
         Objects.requireNonNull(columnName, "columnName should not be null.");
         Objects.requireNonNull(groupBy, "groupBy should not be null.");
+        if (columnName.equals(groupBy)) {
+            throw new IllegalArgumentException("columnName should not be equal to groupBy.");
+        }
         this.columnName = columnName;
         this.groupBy = groupBy;
         this.relationship = new HashMap<>();
@@ -38,17 +41,17 @@ public class GroupByAgg {
         Objects.requireNonNull(columnValue, "columnValue should not be null.");
         Objects.requireNonNull(groupByValue, "groupByValue should not be null.");
 
-        Set<JsonPrimitive> values = relationship.computeIfAbsent(groupByValue, key -> new HashSet<>());
+        Set<JsonPrimitive> values = relationship.computeIfAbsent(groupByValue.getAsString(), key -> new HashSet<>());
         values.add(columnValue);
     }
 
-    public Set<JsonPrimitive> groupBy(JsonPrimitive value) {
-        return relationship.containsKey(value) ?
-                Collections.unmodifiableSet(relationship.get(value)) :
-                Collections.emptySet();
+    public Set<JsonPrimitive> groupBy(String value) {
+        return value == null || !relationship.containsKey(value) ?
+                Collections.emptySet() :
+                Collections.unmodifiableSet(relationship.get(value));
     }
 
-    public Set<JsonPrimitive> groupByValues() {
+    public Set<String> groupByValues() {
         return Collections.unmodifiableSet(relationship.keySet());
     }
 
