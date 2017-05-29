@@ -53,6 +53,14 @@ public class Heelflip {
         return !hasColumnAgg(columnName) ? null : columnAggMap.get(columnName);
     }
 
+    public boolean hasGroupBy(String columnName) {
+        return columnName != null && groupByAggMap.containsKey(columnName);
+    }
+
+    public GroupByAgg getGroupBy(String columnName, String groupBy) {
+        return !hasGroupBy(columnName) ? null : groupByAggMap.get(columnName).get(groupBy);
+    }
+
     /**
      * Load {@link InputStream} with JSON newline delimited format.
      *
@@ -89,13 +97,13 @@ public class Heelflip {
     }
 
     /**
-     * Dump a all aggregation values in a single file.
+     * Dumper a all aggregation values in a single file.
      *
      * @param filePath file path.
      * @throws IOException if IO errors occurs.
      */
-    public void dump(String filePath) throws IOException {
-        Report.write(this, filePath);
+    public void dumpAsTxt(String filePath) throws IOException {
+        Dumper.dumpAsTxt(this, filePath);
     }
 
     private void aggregate(Map<String, List<JsonPrimitive>> valueMap) {
@@ -105,6 +113,23 @@ public class Heelflip {
             ColumnAgg columnAgg = columnAggMap.computeIfAbsent(columnName, key -> new ColumnAgg(key));
 
             valueList.stream().forEach(columnAgg::agg);
+        }
+
+        for (String columnName : valueMap.keySet()) {
+            for (String groupBy : valueMap.keySet()) {
+                if (columnName.equals(groupBy)) {
+                    continue;
+                }
+
+                Map<String, GroupByAgg> map = groupByAggMap.computeIfAbsent(columnName, key -> new HashMap<>());
+                GroupByAgg groupByAgg = map.computeIfAbsent(groupBy, key -> new GroupByAgg(columnName, groupBy));
+
+                for (JsonPrimitive columnValue : valueMap.get(columnName)) {
+                    for (JsonPrimitive groupByValue : valueMap.get(groupBy)) {
+                        groupByAgg.agg(columnValue, groupByValue);
+                    }
+                }
+            }
         }
     }
 }

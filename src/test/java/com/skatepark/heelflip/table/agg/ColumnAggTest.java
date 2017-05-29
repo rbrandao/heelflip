@@ -27,10 +27,10 @@ public class ColumnAggTest {
         Assert.assertEquals(8.4, columnAgg.getSum().doubleValue(), 10E10);
 
         Assert.assertEquals(4, columnAgg.count());
-        Assert.assertEquals(1, columnAgg.count(2.3));
-        Assert.assertEquals(1, columnAgg.count(2.1));
-        Assert.assertEquals(2, columnAgg.count(2.0));
-        Assert.assertEquals(0, columnAgg.count(1.0));
+        Assert.assertEquals(1, columnAgg.count("2.3"));
+        Assert.assertEquals(1, columnAgg.count("2.1"));
+        Assert.assertEquals(2, columnAgg.count("2.0"));
+        Assert.assertEquals(0, columnAgg.count("1.0"));
     }
 
     @Test
@@ -53,10 +53,10 @@ public class ColumnAggTest {
         Assert.assertEquals(45, columnAgg.getSum().intValue());
 
         Assert.assertEquals(4, columnAgg.count());
-        Assert.assertEquals(1, columnAgg.count(10));
-        Assert.assertEquals(1, columnAgg.count(11));
-        Assert.assertEquals(2, columnAgg.count(12));
-        Assert.assertEquals(0, columnAgg.count(13));
+        Assert.assertEquals(1, columnAgg.count("10"));
+        Assert.assertEquals(1, columnAgg.count("11"));
+        Assert.assertEquals(2, columnAgg.count("12"));
+        Assert.assertEquals(0, columnAgg.count("13"));
     }
 
     @Test
@@ -79,10 +79,10 @@ public class ColumnAggTest {
         Assert.assertEquals(45, columnAgg.getSum().intValue());
 
         Assert.assertEquals(4, columnAgg.count());
-        Assert.assertEquals(1, columnAgg.count(10L));
-        Assert.assertEquals(1, columnAgg.count(11L));
-        Assert.assertEquals(2, columnAgg.count(12L));
-        Assert.assertEquals(0, columnAgg.count(13L));
+        Assert.assertEquals(1, columnAgg.count("10"));
+        Assert.assertEquals(1, columnAgg.count("11"));
+        Assert.assertEquals(2, columnAgg.count("12"));
+        Assert.assertEquals(0, columnAgg.count("13"));
     }
 
     @Test
@@ -131,8 +131,8 @@ public class ColumnAggTest {
         Assert.assertNull(columnAgg.getSum());
 
         Assert.assertEquals(4, columnAgg.count());
-        Assert.assertEquals(3, columnAgg.count(true));
-        Assert.assertEquals(1, columnAgg.count(false));
+        Assert.assertEquals(3, columnAgg.count("true"));
+        Assert.assertEquals(1, columnAgg.count("false"));
         Assert.assertEquals(0, columnAgg.count("other"));
     }
 
@@ -151,7 +151,7 @@ public class ColumnAggTest {
         Assert.assertEquals("a", columnAgg.getColumnName());
 
         Assert.assertEquals(8, columnAgg.count());
-        Assert.assertEquals(8, columnAgg.cardinality());
+        Assert.assertEquals(6, columnAgg.cardinality());
         Assert.assertEquals(5, columnAgg.getStringCount());
         Assert.assertEquals(0, columnAgg.getBooleanCount());
         Assert.assertEquals(3, columnAgg.getNumberCount());
@@ -162,12 +162,10 @@ public class ColumnAggTest {
         Assert.assertEquals(8, columnAgg.count());
         Assert.assertEquals(1, columnAgg.count("foo"));
         Assert.assertEquals(1, columnAgg.count("true"));
-        Assert.assertEquals(1, columnAgg.count("1.2"));
-        Assert.assertEquals(1, columnAgg.count("10"));
+        Assert.assertEquals(2, columnAgg.count("1.2"));
+        Assert.assertEquals(2, columnAgg.count("10"));
         Assert.assertEquals(1, columnAgg.count("20"));
-        Assert.assertEquals(1, columnAgg.count(1.2));
-        Assert.assertEquals(1, columnAgg.count(10));
-        Assert.assertEquals(1, columnAgg.count(15L));
-        Assert.assertEquals(0, columnAgg.count(13));
+        Assert.assertEquals(1, columnAgg.count("15"));
+        Assert.assertEquals(0, columnAgg.count("13"));
     }
 }

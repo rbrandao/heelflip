@@ -10,7 +10,7 @@ import java.util.Objects;
 public class ColumnAgg {
 
     private String columnName;
-    private Map<JsonPrimitive, Integer> countMap;
+    private Map<String, Integer> countMap;
 
     private int stringCount;
     private int booleanCount;
@@ -43,17 +43,8 @@ public class ColumnAgg {
                 .sum();
     }
 
-    public int count(Object value) {
-        if (value instanceof String) {
-            return count(new JsonPrimitive((String) value));
-        }
-        if (value instanceof Number) {
-            return count(new JsonPrimitive((Number) value));
-        }
-        if (value instanceof Boolean) {
-            return count(new JsonPrimitive((Boolean) value));
-        }
-        return 0;
+    public int count(String value) {
+        return value == null || !countMap.containsKey(value) ? 0 : countMap.get(value);
     }
 
     public int getStringCount() {
@@ -81,8 +72,10 @@ public class ColumnAgg {
     }
 
     public void agg(JsonPrimitive value) {
-        countMap.computeIfAbsent(value, key -> 0);
-        countMap.put(value, countMap.get(value) + 1);
+        Objects.requireNonNull(value, "value should not be null.");
+
+        countMap.computeIfAbsent(value.getAsString(), key -> 0);
+        countMap.put(value.getAsString(), countMap.get(value.getAsString()) + 1);
 
         if (value.isString()) {
             stringCount++;
@@ -101,7 +94,23 @@ public class ColumnAgg {
         }
     }
 
-    private int count(JsonPrimitive value) {
-        return !countMap.containsKey(value) ? 0 : countMap.get(value);
+    @Override
+    public String toString() {
+        String ln = System.lineSeparator();
+
+        StringBuilder result = new StringBuilder();
+        result.append("-- Column: ").append(columnName).append(ln);
+        result.append("** Count:       ").append(count()).append(ln);
+        result.append("** Cardinality: ").append(cardinality()).append(ln);
+        result.append("** String:      ").append(stringCount).append(ln);
+        result.append("** Boolean:     ").append(booleanCount).append(ln);
+        result.append("** Number:      ").append(numberCount).append(ln);
+
+        if (min != null && max != null & sum != null) {
+            result.append("-> Min: ").append(min.longValue()).append(ln);
+            result.append("-> Max: ").append(max.longValue()).append(ln);
+            result.append("-> Sum: ").append(sum.longValue()).append(ln);
+        }
+        return result.toString();
     }
 }
