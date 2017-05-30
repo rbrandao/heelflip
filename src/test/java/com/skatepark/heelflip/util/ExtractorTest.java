@@ -1,10 +1,8 @@
-package com.skatepark.heelflip.table;
+package com.skatepark.heelflip.util;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
-
-import com.skatepark.heelflip.table.Extractor;
 
 import org.junit.Assert;
 import org.junit.Test;

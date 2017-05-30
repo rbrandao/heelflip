@@ -1,4 +1,4 @@
-package com.skatepark.heelflip.table.agg;
+package com.skatepark.heelflip;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -81,7 +81,7 @@ public class ColumnAgg {
         return sum;
     }
 
-    public void agg(JsonPrimitive value) {
+    void agg(JsonPrimitive value) {
         Objects.requireNonNull(value, "value should not be null.");
 
         countMap.computeIfAbsent(value.getAsString(), key -> 0);

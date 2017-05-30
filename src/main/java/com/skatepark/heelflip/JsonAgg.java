@@ -1,12 +1,12 @@
-package com.skatepark.heelflip.table;
+package com.skatepark.heelflip;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
 
-import com.skatepark.heelflip.table.agg.ColumnAgg;
-import com.skatepark.heelflip.table.agg.GroupByAgg;
+import com.skatepark.heelflip.util.Extractor;
+import com.skatepark.heelflip.util.JsonDumper;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,13 +19,13 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-public class Heelflip {
+public class JsonAgg {
 
     private Map<String, ColumnAgg> columnAggMap;
 
     private Map<String, Map<String, GroupByAgg>> groupByAggMap;
 
-    public Heelflip() {
+    public JsonAgg() {
         this.columnAggMap = new HashMap<>();
         this.groupByAggMap = new HashMap<>();
     }
@@ -103,7 +103,7 @@ public class Heelflip {
      * @throws IOException if IO errors occurs.
      */
     public void dumpColumnAgg(String filePath) throws IOException {
-        JSONDumper.dumpColumnAgg(this, filePath);
+        JsonDumper.dumpColumnAgg(this, filePath);
     }
 
     /**
@@ -113,7 +113,7 @@ public class Heelflip {
      * @throws IOException if IO errors occurs.
      */
     public void dumpGroupByAgg(String filePath) throws IOException {
-        JSONDumper.dumpGroupByAgg(this, filePath);
+        JsonDumper.dumpGroupByAgg(this, filePath);
     }
 
     private void aggregate(Map<String, List<JsonPrimitive>> valueMap) {

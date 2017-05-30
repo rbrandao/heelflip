@@ -1,4 +1,4 @@
-package com.skatepark.heelflip.table;
+package com.skatepark.heelflip.util;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -16,7 +16,7 @@ import java.util.Map;
  * @author greatjapa
  * @see JsonObject
  */
-class Extractor {
+public class Extractor {
 
     /**
      * Flatter the given JSON.

@@ -1,4 +1,4 @@
-package com.skatepark.heelflip.table.agg;
+package com.skatepark.heelflip;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -40,7 +40,7 @@ public class GroupByAgg {
         return groupBy;
     }
 
-    public void agg(JsonPrimitive columnValue, JsonPrimitive groupByValue) {
+    void agg(JsonPrimitive columnValue, JsonPrimitive groupByValue) {
         Objects.requireNonNull(columnValue, "columnValue should not be null.");
         Objects.requireNonNull(groupByValue, "groupByValue should not be null.");
 

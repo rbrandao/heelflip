@@ -1,4 +1,4 @@
-package com.skatepark.heelflip.table.agg;
+package com.skatepark.heelflip;
 
 import com.google.gson.JsonPrimitive;
 

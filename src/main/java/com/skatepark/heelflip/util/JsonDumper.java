@@ -1,12 +1,12 @@
-package com.skatepark.heelflip.table;
+package com.skatepark.heelflip.util;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 
-import com.skatepark.heelflip.table.agg.ColumnAgg;
-import com.skatepark.heelflip.table.agg.GroupByAgg;
+import com.skatepark.heelflip.ColumnAgg;
+import com.skatepark.heelflip.GroupByAgg;
+import com.skatepark.heelflip.JsonAgg;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -15,13 +15,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Set;
 
-class JSONDumper {
+public class JsonDumper {
 
-    static void dumpGroupByAgg(Heelflip heelflip, String pathStr) throws IOException {
+    public static void dumpGroupByAgg(JsonAgg jsonAgg, String pathStr) throws IOException {
         Path path = Paths.get(pathStr);
         try (BufferedWriter writer = Files.newBufferedWriter(path)) {
 
-            Set<String> columnNames = heelflip.columnNames();
+            Set<String> columnNames = jsonAgg.columnNames();
 
             JsonArray groupByArray = new JsonArray();
             for (String columnName : columnNames) {
@@ -29,7 +29,7 @@ class JSONDumper {
                     if (groupByColumn.equals(columnName)) {
                         continue;
                     }
-                    GroupByAgg groupByAgg = heelflip.getGroupBy(columnName, groupByColumn);
+                    GroupByAgg groupByAgg = jsonAgg.getGroupBy(columnName, groupByColumn);
                     if (groupByAgg == null) {
                         continue;
                     }
@@ -42,13 +42,13 @@ class JSONDumper {
         }
     }
 
-    static void dumpColumnAgg(Heelflip heelflip, String pathStr) throws IOException {
+    public static void dumpColumnAgg(JsonAgg jsonAgg, String pathStr) throws IOException {
         Path path = Paths.get(pathStr);
         try (BufferedWriter writer = Files.newBufferedWriter(path)) {
 
             JsonArray columnAggArray = new JsonArray();
-            for (String name : heelflip.columnNames()) {
-                ColumnAgg columnAgg = heelflip.getColumnAgg(name);
+            for (String name : jsonAgg.columnNames()) {
+                ColumnAgg columnAgg = jsonAgg.getColumnAgg(name);
                 columnAggArray.add(columnAgg.toJSON());
             }
 
