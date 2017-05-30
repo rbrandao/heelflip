@@ -100,21 +100,25 @@ public class JsonAgg {
     /**
      * Dump field aggregations in a single JSON file.
      *
-     * @param filePath file path.
+     * @param filePath      file path.
+     * @param includeValues flag used to include values (the result JSON can increase
+     *                      dramatically).
      * @throws IOException if IO errors occurs.
      */
-    public void dumpFieldAgg(String filePath) throws IOException {
-        JsonDumper.dumpFieldAgg(this, filePath);
+    public void dumpFieldAgg(String filePath, boolean includeValues) throws IOException {
+        JsonDumper.dumpFieldAgg(this, filePath, includeValues);
     }
 
     /**
      * Dump group by aggregations in a single JSON file.
      *
-     * @param filePath file path.
+     * @param filePath      file path.
+     * @param includeValues flag used to include values (the result JSON can increase
+     *                      dramatically).
      * @throws IOException if IO errors occurs.
      */
-    public void dumpGroupByAgg(String filePath) throws IOException {
-        JsonDumper.dumpGroupByAgg(this, filePath);
+    public void dumpGroupByAgg(String filePath, boolean includeValues) throws IOException {
+        JsonDumper.dumpGroupByAgg(this, filePath, includeValues);
     }
 
     private void aggregate(Map<String, List<JsonPrimitive>> valueMap) {

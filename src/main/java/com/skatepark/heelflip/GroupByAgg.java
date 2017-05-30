@@ -63,15 +63,19 @@ public class GroupByAgg {
 
     @Override
     public String toString() {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson(toJSON());
+        return toString(false);
     }
 
-    public JsonObject toJSON() {
+    public String toString(boolean includeValues) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        return gson.toJson(toJSON(includeValues));
+    }
+
+    public JsonObject toJSON(boolean includeValues) {
         JsonArray values = new JsonArray();
         for (Map.Entry<String, FieldAgg> entry : aggregations.entrySet()) {
             JsonObject obj = new JsonObject();
-            obj.add(entry.getKey(), entry.getValue().toJSON());
+            obj.add(entry.getKey(), entry.getValue().toJSON(includeValues));
             values.add(obj);
         }
 

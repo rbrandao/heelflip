@@ -100,11 +100,15 @@ public class FieldAgg {
 
     @Override
     public String toString() {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson(toJSON());
+        return toString(false);
     }
 
-    public JsonObject toJSON() {
+    public String toString(boolean includeValues) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        return gson.toJson(toJSON(includeValues));
+    }
+
+    public JsonObject toJSON(boolean includeValues) {
         JsonObject json = new JsonObject();
         json.addProperty("fieldName", fieldName);
         json.addProperty("count", count());
@@ -117,9 +121,11 @@ public class FieldAgg {
             json.addProperty("max", max.longValue());
             json.addProperty("sum", sum.longValue());
         }
-        JsonArray valuesArray = new JsonArray();
-        distinctValues().stream().forEach(valuesArray::add);
-        json.add("values", valuesArray);
+        if (includeValues) {
+            JsonArray valuesArray = new JsonArray();
+            distinctValues().stream().forEach(valuesArray::add);
+            json.add("values", valuesArray);
+        }
         return json;
     }
 }

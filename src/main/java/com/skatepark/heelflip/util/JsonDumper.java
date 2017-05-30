@@ -17,7 +17,7 @@ import java.util.Set;
 
 public class JsonDumper {
 
-    public static void dumpGroupByAgg(JsonAgg jsonAgg, String pathStr) throws IOException {
+    public static void dumpGroupByAgg(JsonAgg jsonAgg, String pathStr, boolean includeValues) throws IOException {
         Path path = Paths.get(pathStr);
         try (BufferedWriter writer = Files.newBufferedWriter(path)) {
 
@@ -33,7 +33,7 @@ public class JsonDumper {
                     if (groupByAgg == null) {
                         continue;
                     }
-                    groupByArray.add(groupByAgg.toJSON());
+                    groupByArray.add(groupByAgg.toJSON(includeValues));
                 }
             }
 
@@ -42,14 +42,14 @@ public class JsonDumper {
         }
     }
 
-    public static void dumpFieldAgg(JsonAgg jsonAgg, String pathStr) throws IOException {
+    public static void dumpFieldAgg(JsonAgg jsonAgg, String pathStr, boolean includeValues) throws IOException {
         Path path = Paths.get(pathStr);
         try (BufferedWriter writer = Files.newBufferedWriter(path)) {
 
             JsonArray fieldAggArray = new JsonArray();
             for (String name : jsonAgg.fieldNames()) {
                 FieldAgg fieldAgg = jsonAgg.getFieldAgg(name);
-                fieldAggArray.add(fieldAgg.toJSON());
+                fieldAggArray.add(fieldAgg.toJSON(includeValues));
             }
 
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
