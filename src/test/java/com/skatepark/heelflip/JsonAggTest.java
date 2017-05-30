@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.zip.ZipInputStream;
 
 public class JsonAggTest {
 
@@ -17,8 +18,8 @@ public class JsonAggTest {
     private static final String SAMPLE_03 = "sample03.json";
 
     //http://jsonstudio.com/resources/
-    private static final String STOCKS_FILE_PATH = "stocks.json";
-    private static final String ZIPS_FILE_PATH = "zips.json";
+    private static final String STOCKS_FILE_PATH = "stocks.zip";
+    private static final String ZIPS_FILE_PATH = "zips.zip";
 
     @Test
     public void testFieldNamesOnPlainJson() throws IOException {
@@ -27,7 +28,8 @@ public class JsonAggTest {
         JsonAgg jsonAgg = new JsonAgg();
         jsonAgg.loadNDJSON(stream);
 
-        Assert.assertEquals(10, jsonAgg.size());
+        Assert.assertEquals(10, jsonAgg.numberOfFieldAgg());
+        Assert.assertEquals(90, jsonAgg.numberOfGroupByAgg());
 
         Set<String> names = jsonAgg.fieldNames();
         Assert.assertTrue(names.contains("a"));
@@ -50,7 +52,8 @@ public class JsonAggTest {
         JsonAgg jsonAgg = new JsonAgg();
         jsonAgg.loadNDJSON(stream);
 
-        Assert.assertEquals(10, jsonAgg.size());
+        Assert.assertEquals(10, jsonAgg.numberOfFieldAgg());
+        Assert.assertEquals(90, jsonAgg.numberOfGroupByAgg());
 
         Assert.assertEquals(0, jsonAgg.getFieldAgg("a").getMin().intValue());
         Assert.assertEquals(0, jsonAgg.getFieldAgg("a").getMax().intValue());
@@ -111,7 +114,8 @@ public class JsonAggTest {
         JsonAgg jsonAgg = new JsonAgg();
         jsonAgg.loadNDJSON(stream);
 
-        Assert.assertEquals(10, jsonAgg.size());
+        Assert.assertEquals(10, jsonAgg.numberOfFieldAgg());
+        Assert.assertEquals(90, jsonAgg.numberOfGroupByAgg());
 
         Map<String, String> expected = new HashMap<>();
         expected.put("a", "0");
@@ -154,7 +158,8 @@ public class JsonAggTest {
         JsonAgg jsonAgg = new JsonAgg();
         jsonAgg.loadNDJSON(stream);
 
-        Assert.assertEquals(3, jsonAgg.size());
+        Assert.assertEquals(3, jsonAgg.numberOfFieldAgg());
+        Assert.assertEquals(6, jsonAgg.numberOfGroupByAgg());
 
         Set<String> names = jsonAgg.fieldNames();
         Assert.assertTrue(names.contains("a"));
@@ -170,7 +175,8 @@ public class JsonAggTest {
         JsonAgg jsonAgg = new JsonAgg();
         jsonAgg.loadNDJSON(stream);
 
-        Assert.assertEquals(3, jsonAgg.size());
+        Assert.assertEquals(3, jsonAgg.numberOfFieldAgg());
+        Assert.assertEquals(6, jsonAgg.numberOfGroupByAgg());
 
         Assert.assertNull(jsonAgg.getFieldAgg("a").getMin());
         Assert.assertNull(jsonAgg.getFieldAgg("a").getMax());
@@ -192,7 +198,8 @@ public class JsonAggTest {
         JsonAgg jsonAgg = new JsonAgg();
         jsonAgg.loadNDJSON(stream);
 
-        Assert.assertEquals(3, jsonAgg.size());
+        Assert.assertEquals(3, jsonAgg.numberOfFieldAgg());
+        Assert.assertEquals(6, jsonAgg.numberOfGroupByAgg());
 
         GroupByAgg groupByAgg = jsonAgg.getGroupBy("b.x", "a");
         Set<String> values = groupByAgg.groupBy("true");
@@ -235,7 +242,8 @@ public class JsonAggTest {
         JsonAgg jsonAgg = new JsonAgg();
         jsonAgg.loadNDJSON(stream);
 
-        Assert.assertEquals(5, jsonAgg.size());
+        Assert.assertEquals(5, jsonAgg.numberOfFieldAgg());
+        Assert.assertEquals(20, jsonAgg.numberOfGroupByAgg());
 
         Set<String> names = jsonAgg.fieldNames();
         Assert.assertTrue(names.contains("a"));
@@ -253,7 +261,8 @@ public class JsonAggTest {
         JsonAgg jsonAgg = new JsonAgg();
         jsonAgg.loadNDJSON(stream);
 
-        Assert.assertEquals(5, jsonAgg.size());
+        Assert.assertEquals(5, jsonAgg.numberOfFieldAgg());
+        Assert.assertEquals(20, jsonAgg.numberOfGroupByAgg());
 
         Assert.assertNull(jsonAgg.getFieldAgg("a").getMin());
         Assert.assertNull(jsonAgg.getFieldAgg("a").getMax());
@@ -283,7 +292,8 @@ public class JsonAggTest {
         JsonAgg jsonAgg = new JsonAgg();
         jsonAgg.loadNDJSON(stream);
 
-        Assert.assertEquals(5, jsonAgg.size());
+        Assert.assertEquals(5, jsonAgg.numberOfFieldAgg());
+        Assert.assertEquals(20, jsonAgg.numberOfGroupByAgg());
 
         GroupByAgg groupByAgg = jsonAgg.getGroupBy("b_0", "a");
         Set<String> values = groupByAgg.groupBy("true");
@@ -308,7 +318,8 @@ public class JsonAggTest {
         JsonAgg jsonAgg = new JsonAgg();
         jsonAgg.loadNDJSON(stream);
 
-        Assert.assertEquals(3, jsonAgg.size());
+        Assert.assertEquals(3, jsonAgg.numberOfFieldAgg());
+        Assert.assertEquals(6, jsonAgg.numberOfGroupByAgg());
 
         Set<String> names = jsonAgg.fieldNames();
         Assert.assertTrue(names.contains("a"));
@@ -324,7 +335,8 @@ public class JsonAggTest {
         JsonAgg jsonAgg = new JsonAgg();
         jsonAgg.loadNDJSON(stream);
 
-        Assert.assertEquals(3, jsonAgg.size());
+        Assert.assertEquals(3, jsonAgg.numberOfFieldAgg());
+        Assert.assertEquals(6, jsonAgg.numberOfGroupByAgg());
 
         Assert.assertNull(jsonAgg.getFieldAgg("a").getMin());
         Assert.assertNull(jsonAgg.getFieldAgg("a").getMax());
@@ -346,7 +358,8 @@ public class JsonAggTest {
         JsonAgg jsonAgg = new JsonAgg();
         jsonAgg.loadNDJSON(stream);
 
-        Assert.assertEquals(3, jsonAgg.size());
+        Assert.assertEquals(3, jsonAgg.numberOfFieldAgg());
+        Assert.assertEquals(6, jsonAgg.numberOfGroupByAgg());
 
         GroupByAgg groupByAgg = jsonAgg.getGroupBy("b.x", "a");
         Set<String> values = groupByAgg.groupBy("true");
@@ -364,23 +377,29 @@ public class JsonAggTest {
     @Test
     public void testLargeFileStocks() throws IOException {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(STOCKS_FILE_PATH);
+        ZipInputStream zipStream = new ZipInputStream(stream);
+        zipStream.getNextEntry();
 
         JsonAgg jsonAgg = new JsonAgg();
-
         long time = System.currentTimeMillis();
-        jsonAgg.loadNDJSON(stream);
+        jsonAgg.loadNDJSON(zipStream);
         System.out.println("stocks takes (seconds): " + (System.currentTimeMillis() - time) / 1000);
-        Assert.assertEquals(69, jsonAgg.size());
+        Assert.assertEquals(69, jsonAgg.numberOfFieldAgg());
+        Assert.assertEquals(4692, jsonAgg.numberOfGroupByAgg());
     }
 
     @Test
     public void testLargeFileZips() throws IOException {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(ZIPS_FILE_PATH);
+        ZipInputStream zipStream = new ZipInputStream(stream);
+        zipStream.getNextEntry();
+
         JsonAgg jsonAgg = new JsonAgg();
         long time = System.currentTimeMillis();
-        jsonAgg.loadNDJSON(stream);
+        jsonAgg.loadNDJSON(zipStream);
         System.out.println("zips takes (seconds): " + (System.currentTimeMillis() - time) / 1000);
 
-        Assert.assertEquals(6, jsonAgg.size());
+        Assert.assertEquals(6, jsonAgg.numberOfFieldAgg());
+        Assert.assertEquals(30, jsonAgg.numberOfGroupByAgg());
     }
 }

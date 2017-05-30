@@ -34,8 +34,14 @@ public class JsonAgg {
         aggregate(Extractor.extract(json));
     }
 
-    public int size() {
+    public int numberOfFieldAgg() {
         return fieldAggMap.size();
+    }
+
+    public int numberOfGroupByAgg() {
+        return groupByAggMap.values().stream()
+                .mapToInt(m -> m.size())
+                .sum();
     }
 
     public Set<String> fieldNames() {
