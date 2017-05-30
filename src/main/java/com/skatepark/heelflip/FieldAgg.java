@@ -7,7 +7,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 
 import java.math.BigDecimal;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -15,7 +14,7 @@ import java.util.Set;
 
 public class FieldAgg {
 
-    private String columnName;
+    private String fieldName;
     private Map<String, Integer> countMap;
 
     private int stringCount;
@@ -26,17 +25,17 @@ public class FieldAgg {
     private BigDecimal max;
     private BigDecimal sum;
 
-    public FieldAgg(String columnName) {
-        Objects.requireNonNull(columnName, "columnName should not be null.");
-        this.columnName = columnName;
+    public FieldAgg(String fieldName) {
+        Objects.requireNonNull(fieldName, "fieldName should not be null.");
+        this.fieldName = fieldName;
         this.countMap = new HashMap<>();
         this.stringCount = 0;
         this.booleanCount = 0;
         this.numberCount = 0;
     }
 
-    public String getColumnName() {
-        return columnName;
+    public String getFieldName() {
+        return fieldName;
     }
 
     public int cardinality() {
@@ -107,7 +106,7 @@ public class FieldAgg {
 
     public JsonObject toJSON() {
         JsonObject json = new JsonObject();
-        json.addProperty("columnName", columnName);
+        json.addProperty("fieldName", fieldName);
         json.addProperty("count", count());
         json.addProperty("cardinality", cardinality());
         json.addProperty("string", stringCount);

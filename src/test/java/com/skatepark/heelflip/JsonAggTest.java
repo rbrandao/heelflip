@@ -21,7 +21,7 @@ public class JsonAggTest {
     private static final String ZIPS_FILE_PATH = "zips.json";
 
     @Test
-    public void testColumnNamesOnPlainJson() throws IOException {
+    public void testFieldNamesOnPlainJson() throws IOException {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_00);
 
         JsonAgg jsonAgg = new JsonAgg();
@@ -29,7 +29,7 @@ public class JsonAggTest {
 
         Assert.assertEquals(10, jsonAgg.size());
 
-        Set<String> names = jsonAgg.columnNames();
+        Set<String> names = jsonAgg.fieldNames();
         Assert.assertTrue(names.contains("a"));
         Assert.assertTrue(names.contains("b"));
         Assert.assertTrue(names.contains("c"));
@@ -44,7 +44,7 @@ public class JsonAggTest {
     }
 
     @Test
-    public void testGetColumnAggOnPlainJson() throws IOException {
+    public void testGetFieldAggOnPlainJson() throws IOException {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_00);
 
         JsonAgg jsonAgg = new JsonAgg();
@@ -52,55 +52,55 @@ public class JsonAggTest {
 
         Assert.assertEquals(10, jsonAgg.size());
 
-        Assert.assertEquals(0, jsonAgg.getColumnAgg("a").getMin().intValue());
-        Assert.assertEquals(0, jsonAgg.getColumnAgg("a").getMax().intValue());
-        Assert.assertEquals(0, jsonAgg.getColumnAgg("a").getSum().intValue());
-        Assert.assertEquals(20, jsonAgg.getColumnAgg("a").count("0"));
+        Assert.assertEquals(0, jsonAgg.getFieldAgg("a").getMin().intValue());
+        Assert.assertEquals(0, jsonAgg.getFieldAgg("a").getMax().intValue());
+        Assert.assertEquals(0, jsonAgg.getFieldAgg("a").getSum().intValue());
+        Assert.assertEquals(20, jsonAgg.getFieldAgg("a").count("0"));
 
-        Assert.assertEquals(1, jsonAgg.getColumnAgg("b").getMin().intValue());
-        Assert.assertEquals(1, jsonAgg.getColumnAgg("b").getMax().intValue());
-        Assert.assertEquals(20, jsonAgg.getColumnAgg("b").getSum().intValue());
-        Assert.assertEquals(20, jsonAgg.getColumnAgg("b").count("1"));
+        Assert.assertEquals(1, jsonAgg.getFieldAgg("b").getMin().intValue());
+        Assert.assertEquals(1, jsonAgg.getFieldAgg("b").getMax().intValue());
+        Assert.assertEquals(20, jsonAgg.getFieldAgg("b").getSum().intValue());
+        Assert.assertEquals(20, jsonAgg.getFieldAgg("b").count("1"));
 
-        Assert.assertEquals(2, jsonAgg.getColumnAgg("c").getMin().intValue());
-        Assert.assertEquals(2, jsonAgg.getColumnAgg("c").getMax().intValue());
-        Assert.assertEquals(40, jsonAgg.getColumnAgg("c").getSum().intValue());
-        Assert.assertEquals(20, jsonAgg.getColumnAgg("c").count("2"));
+        Assert.assertEquals(2, jsonAgg.getFieldAgg("c").getMin().intValue());
+        Assert.assertEquals(2, jsonAgg.getFieldAgg("c").getMax().intValue());
+        Assert.assertEquals(40, jsonAgg.getFieldAgg("c").getSum().intValue());
+        Assert.assertEquals(20, jsonAgg.getFieldAgg("c").count("2"));
 
-        Assert.assertEquals(3, jsonAgg.getColumnAgg("d").getMin().intValue());
-        Assert.assertEquals(3, jsonAgg.getColumnAgg("d").getMax().intValue());
-        Assert.assertEquals(60, jsonAgg.getColumnAgg("d").getSum().intValue());
-        Assert.assertEquals(20, jsonAgg.getColumnAgg("d").count("3"));
+        Assert.assertEquals(3, jsonAgg.getFieldAgg("d").getMin().intValue());
+        Assert.assertEquals(3, jsonAgg.getFieldAgg("d").getMax().intValue());
+        Assert.assertEquals(60, jsonAgg.getFieldAgg("d").getSum().intValue());
+        Assert.assertEquals(20, jsonAgg.getFieldAgg("d").count("3"));
 
-        Assert.assertEquals(4, jsonAgg.getColumnAgg("e").getMin().intValue());
-        Assert.assertEquals(4, jsonAgg.getColumnAgg("e").getMax().intValue());
-        Assert.assertEquals(80, jsonAgg.getColumnAgg("e").getSum().intValue());
-        Assert.assertEquals(20, jsonAgg.getColumnAgg("e").count("4"));
+        Assert.assertEquals(4, jsonAgg.getFieldAgg("e").getMin().intValue());
+        Assert.assertEquals(4, jsonAgg.getFieldAgg("e").getMax().intValue());
+        Assert.assertEquals(80, jsonAgg.getFieldAgg("e").getSum().intValue());
+        Assert.assertEquals(20, jsonAgg.getFieldAgg("e").count("4"));
 
-        Assert.assertEquals(5, jsonAgg.getColumnAgg("f").getMin().intValue());
-        Assert.assertEquals(5, jsonAgg.getColumnAgg("f").getMax().intValue());
-        Assert.assertEquals(100, jsonAgg.getColumnAgg("f").getSum().intValue());
-        Assert.assertEquals(20, jsonAgg.getColumnAgg("f").count("5"));
+        Assert.assertEquals(5, jsonAgg.getFieldAgg("f").getMin().intValue());
+        Assert.assertEquals(5, jsonAgg.getFieldAgg("f").getMax().intValue());
+        Assert.assertEquals(100, jsonAgg.getFieldAgg("f").getSum().intValue());
+        Assert.assertEquals(20, jsonAgg.getFieldAgg("f").count("5"));
 
-        Assert.assertEquals(6, jsonAgg.getColumnAgg("g").getMin().intValue());
-        Assert.assertEquals(6, jsonAgg.getColumnAgg("g").getMax().intValue());
-        Assert.assertEquals(120, jsonAgg.getColumnAgg("g").getSum().intValue());
-        Assert.assertEquals(20, jsonAgg.getColumnAgg("g").count("6"));
+        Assert.assertEquals(6, jsonAgg.getFieldAgg("g").getMin().intValue());
+        Assert.assertEquals(6, jsonAgg.getFieldAgg("g").getMax().intValue());
+        Assert.assertEquals(120, jsonAgg.getFieldAgg("g").getSum().intValue());
+        Assert.assertEquals(20, jsonAgg.getFieldAgg("g").count("6"));
 
-        Assert.assertEquals(7, jsonAgg.getColumnAgg("h").getMin().intValue());
-        Assert.assertEquals(7, jsonAgg.getColumnAgg("h").getMax().intValue());
-        Assert.assertEquals(140, jsonAgg.getColumnAgg("h").getSum().intValue());
-        Assert.assertEquals(20, jsonAgg.getColumnAgg("h").count("7"));
+        Assert.assertEquals(7, jsonAgg.getFieldAgg("h").getMin().intValue());
+        Assert.assertEquals(7, jsonAgg.getFieldAgg("h").getMax().intValue());
+        Assert.assertEquals(140, jsonAgg.getFieldAgg("h").getSum().intValue());
+        Assert.assertEquals(20, jsonAgg.getFieldAgg("h").count("7"));
 
-        Assert.assertEquals(8, jsonAgg.getColumnAgg("i").getMin().intValue());
-        Assert.assertEquals(8, jsonAgg.getColumnAgg("i").getMax().intValue());
-        Assert.assertEquals(160, jsonAgg.getColumnAgg("i").getSum().intValue());
-        Assert.assertEquals(20, jsonAgg.getColumnAgg("i").count("8"));
+        Assert.assertEquals(8, jsonAgg.getFieldAgg("i").getMin().intValue());
+        Assert.assertEquals(8, jsonAgg.getFieldAgg("i").getMax().intValue());
+        Assert.assertEquals(160, jsonAgg.getFieldAgg("i").getSum().intValue());
+        Assert.assertEquals(20, jsonAgg.getFieldAgg("i").count("8"));
 
-        Assert.assertEquals(9, jsonAgg.getColumnAgg("j").getMin().intValue());
-        Assert.assertEquals(9, jsonAgg.getColumnAgg("j").getMax().intValue());
-        Assert.assertEquals(180, jsonAgg.getColumnAgg("j").getSum().intValue());
-        Assert.assertEquals(20, jsonAgg.getColumnAgg("j").count("9"));
+        Assert.assertEquals(9, jsonAgg.getFieldAgg("j").getMin().intValue());
+        Assert.assertEquals(9, jsonAgg.getFieldAgg("j").getMax().intValue());
+        Assert.assertEquals(180, jsonAgg.getFieldAgg("j").getSum().intValue());
+        Assert.assertEquals(20, jsonAgg.getFieldAgg("j").count("9"));
 
     }
 
@@ -125,18 +125,18 @@ public class JsonAggTest {
         expected.put("i", "8");
         expected.put("j", "9");
 
-        for (Map.Entry<String, String> columnEntry : expected.entrySet()) {
+        for (Map.Entry<String, String> fieldEntry : expected.entrySet()) {
             for (Map.Entry<String, String> groupByEntry : expected.entrySet()) {
-                String columnName = columnEntry.getKey();
+                String fieldName = fieldEntry.getKey();
                 String groupBy = groupByEntry.getKey();
-                if (columnName.equals(groupBy)) {
+                if (fieldName.equals(groupBy)) {
                     continue;
                 }
 
-                String value = columnEntry.getValue();
+                String value = fieldEntry.getValue();
                 String groupByValue = groupByEntry.getValue();
 
-                GroupByAgg groupByAgg = jsonAgg.getGroupBy(columnName, groupBy);
+                GroupByAgg groupByAgg = jsonAgg.getGroupBy(fieldName, groupBy);
                 Assert.assertEquals(1, groupByAgg.values().size());
                 Assert.assertEquals(1, groupByAgg.groupByValues().size());
 
@@ -148,7 +148,7 @@ public class JsonAggTest {
     }
 
     @Test
-    public void testColumnNamesOnJsonArrayWithObject() throws IOException {
+    public void testFieldNamesOnJsonArrayWithObject() throws IOException {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_01);
 
         JsonAgg jsonAgg = new JsonAgg();
@@ -156,7 +156,7 @@ public class JsonAggTest {
 
         Assert.assertEquals(3, jsonAgg.size());
 
-        Set<String> names = jsonAgg.columnNames();
+        Set<String> names = jsonAgg.fieldNames();
         Assert.assertTrue(names.contains("a"));
         Assert.assertTrue(names.contains("b.x"));
         Assert.assertTrue(names.contains("b.y"));
@@ -164,7 +164,7 @@ public class JsonAggTest {
     }
 
     @Test
-    public void testGetColumnAggOnJsonArrayWithObject() throws IOException {
+    public void testGetFieldAggOnJsonArrayWithObject() throws IOException {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_01);
 
         JsonAgg jsonAgg = new JsonAgg();
@@ -172,17 +172,17 @@ public class JsonAggTest {
 
         Assert.assertEquals(3, jsonAgg.size());
 
-        Assert.assertNull(jsonAgg.getColumnAgg("a").getMin());
-        Assert.assertNull(jsonAgg.getColumnAgg("a").getMax());
-        Assert.assertNull(jsonAgg.getColumnAgg("a").getSum());
+        Assert.assertNull(jsonAgg.getFieldAgg("a").getMin());
+        Assert.assertNull(jsonAgg.getFieldAgg("a").getMax());
+        Assert.assertNull(jsonAgg.getFieldAgg("a").getSum());
 
-        Assert.assertEquals(9, jsonAgg.getColumnAgg("b.x").getMin().intValue());
-        Assert.assertEquals(21, jsonAgg.getColumnAgg("b.x").getMax().intValue());
-        Assert.assertEquals(97, jsonAgg.getColumnAgg("b.x").getSum().intValue());
+        Assert.assertEquals(9, jsonAgg.getFieldAgg("b.x").getMin().intValue());
+        Assert.assertEquals(21, jsonAgg.getFieldAgg("b.x").getMax().intValue());
+        Assert.assertEquals(97, jsonAgg.getFieldAgg("b.x").getSum().intValue());
 
-        Assert.assertEquals(-20, jsonAgg.getColumnAgg("b.y").getMin().intValue());
-        Assert.assertEquals(-1, jsonAgg.getColumnAgg("b.y").getMax().intValue());
-        Assert.assertEquals(-83, jsonAgg.getColumnAgg("b.y").getSum().intValue());
+        Assert.assertEquals(-20, jsonAgg.getFieldAgg("b.y").getMin().intValue());
+        Assert.assertEquals(-1, jsonAgg.getFieldAgg("b.y").getMax().intValue());
+        Assert.assertEquals(-83, jsonAgg.getFieldAgg("b.y").getSum().intValue());
     }
 
     @Test
@@ -229,7 +229,7 @@ public class JsonAggTest {
     }
 
     @Test
-    public void testColumnNamesOnJsonArrayWithPrimitive() throws IOException {
+    public void testFieldNamesOnJsonArrayWithPrimitive() throws IOException {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_02);
 
         JsonAgg jsonAgg = new JsonAgg();
@@ -237,7 +237,7 @@ public class JsonAggTest {
 
         Assert.assertEquals(5, jsonAgg.size());
 
-        Set<String> names = jsonAgg.columnNames();
+        Set<String> names = jsonAgg.fieldNames();
         Assert.assertTrue(names.contains("a"));
         Assert.assertTrue(names.contains("b_0"));
         Assert.assertTrue(names.contains("b_1"));
@@ -247,7 +247,7 @@ public class JsonAggTest {
     }
 
     @Test
-    public void testGetColumnAggOnJsonArrayWithPrimitive() throws IOException {
+    public void testGetFieldAggOnJsonArrayWithPrimitive() throws IOException {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_02);
 
         JsonAgg jsonAgg = new JsonAgg();
@@ -255,25 +255,25 @@ public class JsonAggTest {
 
         Assert.assertEquals(5, jsonAgg.size());
 
-        Assert.assertNull(jsonAgg.getColumnAgg("a").getMin());
-        Assert.assertNull(jsonAgg.getColumnAgg("a").getMax());
-        Assert.assertNull(jsonAgg.getColumnAgg("a").getSum());
+        Assert.assertNull(jsonAgg.getFieldAgg("a").getMin());
+        Assert.assertNull(jsonAgg.getFieldAgg("a").getMax());
+        Assert.assertNull(jsonAgg.getFieldAgg("a").getSum());
 
-        Assert.assertEquals(2, jsonAgg.getColumnAgg("b_0").getMin().intValue());
-        Assert.assertEquals(9, jsonAgg.getColumnAgg("b_0").getMax().intValue());
-        Assert.assertEquals(24, jsonAgg.getColumnAgg("b_0").getSum().intValue());
+        Assert.assertEquals(2, jsonAgg.getFieldAgg("b_0").getMin().intValue());
+        Assert.assertEquals(9, jsonAgg.getFieldAgg("b_0").getMax().intValue());
+        Assert.assertEquals(24, jsonAgg.getFieldAgg("b_0").getSum().intValue());
 
-        Assert.assertEquals(-8, jsonAgg.getColumnAgg("b_1").getMin().intValue());
-        Assert.assertEquals(-1, jsonAgg.getColumnAgg("b_1").getMax().intValue());
-        Assert.assertEquals(-15, jsonAgg.getColumnAgg("b_1").getSum().intValue());
+        Assert.assertEquals(-8, jsonAgg.getFieldAgg("b_1").getMin().intValue());
+        Assert.assertEquals(-1, jsonAgg.getFieldAgg("b_1").getMax().intValue());
+        Assert.assertEquals(-15, jsonAgg.getFieldAgg("b_1").getSum().intValue());
 
-        Assert.assertEquals(10, jsonAgg.getColumnAgg("b_2").getMin().intValue());
-        Assert.assertEquals(10, jsonAgg.getColumnAgg("b_2").getMax().intValue());
-        Assert.assertEquals(40, jsonAgg.getColumnAgg("b_2").getSum().intValue());
+        Assert.assertEquals(10, jsonAgg.getFieldAgg("b_2").getMin().intValue());
+        Assert.assertEquals(10, jsonAgg.getFieldAgg("b_2").getMax().intValue());
+        Assert.assertEquals(40, jsonAgg.getFieldAgg("b_2").getSum().intValue());
 
-        Assert.assertEquals(0, jsonAgg.getColumnAgg("b_3").getMin().intValue());
-        Assert.assertEquals(0, jsonAgg.getColumnAgg("b_3").getMax().intValue());
-        Assert.assertEquals(0, jsonAgg.getColumnAgg("b_3").getSum().intValue());
+        Assert.assertEquals(0, jsonAgg.getFieldAgg("b_3").getMin().intValue());
+        Assert.assertEquals(0, jsonAgg.getFieldAgg("b_3").getMax().intValue());
+        Assert.assertEquals(0, jsonAgg.getFieldAgg("b_3").getSum().intValue());
     }
 
     @Test
@@ -302,7 +302,7 @@ public class JsonAggTest {
     }
 
     @Test
-    public void testColumnNamesOnJsonWithObject() throws IOException {
+    public void testFieldNamesOnJsonWithObject() throws IOException {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_03);
 
         JsonAgg jsonAgg = new JsonAgg();
@@ -310,7 +310,7 @@ public class JsonAggTest {
 
         Assert.assertEquals(3, jsonAgg.size());
 
-        Set<String> names = jsonAgg.columnNames();
+        Set<String> names = jsonAgg.fieldNames();
         Assert.assertTrue(names.contains("a"));
         Assert.assertTrue(names.contains("b.x"));
         Assert.assertTrue(names.contains("b.y"));
@@ -318,7 +318,7 @@ public class JsonAggTest {
     }
 
     @Test
-    public void testGetColumnAggOnJsonWithObject() throws IOException {
+    public void testGetFieldAggOnJsonWithObject() throws IOException {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(SAMPLE_03);
 
         JsonAgg jsonAgg = new JsonAgg();
@@ -326,17 +326,17 @@ public class JsonAggTest {
 
         Assert.assertEquals(3, jsonAgg.size());
 
-        Assert.assertNull(jsonAgg.getColumnAgg("a").getMin());
-        Assert.assertNull(jsonAgg.getColumnAgg("a").getMax());
-        Assert.assertNull(jsonAgg.getColumnAgg("a").getSum());
+        Assert.assertNull(jsonAgg.getFieldAgg("a").getMin());
+        Assert.assertNull(jsonAgg.getFieldAgg("a").getMax());
+        Assert.assertNull(jsonAgg.getFieldAgg("a").getSum());
 
-        Assert.assertEquals(-1, jsonAgg.getColumnAgg("b.x").getMin().intValue());
-        Assert.assertEquals(1, jsonAgg.getColumnAgg("b.x").getMax().intValue());
-        Assert.assertEquals(0, jsonAgg.getColumnAgg("b.x").getSum().intValue());
+        Assert.assertEquals(-1, jsonAgg.getFieldAgg("b.x").getMin().intValue());
+        Assert.assertEquals(1, jsonAgg.getFieldAgg("b.x").getMax().intValue());
+        Assert.assertEquals(0, jsonAgg.getFieldAgg("b.x").getSum().intValue());
 
-        Assert.assertEquals(2, jsonAgg.getColumnAgg("b.y").getMin().intValue());
-        Assert.assertEquals(6, jsonAgg.getColumnAgg("b.y").getMax().intValue());
-        Assert.assertEquals(12, jsonAgg.getColumnAgg("b.y").getSum().intValue());
+        Assert.assertEquals(2, jsonAgg.getFieldAgg("b.y").getMin().intValue());
+        Assert.assertEquals(6, jsonAgg.getFieldAgg("b.y").getMax().intValue());
+        Assert.assertEquals(12, jsonAgg.getFieldAgg("b.y").getSum().intValue());
     }
 
     @Test

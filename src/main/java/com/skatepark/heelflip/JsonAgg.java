@@ -20,12 +20,12 @@ import java.util.Set;
 
 public class JsonAgg {
 
-    private Map<String, FieldAgg> columnAggMap;
+    private Map<String, FieldAgg> fieldAggMap;
 
     private Map<String, Map<String, GroupByAgg>> groupByAggMap;
 
     public JsonAgg() {
-        this.columnAggMap = new HashMap<>();
+        this.fieldAggMap = new HashMap<>();
         this.groupByAggMap = new HashMap<>();
     }
 
@@ -35,27 +35,27 @@ public class JsonAgg {
     }
 
     public int size() {
-        return columnAggMap.size();
+        return fieldAggMap.size();
     }
 
-    public Set<String> columnNames() {
-        return columnAggMap.keySet();
+    public Set<String> fieldNames() {
+        return fieldAggMap.keySet();
     }
 
-    public boolean hasColumnAgg(String columnName) {
-        return columnName != null && columnAggMap.containsKey(columnName);
+    public boolean hasFieldAgg(String fieldName) {
+        return fieldName != null && fieldAggMap.containsKey(fieldName);
     }
 
-    public FieldAgg getColumnAgg(String columnName) {
-        return !hasColumnAgg(columnName) ? null : columnAggMap.get(columnName);
+    public FieldAgg getFieldAgg(String fieldName) {
+        return !hasFieldAgg(fieldName) ? null : fieldAggMap.get(fieldName);
     }
 
-    public boolean hasGroupBy(String columnName) {
-        return columnName != null && groupByAggMap.containsKey(columnName);
+    public boolean hasGroupBy(String fieldName) {
+        return fieldName != null && groupByAggMap.containsKey(fieldName);
     }
 
-    public GroupByAgg getGroupBy(String columnName, String groupBy) {
-        return !hasGroupBy(columnName) ? null : groupByAggMap.get(columnName).get(groupBy);
+    public GroupByAgg getGroupBy(String fieldName, String groupBy) {
+        return !hasGroupBy(fieldName) ? null : groupByAggMap.get(fieldName).get(groupBy);
     }
 
     /**
@@ -98,13 +98,13 @@ public class JsonAgg {
     }
 
     /**
-     * Dump column aggregations in a single JSON file.
+     * Dump field aggregations in a single JSON file.
      *
      * @param filePath file path.
      * @throws IOException if IO errors occurs.
      */
-    public void dumpColumnAgg(String filePath) throws IOException {
-        JsonDumper.dumpColumnAgg(this, filePath);
+    public void dumpFieldAgg(String filePath) throws IOException {
+        JsonDumper.dumpFieldAgg(this, filePath);
     }
 
     /**
@@ -119,25 +119,25 @@ public class JsonAgg {
 
     private void aggregate(Map<String, List<JsonPrimitive>> valueMap) {
         for (Map.Entry<String, List<JsonPrimitive>> entry : valueMap.entrySet()) {
-            String columnName = entry.getKey();
+            String fieldName = entry.getKey();
             List<JsonPrimitive> valueList = entry.getValue();
-            FieldAgg fieldAgg = columnAggMap.computeIfAbsent(columnName, key -> new FieldAgg(key));
+            FieldAgg fieldAgg = fieldAggMap.computeIfAbsent(fieldName, key -> new FieldAgg(key));
 
             valueList.stream().forEach(fieldAgg::agg);
         }
 
-        for (String columnName : valueMap.keySet()) {
+        for (String fieldName : valueMap.keySet()) {
             for (String groupBy : valueMap.keySet()) {
-                if (columnName.equals(groupBy)) {
+                if (fieldName.equals(groupBy)) {
                     continue;
                 }
 
-                Map<String, GroupByAgg> map = groupByAggMap.computeIfAbsent(columnName, key -> new HashMap<>());
-                GroupByAgg groupByAgg = map.computeIfAbsent(groupBy, key -> new GroupByAgg(columnName, groupBy));
+                Map<String, GroupByAgg> map = groupByAggMap.computeIfAbsent(fieldName, key -> new HashMap<>());
+                GroupByAgg groupByAgg = map.computeIfAbsent(groupBy, key -> new GroupByAgg(fieldName, groupBy));
 
-                for (JsonPrimitive columnValue : valueMap.get(columnName)) {
+                for (JsonPrimitive fieldValue : valueMap.get(fieldName)) {
                     for (JsonPrimitive groupByValue : valueMap.get(groupBy)) {
-                        groupByAgg.agg(columnValue, groupByValue);
+                        groupByAgg.agg(fieldValue, groupByValue);
                     }
                 }
             }

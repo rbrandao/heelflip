@@ -15,7 +15,7 @@ public class FieldAggTest {
         fieldAgg.agg(new JsonPrimitive(2.0));
         fieldAgg.agg(new JsonPrimitive(2.0));
 
-        Assert.assertEquals("a", fieldAgg.getColumnName());
+        Assert.assertEquals("a", fieldAgg.getFieldName());
 
         Assert.assertEquals(4, fieldAgg.count());
         Assert.assertEquals(3, fieldAgg.cardinality());
@@ -41,7 +41,7 @@ public class FieldAggTest {
         fieldAgg.agg(new JsonPrimitive(12));
         fieldAgg.agg(new JsonPrimitive(12));
 
-        Assert.assertEquals("a", fieldAgg.getColumnName());
+        Assert.assertEquals("a", fieldAgg.getFieldName());
 
         Assert.assertEquals(4, fieldAgg.count());
         Assert.assertEquals(3, fieldAgg.cardinality());
@@ -67,7 +67,7 @@ public class FieldAggTest {
         fieldAgg.agg(new JsonPrimitive(12L));
         fieldAgg.agg(new JsonPrimitive(12L));
 
-        Assert.assertEquals("a", fieldAgg.getColumnName());
+        Assert.assertEquals("a", fieldAgg.getFieldName());
 
         Assert.assertEquals(4, fieldAgg.count());
         Assert.assertEquals(3, fieldAgg.cardinality());
@@ -93,7 +93,7 @@ public class FieldAggTest {
         fieldAgg.agg(new JsonPrimitive("boo"));
         fieldAgg.agg(new JsonPrimitive("call"));
 
-        Assert.assertEquals("a", fieldAgg.getColumnName());
+        Assert.assertEquals("a", fieldAgg.getFieldName());
 
         Assert.assertEquals(4, fieldAgg.count());
         Assert.assertEquals(3, fieldAgg.cardinality());
@@ -119,7 +119,7 @@ public class FieldAggTest {
         fieldAgg.agg(new JsonPrimitive(true));
         fieldAgg.agg(new JsonPrimitive(false));
 
-        Assert.assertEquals("a", fieldAgg.getColumnName());
+        Assert.assertEquals("a", fieldAgg.getFieldName());
 
         Assert.assertEquals(4, fieldAgg.count());
         Assert.assertEquals(2, fieldAgg.cardinality());
@@ -148,7 +148,7 @@ public class FieldAggTest {
         fieldAgg.agg(new JsonPrimitive(10));
         fieldAgg.agg(new JsonPrimitive(15L));
 
-        Assert.assertEquals("a", fieldAgg.getColumnName());
+        Assert.assertEquals("a", fieldAgg.getFieldName());
 
         Assert.assertEquals(8, fieldAgg.count());
         Assert.assertEquals(6, fieldAgg.cardinality());

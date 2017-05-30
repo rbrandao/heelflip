@@ -15,34 +15,34 @@ import java.util.stream.Collectors;
 
 public class GroupByAgg {
 
-    private String columnName;
+    private String fieldName;
 
     private String groupBy;
 
     private Map<String, FieldAgg> aggregations;
 
-    public GroupByAgg(String columnName, String groupBy) {
-        Objects.requireNonNull(columnName, "columnName should not be null.");
+    public GroupByAgg(String fieldName, String groupBy) {
+        Objects.requireNonNull(fieldName, "fieldName should not be null.");
         Objects.requireNonNull(groupBy, "groupBy should not be null.");
-        if (columnName.equals(groupBy)) {
-            throw new IllegalArgumentException("columnName should not be equal to groupBy.");
+        if (fieldName.equals(groupBy)) {
+            throw new IllegalArgumentException("fieldName should not be equal to groupBy.");
         }
-        this.columnName = columnName;
+        this.fieldName = fieldName;
         this.groupBy = groupBy;
         this.aggregations = new HashMap<>();
     }
 
-    public String getColumnName() {
-        return columnName;
+    public String getFieldName() {
+        return fieldName;
     }
 
     public String getGroupBy() {
         return groupBy;
     }
 
-    void agg(JsonPrimitive columnValue, JsonPrimitive groupByValue) {
-        FieldAgg fieldAgg = aggregations.computeIfAbsent(groupByValue.getAsString(), key -> new FieldAgg(columnName));
-        fieldAgg.agg(columnValue);
+    void agg(JsonPrimitive fieldNameValue, JsonPrimitive groupByValue) {
+        FieldAgg fieldAgg = aggregations.computeIfAbsent(groupByValue.getAsString(), key -> new FieldAgg(fieldName));
+        fieldAgg.agg(fieldNameValue);
     }
 
     public Set<String> groupBy(String value) {
@@ -57,7 +57,7 @@ public class GroupByAgg {
 
     public Set<String> values() {
         return aggregations.values().stream()
-                .flatMap(columnAgg -> columnAgg.distinctValues().stream())
+                .flatMap(fieldAgg -> fieldAgg.distinctValues().stream())
                 .collect(Collectors.toSet());
     }
 
@@ -77,7 +77,7 @@ public class GroupByAgg {
 
         JsonObject json = new JsonObject();
         json.addProperty("groupBy", groupBy);
-        json.addProperty("columnName", columnName);
+        json.addProperty("fieldName", fieldName);
         json.add("values", values);
 
         return json;

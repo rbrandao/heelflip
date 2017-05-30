@@ -21,15 +21,15 @@ public class JsonDumper {
         Path path = Paths.get(pathStr);
         try (BufferedWriter writer = Files.newBufferedWriter(path)) {
 
-            Set<String> columnNames = jsonAgg.columnNames();
+            Set<String> fieldNames = jsonAgg.fieldNames();
 
             JsonArray groupByArray = new JsonArray();
-            for (String columnName : columnNames) {
-                for (String groupByColumn : columnNames) {
-                    if (groupByColumn.equals(columnName)) {
+            for (String fieldName : fieldNames) {
+                for (String groupBy : fieldNames) {
+                    if (groupBy.equals(fieldName)) {
                         continue;
                     }
-                    GroupByAgg groupByAgg = jsonAgg.getGroupBy(columnName, groupByColumn);
+                    GroupByAgg groupByAgg = jsonAgg.getGroupBy(fieldName, groupBy);
                     if (groupByAgg == null) {
                         continue;
                     }
@@ -42,18 +42,18 @@ public class JsonDumper {
         }
     }
 
-    public static void dumpColumnAgg(JsonAgg jsonAgg, String pathStr) throws IOException {
+    public static void dumpFieldAgg(JsonAgg jsonAgg, String pathStr) throws IOException {
         Path path = Paths.get(pathStr);
         try (BufferedWriter writer = Files.newBufferedWriter(path)) {
 
-            JsonArray columnAggArray = new JsonArray();
-            for (String name : jsonAgg.columnNames()) {
-                FieldAgg fieldAgg = jsonAgg.getColumnAgg(name);
-                columnAggArray.add(fieldAgg.toJSON());
+            JsonArray fieldAggArray = new JsonArray();
+            for (String name : jsonAgg.fieldNames()) {
+                FieldAgg fieldAgg = jsonAgg.getFieldAgg(name);
+                fieldAggArray.add(fieldAgg.toJSON());
             }
 
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            writer.write(gson.toJson(columnAggArray));
+            writer.write(gson.toJson(fieldAggArray));
         }
     }
 }

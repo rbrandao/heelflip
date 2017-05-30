@@ -40,43 +40,26 @@ public class Extractor {
     private static void extract(JsonObject json, Map<String, List<JsonPrimitive>> result, String... prefixSeq) {
         String prefix = prefixSeq == null ? "" : String.join("", prefixSeq);
 
-        Map<String, JsonObject> objectsMap = new HashMap<>();
-        Map<String, JsonArray> arraysMap = new HashMap<>();
         for (Map.Entry<String, JsonElement> entry : json.entrySet()) {
             String fieldName = prefix + entry.getKey();
             JsonElement value = entry.getValue();
 
-            if (value.isJsonObject()) {
-                objectsMap.put(fieldName, value.getAsJsonObject());
-            }
-            if (value.isJsonArray()) {
-                arraysMap.put(fieldName, value.getAsJsonArray());
-            }
             if (value.isJsonPrimitive()) {
                 result.computeIfAbsent(fieldName, key -> new LinkedList<>()).add(value.getAsJsonPrimitive());
-            }
-        }
 
-        for (Map.Entry<String, JsonObject> entry : objectsMap.entrySet()) {
-            String fieldName = entry.getKey();
-            JsonObject obj = entry.getValue();
+            } else if (value.isJsonObject()) {
+                extract(value.getAsJsonObject(), result, fieldName, ".");
 
-            extract(obj, result, fieldName, ".");
-        }
-
-        for (Map.Entry<String, JsonArray> entry : arraysMap.entrySet()) {
-            String fieldName = entry.getKey();
-            JsonArray array = entry.getValue();
-
-            for (int i = 0; i < array.size(); i++) {
-                JsonElement elem = array.get(i);
-                if (elem.isJsonPrimitive()) {
-                    String newFieldName = String.format("%s_%d", fieldName, i);
-                    result.computeIfAbsent(newFieldName, key -> new LinkedList<>()).add(elem.getAsJsonPrimitive());
-                }
-
-                if (elem.isJsonObject()) {
-                    extract(elem.getAsJsonObject(), result, fieldName, ".");
+            } else if (value.isJsonArray()) {
+                JsonArray array = value.getAsJsonArray();
+                for (int i = 0; i < array.size(); i++) {
+                    JsonElement elem = array.get(i);
+                    if (elem.isJsonPrimitive()) {
+                        String newFieldName = String.format("%s_%d", fieldName, i);
+                        result.computeIfAbsent(newFieldName, key -> new LinkedList<>()).add(elem.getAsJsonPrimitive());
+                    } else if (elem.isJsonObject()) {
+                        extract(elem.getAsJsonObject(), result, fieldName, ".");
+                    }
                 }
             }
         }
