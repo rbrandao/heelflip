@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-public class ColumnAgg {
+public class FieldAgg {
 
     private String columnName;
     private Map<String, Integer> countMap;
@@ -26,7 +26,7 @@ public class ColumnAgg {
     private BigDecimal max;
     private BigDecimal sum;
 
-    public ColumnAgg(String columnName) {
+    public FieldAgg(String columnName) {
         Objects.requireNonNull(columnName, "columnName should not be null.");
         this.columnName = columnName;
         this.countMap = new HashMap<>();

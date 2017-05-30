@@ -4,7 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 
-import com.skatepark.heelflip.ColumnAgg;
+import com.skatepark.heelflip.FieldAgg;
 import com.skatepark.heelflip.GroupByAgg;
 import com.skatepark.heelflip.JsonAgg;
 
@@ -48,8 +48,8 @@ public class JsonDumper {
 
             JsonArray columnAggArray = new JsonArray();
             for (String name : jsonAgg.columnNames()) {
-                ColumnAgg columnAgg = jsonAgg.getColumnAgg(name);
-                columnAggArray.add(columnAgg.toJSON());
+                FieldAgg fieldAgg = jsonAgg.getColumnAgg(name);
+                columnAggArray.add(fieldAgg.toJSON());
             }
 
             Gson gson = new GsonBuilder().setPrettyPrinting().create();

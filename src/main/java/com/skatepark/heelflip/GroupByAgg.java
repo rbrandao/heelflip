@@ -19,7 +19,7 @@ public class GroupByAgg {
 
     private String groupBy;
 
-    private Map<String, ColumnAgg> relationship;
+    private Map<String, FieldAgg> aggregations;
 
     public GroupByAgg(String columnName, String groupBy) {
         Objects.requireNonNull(columnName, "columnName should not be null.");
@@ -29,7 +29,7 @@ public class GroupByAgg {
         }
         this.columnName = columnName;
         this.groupBy = groupBy;
-        this.relationship = new HashMap<>();
+        this.aggregations = new HashMap<>();
     }
 
     public String getColumnName() {
@@ -44,22 +44,22 @@ public class GroupByAgg {
         Objects.requireNonNull(columnValue, "columnValue should not be null.");
         Objects.requireNonNull(groupByValue, "groupByValue should not be null.");
 
-        ColumnAgg columnAgg = relationship.computeIfAbsent(groupByValue.getAsString(), key -> new ColumnAgg(columnName));
-        columnAgg.agg(columnValue);
+        FieldAgg fieldAgg = aggregations.computeIfAbsent(groupByValue.getAsString(), key -> new FieldAgg(columnName));
+        fieldAgg.agg(columnValue);
     }
 
     public Set<String> groupBy(String value) {
-        return value == null || !relationship.containsKey(value) ?
+        return value == null || !aggregations.containsKey(value) ?
                 Collections.emptySet() :
-                Collections.unmodifiableSet(relationship.get(value).distinctValues());
+                Collections.unmodifiableSet(aggregations.get(value).distinctValues());
     }
 
     public Set<String> groupByValues() {
-        return Collections.unmodifiableSet(relationship.keySet());
+        return Collections.unmodifiableSet(aggregations.keySet());
     }
 
     public Set<String> values() {
-        return relationship.values().stream()
+        return aggregations.values().stream()
                 .flatMap(columnAgg -> columnAgg.distinctValues().stream())
                 .collect(Collectors.toSet());
     }
@@ -72,7 +72,7 @@ public class GroupByAgg {
 
     public JsonObject toJSON() {
         JsonArray values = new JsonArray();
-        for (Map.Entry<String, ColumnAgg> entry : relationship.entrySet()) {
+        for (Map.Entry<String, FieldAgg> entry : aggregations.entrySet()) {
             JsonObject obj = new JsonObject();
             obj.add(entry.getKey(), entry.getValue().toJSON());
             values.add(obj);

@@ -21,7 +21,7 @@ import java.util.Set;
 
 public class JsonAgg {
 
-    private Map<String, ColumnAgg> columnAggMap;
+    private Map<String, FieldAgg> columnAggMap;
 
     private Map<String, Map<String, GroupByAgg>> groupByAggMap;
 
@@ -32,9 +32,7 @@ public class JsonAgg {
 
     public void add(JsonObject json) {
         Objects.requireNonNull(json, "json should not be null.");
-
-        Map<String, List<JsonPrimitive>> valueMap = Extractor.extract(json);
-        aggregate(valueMap);
+        aggregate(Extractor.extract(json));
     }
 
     public int size() {
@@ -49,7 +47,7 @@ public class JsonAgg {
         return columnName != null && columnAggMap.containsKey(columnName);
     }
 
-    public ColumnAgg getColumnAgg(String columnName) {
+    public FieldAgg getColumnAgg(String columnName) {
         return !hasColumnAgg(columnName) ? null : columnAggMap.get(columnName);
     }
 
@@ -120,9 +118,9 @@ public class JsonAgg {
         for (Map.Entry<String, List<JsonPrimitive>> entry : valueMap.entrySet()) {
             String columnName = entry.getKey();
             List<JsonPrimitive> valueList = entry.getValue();
-            ColumnAgg columnAgg = columnAggMap.computeIfAbsent(columnName, key -> new ColumnAgg(key));
+            FieldAgg fieldAgg = columnAggMap.computeIfAbsent(columnName, key -> new FieldAgg(key));
 
-            valueList.stream().forEach(columnAgg::agg);
+            valueList.stream().forEach(fieldAgg::agg);
         }
 
         for (String columnName : valueMap.keySet()) {

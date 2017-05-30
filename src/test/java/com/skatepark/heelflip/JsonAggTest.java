@@ -361,8 +361,8 @@ public class JsonAggTest {
         Assert.assertTrue(values.contains("4"));
     }
 
-    @Test
-    public void testLargeFileStocks() throws IOException {
+//    @Test
+    public void testLargeFifleStocks() throws IOException {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(STOCKS_FILE_PATH);
 
         JsonAgg jsonAgg = new JsonAgg();
