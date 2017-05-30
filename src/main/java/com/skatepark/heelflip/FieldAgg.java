@@ -54,7 +54,7 @@ public class FieldAgg {
     }
 
     public Set<String> distinctValues() {
-        return Collections.unmodifiableSet(countMap.keySet());
+        return countMap.keySet();
     }
 
     public int getStringCount() {
@@ -82,17 +82,8 @@ public class FieldAgg {
     }
 
     void agg(JsonPrimitive value) {
-        Objects.requireNonNull(value, "value should not be null.");
-
         countMap.computeIfAbsent(value.getAsString(), key -> 0);
         countMap.put(value.getAsString(), countMap.get(value.getAsString()) + 1);
-
-        if (value.isString()) {
-            stringCount++;
-        }
-        if (value.isBoolean()) {
-            booleanCount++;
-        }
 
         if (value.isNumber()) {
             numberCount++;
@@ -101,6 +92,10 @@ public class FieldAgg {
             min = min == null || min.compareTo(v) > 0 ? v : min;
             max = max == null || max.compareTo(v) < 0 ? v : max;
             sum = sum == null ? v : sum.add(v);
+        } else if (value.isString()) {
+            stringCount++;
+        } else if (value.isBoolean()) {
+            booleanCount++;
         }
     }
 

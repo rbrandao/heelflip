@@ -12,7 +12,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,7 +39,7 @@ public class JsonAgg {
     }
 
     public Set<String> columnNames() {
-        return Collections.unmodifiableSet(columnAggMap.keySet());
+        return columnAggMap.keySet();
     }
 
     public boolean hasColumnAgg(String columnName) {
@@ -66,6 +65,8 @@ public class JsonAgg {
      * @throws IOException if IO errors occurs.
      */
     public void loadNDJSON(InputStream stream) throws IOException {
+        Objects.requireNonNull(stream, "stream should not be null.");
+
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream))) {
             JsonParser parser = new JsonParser();
 
@@ -83,6 +84,8 @@ public class JsonAgg {
      * @throws IOException if IO errors occurs.
      */
     public void loadJSONArray(InputStream stream) throws IOException {
+        Objects.requireNonNull(stream, "stream should not be null.");
+
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream))) {
             JsonElement result = new JsonParser().parse(reader);
             if (!result.isJsonArray()) {

@@ -41,9 +41,6 @@ public class GroupByAgg {
     }
 
     void agg(JsonPrimitive columnValue, JsonPrimitive groupByValue) {
-        Objects.requireNonNull(columnValue, "columnValue should not be null.");
-        Objects.requireNonNull(groupByValue, "groupByValue should not be null.");
-
         FieldAgg fieldAgg = aggregations.computeIfAbsent(groupByValue.getAsString(), key -> new FieldAgg(columnName));
         fieldAgg.agg(columnValue);
     }
@@ -51,11 +48,11 @@ public class GroupByAgg {
     public Set<String> groupBy(String value) {
         return value == null || !aggregations.containsKey(value) ?
                 Collections.emptySet() :
-                Collections.unmodifiableSet(aggregations.get(value).distinctValues());
+                aggregations.get(value).distinctValues();
     }
 
     public Set<String> groupByValues() {
-        return Collections.unmodifiableSet(aggregations.keySet());
+        return aggregations.keySet();
     }
 
     public Set<String> values() {

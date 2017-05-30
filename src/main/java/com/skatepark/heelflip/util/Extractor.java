@@ -5,8 +5,8 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -53,7 +53,7 @@ public class Extractor {
                 arraysMap.put(fieldName, value.getAsJsonArray());
             }
             if (value.isJsonPrimitive()) {
-                result.computeIfAbsent(fieldName, key -> new ArrayList<>()).add(value.getAsJsonPrimitive());
+                result.computeIfAbsent(fieldName, key -> new LinkedList<>()).add(value.getAsJsonPrimitive());
             }
         }
 
@@ -72,7 +72,7 @@ public class Extractor {
                 JsonElement elem = array.get(i);
                 if (elem.isJsonPrimitive()) {
                     String newFieldName = String.format("%s_%d", fieldName, i);
-                    result.computeIfAbsent(newFieldName, key -> new ArrayList<>()).add(elem.getAsJsonPrimitive());
+                    result.computeIfAbsent(newFieldName, key -> new LinkedList<>()).add(elem.getAsJsonPrimitive());
                 }
 
                 if (elem.isJsonObject()) {
