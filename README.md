@@ -25,9 +25,10 @@ try(InputStream stream = new FileInputStream("zips.json")){
 ```
 After that we can get global aggregations doing as follows:
 ```java
-jsonAgg.getFieldAgg("pop").getMin(); // 793
-jsonAgg.getFieldAgg("pop").getMax(); // 31495
-jsonAgg.getFieldAgg("pop").getSum(); // 64762
+FieldAgg popAgg = jsonAgg.getFieldAgg("pop");
+popAgg.getMin(); // 793
+popAgg.getMax(); // 31495
+popAgg.getSum(); // 64762
 }
 ```
 <under construction>
