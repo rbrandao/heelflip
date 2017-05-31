@@ -18,6 +18,11 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
+/**
+ * The aggregation engine that calculate all aggregations from the given JSON data.
+ *
+ * @author greatjapa
+ */
 public class JsonAgg {
 
     private Map<String, FieldAgg> fieldAggMap;
@@ -29,37 +34,72 @@ public class JsonAgg {
         this.groupByAggMap = new HashMap<>();
     }
 
+    /**
+     * Add {@link JsonObject} to the aggregation engine.
+     *
+     * @param json JSON data.
+     */
     public void add(JsonObject json) {
         Objects.requireNonNull(json, "json should not be null.");
         aggregate(Extractor.extract(json));
     }
 
+    /**
+     * @return total of {@link FieldAgg} objects.
+     */
     public int numberOfFieldAgg() {
         return fieldAggMap.size();
     }
 
+    /**
+     * @return total of {@link GroupByAgg} objects.
+     */
     public int numberOfGroupByAgg() {
         return groupByAggMap.values().stream()
                 .mapToInt(m -> m.size())
                 .sum();
     }
 
+    /***
+     * @return set with all JSON field names.
+     */
     public Set<String> fieldNames() {
         return fieldAggMap.keySet();
     }
 
+    /**
+     * @param fieldName JSON field name.
+     * @return true if has aggregation related to the given field name, false otherwise.
+     */
     public boolean hasFieldAgg(String fieldName) {
         return fieldName != null && fieldAggMap.containsKey(fieldName);
     }
 
+    /**
+     * Get {@link FieldAgg} object related to the given JSON field.
+     *
+     * @param fieldName JSON field name.
+     * @return aggregation object.
+     */
     public FieldAgg getFieldAgg(String fieldName) {
         return !hasFieldAgg(fieldName) ? null : fieldAggMap.get(fieldName);
     }
 
+    /**
+     * @param fieldName JSON field name.
+     * @return true if has aggregation related to the given field name, false otherwise.
+     */
     public boolean hasGroupBy(String fieldName) {
         return fieldName != null && groupByAggMap.containsKey(fieldName);
     }
 
+    /**
+     * Get {@link GroupByAgg} object related to the given JSON fields.
+     *
+     * @param fieldName JSON field name.
+     * @param groupBy   JSON field name used to group.
+     * @return aggregation object.
+     */
     public GroupByAgg getGroupBy(String fieldName, String groupBy) {
         return !hasGroupBy(fieldName) ? null : groupByAggMap.get(fieldName).get(groupBy);
     }
@@ -84,7 +124,7 @@ public class JsonAgg {
     }
 
     /**
-     * Load {@link InputStream} with JSON array where each element is the data itself.
+     * Load {@link InputStream} with JSON array where each element is a data entry.
      *
      * @param stream stream.
      * @throws IOException if IO errors occurs.
@@ -104,11 +144,11 @@ public class JsonAgg {
     }
 
     /**
-     * Dump field aggregations in a single JSON file.
+     * Dump all {@link FieldAgg} objects into a single file.
      *
-     * @param filePath      file path.
-     * @param includeValues flag used to include values (the result JSON can increase
-     *                      dramatically).
+     * @param filePath      path destination.
+     * @param includeValues true if needed to write the JSON values related to aggregations, false
+     *                      otherwise.
      * @throws IOException if IO errors occurs.
      */
     public void dumpFieldAgg(String filePath, boolean includeValues) throws IOException {
@@ -116,17 +156,22 @@ public class JsonAgg {
     }
 
     /**
-     * Dump group by aggregations in a single JSON file.
+     * Dump all {@link GroupByAgg} objects into a single file.
      *
-     * @param filePath      file path.
-     * @param includeValues flag used to include values (the result JSON can increase
-     *                      dramatically).
+     * @param filePath      path destination.
+     * @param includeValues true if needed to write the JSON values related to aggregations, false
+     *                      otherwise.
      * @throws IOException if IO errors occurs.
      */
     public void dumpGroupByAgg(String filePath, boolean includeValues) throws IOException {
         JsonDumper.dumpGroupByAgg(this, filePath, includeValues);
     }
 
+    /**
+     * Build {@link FieldAgg} and {@link GroupByAgg} objects based on the given value map.
+     *
+     * @param valueMap map field name to their {@link JsonPrimitive} values.
+     */
     private void aggregate(Map<String, List<JsonPrimitive>> valueMap) {
         for (Map.Entry<String, List<JsonPrimitive>> entry : valueMap.entrySet()) {
             String fieldName = entry.getKey();

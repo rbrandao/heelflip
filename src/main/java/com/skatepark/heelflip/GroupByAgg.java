@@ -13,6 +13,14 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+
+/**
+ * This class provides aggregation info related to an specific JSON field group by other JSON field.
+ * The aggregations available are identical to {@link FieldAgg} but grouped for specific values.
+ *
+ * @author greatjapa
+ * @see FieldAgg
+ */
 public class GroupByAgg {
 
     private String fieldName;
@@ -45,16 +53,27 @@ public class GroupByAgg {
         fieldAgg.agg(fieldNameValue);
     }
 
+    /**
+     * Get set with all values grouped by the given value.
+     *
+     * @param value value.
+     */
     public Set<String> groupBy(String value) {
         return value == null || !aggregations.containsKey(value) ?
                 Collections.emptySet() :
                 aggregations.get(value).distinctValues();
     }
 
+    /**
+     * @return set with all group by values.
+     */
     public Set<String> groupByValues() {
         return aggregations.keySet();
     }
 
+    /**
+     * @return set with all values grouped by this aggregation.
+     */
     public Set<String> values() {
         return aggregations.values().stream()
                 .flatMap(fieldAgg -> fieldAgg.distinctValues().stream())
@@ -66,11 +85,21 @@ public class GroupByAgg {
         return toString(false);
     }
 
+    /**
+     * @param includeValues true if needed to write the JSON values related to aggregations, false
+     *                      otherwise.
+     * @return String that contains the group by aggregation info in JSON format.
+     */
     public String toString(boolean includeValues) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         return gson.toJson(toJSON(includeValues));
     }
 
+    /**
+     * @param includeValues true if needed to write the JSON values related to aggregations, false
+     *                      otherwise.
+     * @return JsonObject that contains the group by aggregation info.
+     */
     public JsonObject toJSON(boolean includeValues) {
         JsonArray values = new JsonArray();
         for (Map.Entry<String, FieldAgg> entry : aggregations.entrySet()) {

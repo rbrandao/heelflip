@@ -15,10 +15,48 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Set;
 
+/**
+ * An utility to write a JSON file with all aggregations from the given {@link JsonAgg}.
+ *
+ * @author greatjapa
+ */
 public class JsonDumper {
 
-    public static void dumpGroupByAgg(JsonAgg jsonAgg, String pathStr, boolean includeValues) throws IOException {
-        Path path = Paths.get(pathStr);
+    /**
+     * Dump all {@link FieldAgg} objects into a single file.
+     *
+     * @param jsonAgg       source object.
+     * @param filePath      path destination.
+     * @param includeValues true if needed to write the JSON values related to aggregations, false
+     *                      otherwise.
+     * @throws IOException if IO errors occurs.
+     */
+    public static void dumpFieldAgg(JsonAgg jsonAgg, String filePath, boolean includeValues) throws IOException {
+        Path path = Paths.get(filePath);
+        try (BufferedWriter writer = Files.newBufferedWriter(path)) {
+
+            JsonArray fieldAggArray = new JsonArray();
+            for (String name : jsonAgg.fieldNames()) {
+                FieldAgg fieldAgg = jsonAgg.getFieldAgg(name);
+                fieldAggArray.add(fieldAgg.toJSON(includeValues));
+            }
+
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            writer.write(gson.toJson(fieldAggArray));
+        }
+    }
+
+    /**
+     * Dump all {@link GroupByAgg} objects into a single file.
+     *
+     * @param jsonAgg       source object.
+     * @param filePath      path destination.
+     * @param includeValues true if needed to write the JSON values related to aggregations, false
+     *                      otherwise.
+     * @throws IOException if IO errors occurs.
+     */
+    public static void dumpGroupByAgg(JsonAgg jsonAgg, String filePath, boolean includeValues) throws IOException {
+        Path path = Paths.get(filePath);
         try (BufferedWriter writer = Files.newBufferedWriter(path)) {
 
             Set<String> fieldNames = jsonAgg.fieldNames();
@@ -39,21 +77,6 @@ public class JsonDumper {
 
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             writer.write(gson.toJson(groupByArray));
-        }
-    }
-
-    public static void dumpFieldAgg(JsonAgg jsonAgg, String pathStr, boolean includeValues) throws IOException {
-        Path path = Paths.get(pathStr);
-        try (BufferedWriter writer = Files.newBufferedWriter(path)) {
-
-            JsonArray fieldAggArray = new JsonArray();
-            for (String name : jsonAgg.fieldNames()) {
-                FieldAgg fieldAgg = jsonAgg.getFieldAgg(name);
-                fieldAggArray.add(fieldAgg.toJSON(includeValues));
-            }
-
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            writer.write(gson.toJson(fieldAggArray));
         }
     }
 }

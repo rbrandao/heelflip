@@ -12,6 +12,13 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
+/**
+ * This class provides aggregation info related to an specific JSON field. The aggregations
+ * available are: min, max and sum. This object also counts how many values were {@link String},
+ * {@link Boolean} or {@link Number} and counts how many times an specific value appeared.
+ *
+ * @author greatjapa
+ */
 public class FieldAgg {
 
     private String fieldName;
@@ -38,44 +45,74 @@ public class FieldAgg {
         return fieldName;
     }
 
+    /**
+     * @return number of distinct values.
+     */
     public int cardinality() {
         return countMap.keySet().size();
     }
 
+    /**
+     * @return number of fields.
+     */
     public int count() {
         return countMap.values().stream()
                 .mapToInt(Integer::intValue)
                 .sum();
     }
 
+    /**
+     * @return number of occurrences of the given value.
+     */
     public int count(String value) {
         return value == null || !countMap.containsKey(value) ? 0 : countMap.get(value);
     }
 
+    /**
+     * @return set of distinct values.
+     */
     public Set<String> distinctValues() {
         return countMap.keySet();
     }
 
+    /**
+     * @return count of {@link String} value.
+     */
     public int getStringCount() {
         return stringCount;
     }
 
+    /**
+     * @return count of {@link Boolean} value.
+     */
     public int getBooleanCount() {
         return booleanCount;
     }
 
+    /**
+     * @return count of {@link Number} value.
+     */
     public int getNumberCount() {
         return numberCount;
     }
 
+    /**
+     * @return max value.
+     */
     public BigDecimal getMax() {
         return max;
     }
 
+    /**
+     * @return min value.
+     */
     public BigDecimal getMin() {
         return min;
     }
 
+    /**
+     * @return sum value.
+     */
     public BigDecimal getSum() {
         return sum;
     }
@@ -103,11 +140,21 @@ public class FieldAgg {
         return toString(false);
     }
 
+    /**
+     * @param includeValues true if needed to write the JSON values related to aggregations, false
+     *                      otherwise.
+     * @return String that contains the group by aggregation info in JSON format.
+     */
     public String toString(boolean includeValues) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         return gson.toJson(toJSON(includeValues));
     }
 
+    /**
+     * @param includeValues true if needed to write the JSON values related to aggregations, false
+     *                      otherwise.
+     * @return JsonObject that contains the group by aggregation info.
+     */
     public JsonObject toJSON(boolean includeValues) {
         JsonObject json = new JsonObject();
         json.addProperty("fieldName", fieldName);

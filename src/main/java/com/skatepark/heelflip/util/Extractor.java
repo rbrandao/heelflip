@@ -11,18 +11,19 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * An utility to get {@link JsonPrimitive} from JSON.
+ * An utility to get all {@link JsonPrimitive} from {@link JsonObject}.
  *
  * @author greatjapa
  * @see JsonObject
+ * @see JsonPrimitive
  */
 public class Extractor {
 
     /**
-     * Flatter the given JSON.
+     * Extract all {@link JsonPrimitive} from the given {@link JsonObject}.
      *
      * @param json json object.
-     * @return list of values collected.
+     * @return map of values collected.
      */
     public static Map<String, List<JsonPrimitive>> extract(JsonObject json) {
         Map<String, List<JsonPrimitive>> result = new HashMap<>();
@@ -31,11 +32,13 @@ public class Extractor {
     }
 
     /**
-     * Flatter the given JSON.
+     * Extract all {@link JsonPrimitive} from the given {@link JsonObject} and accumulate their on
+     * the given list.
      *
      * @param json      json object.
      * @param result    value accumulator.
-     * @param prefixSeq prefix used in key when we copy to target JSON.
+     * @param prefixSeq prefix used to named the new key when we navigate to {@link JsonArray} or
+     *                  nested {@link JsonObject}.
      */
     private static void extract(JsonObject json, Map<String, List<JsonPrimitive>> result, String... prefixSeq) {
         String prefix = prefixSeq == null ? "" : String.join("", prefixSeq);
