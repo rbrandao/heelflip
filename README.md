@@ -29,7 +29,6 @@ FieldAgg popAgg = jsonAgg.getFieldAgg("pop");
 popAgg.getMin(); // 793
 popAgg.getMax(); // 31495
 popAgg.getSum(); // 64762
-}
 ```
 <under construction>
 
