@@ -30,6 +30,17 @@ popAgg.getMin(); // 793
 popAgg.getMax(); // 31495
 popAgg.getSum(); // 64762
 ```
+
+And group by aggregations doing as follows:
+```java
+GroupAgg popByStateAgg = jsonAgg.getGroupBy("pop", "state");
+FieldAgg popByMA = popByStateAgg.groupBy("MA");
+popByMA.getMin(); // 1764
+popByMA.getMax(); // 31495
+popByMA.getSum(); // 56655
+```
+
+
 <under construction>
 
 ##### Objects
