@@ -46,13 +46,29 @@ public class GroupByAggTest {
         groupByAgg.agg(new JsonPrimitive(-1), new JsonPrimitive(false));
         groupByAgg.agg(new JsonPrimitive(-1), new JsonPrimitive(false));
 
-        Set<String> values = groupByAgg.groupBy("true").distinctValues();
-        Assert.assertEquals(2, values.size());
-        Assert.assertTrue(values.contains("10"));
-        Assert.assertTrue(values.contains("20"));
+        FieldAgg fieldAgg = groupByAgg.groupBy("true");
+        Set<String> distinctValues = fieldAgg.distinctValues();
+        Assert.assertEquals(2, distinctValues.size());
+        Assert.assertTrue(distinctValues.contains("10"));
+        Assert.assertTrue(distinctValues.contains("20"));
 
-        values = groupByAgg.groupBy("false").distinctValues();
-        Assert.assertEquals(1, values.size());
-        Assert.assertTrue(values.contains("-1"));
+        Assert.assertEquals(2, fieldAgg.cardinality());
+        Assert.assertEquals(2, fieldAgg.count());
+        Assert.assertEquals(2, fieldAgg.getNumberCount());
+        Assert.assertEquals(10, fieldAgg.getMin().intValue());
+        Assert.assertEquals(20, fieldAgg.getMax().intValue());
+        Assert.assertEquals(30, fieldAgg.getSum().intValue());
+
+        fieldAgg = groupByAgg.groupBy("false");
+        distinctValues = fieldAgg.distinctValues();
+        Assert.assertEquals(1, distinctValues.size());
+        Assert.assertTrue(distinctValues.contains("-1"));
+
+        Assert.assertEquals(1, fieldAgg.cardinality());
+        Assert.assertEquals(2, fieldAgg.count());
+        Assert.assertEquals(2, fieldAgg.getNumberCount());
+        Assert.assertEquals(-1, fieldAgg.getMin().intValue());
+        Assert.assertEquals(-1, fieldAgg.getMax().intValue());
+        Assert.assertEquals(-2, fieldAgg.getSum().intValue());
     }
 }

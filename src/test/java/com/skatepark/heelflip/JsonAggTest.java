@@ -203,14 +203,17 @@ public class JsonAggTest {
         Assert.assertEquals(6, jsonAgg.numberOfGroupByAgg());
 
         GroupByAgg groupByAgg = jsonAgg.getGroupBy("b.x", "a");
-        Set<String> values = groupByAgg.groupBy("true").distinctValues();
+
+        FieldAgg fieldAgg = groupByAgg.groupBy("true");
+        Set<String> values = fieldAgg.distinctValues();
         Assert.assertEquals(3, values.size());
         Assert.assertTrue(values.contains("9"));
         Assert.assertTrue(values.contains("10"));
         Assert.assertTrue(values.contains("12"));
 
         groupByAgg = jsonAgg.getGroupBy("b.y", "a");
-        values = groupByAgg.groupBy("false").distinctValues();
+        fieldAgg = groupByAgg.groupBy("false");
+        values = fieldAgg.distinctValues();
         Assert.assertEquals(4, values.size());
         Assert.assertTrue(values.contains("-12"));
         Assert.assertTrue(values.contains("-13"));
@@ -218,20 +221,23 @@ public class JsonAggTest {
         Assert.assertTrue(values.contains("-1"));
 
         groupByAgg = jsonAgg.getGroupBy("b.y", "b.x");
-        values = groupByAgg.groupBy("10").distinctValues();
+        fieldAgg = groupByAgg.groupBy("10");
+        values = fieldAgg.distinctValues();
         Assert.assertEquals(4, values.size());
         Assert.assertTrue(values.contains("-20"));
         Assert.assertTrue(values.contains("-11"));
         Assert.assertTrue(values.contains("-10"));
         Assert.assertTrue(values.contains("-14"));
 
-        values = groupByAgg.groupBy("9").distinctValues();
+        fieldAgg = groupByAgg.groupBy("9");
+        values = fieldAgg.distinctValues();
         Assert.assertEquals(2, values.size());
         Assert.assertTrue(values.contains("-20"));
         Assert.assertTrue(values.contains("-10"));
 
         groupByAgg = jsonAgg.getGroupBy("a", "b.x");
-        values = groupByAgg.groupBy("10").distinctValues();
+        fieldAgg = groupByAgg.groupBy("10");
+        values = fieldAgg.distinctValues();
         Assert.assertEquals(1, values.size());
         Assert.assertTrue(values.contains("true"));
     }
@@ -297,14 +303,16 @@ public class JsonAggTest {
         Assert.assertEquals(20, jsonAgg.numberOfGroupByAgg());
 
         GroupByAgg groupByAgg = jsonAgg.getGroupBy("b_0", "a");
-        Set<String> values = groupByAgg.groupBy("true").distinctValues();
+        FieldAgg fieldAgg = groupByAgg.groupBy("true");
+        Set<String> values = fieldAgg.distinctValues();
         Assert.assertEquals(2, values.size());
         Assert.assertTrue(values.contains("9"));
         Assert.assertTrue(values.contains("8"));
 
 
         groupByAgg = jsonAgg.getGroupBy("b_0", "b_2");
-        values = groupByAgg.groupBy("10").distinctValues();
+        fieldAgg = groupByAgg.groupBy("10");
+        values = fieldAgg.distinctValues();
         Assert.assertEquals(4, values.size());
         Assert.assertTrue(values.contains("9"));
         Assert.assertTrue(values.contains("9"));
@@ -363,14 +371,16 @@ public class JsonAggTest {
         Assert.assertEquals(6, jsonAgg.numberOfGroupByAgg());
 
         GroupByAgg groupByAgg = jsonAgg.getGroupBy("b.x", "a");
-        Set<String> values = groupByAgg.groupBy("true").distinctValues();
+        FieldAgg fieldAgg = groupByAgg.groupBy("true");
+        Set<String> values = fieldAgg.distinctValues();
         Assert.assertEquals(3, values.size());
         Assert.assertTrue(values.contains("-1"));
         Assert.assertTrue(values.contains("0"));
         Assert.assertTrue(values.contains("1"));
 
         groupByAgg = jsonAgg.getGroupBy("b.y", "b.x");
-        values = groupByAgg.groupBy("0").distinctValues();
+        fieldAgg = groupByAgg.groupBy("0");
+        values = fieldAgg.distinctValues();
         Assert.assertEquals(1, values.size());
         Assert.assertTrue(values.contains("4"));
     }
