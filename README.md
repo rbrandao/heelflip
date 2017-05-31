@@ -7,12 +7,12 @@
 #### How to use
 Considering the following zip code JSON sample:
 ```javascript
-{ "city" : "CHICOPEE", "pop" : 23396, "state" : "MA", "_id" : "01013" }
-{ "city" : "CHICOPEE", "pop" : 31495, "state" : "MA", "_id" : "01020" }
-{ "city" : "WESTOVER AFB", "pop" : 1764, "state" : "MA", "_id" : "01022" }
-{ "city" : "JARRELL", "pop" : 3430, "state" : "TX", "_id" : "76537" }
-{ "city" : "JONESBORO", "pop" : 793, "state" : "TX", "_id" : "76538" }
-{ "city" : "KEMPNER", "pop" : 3884, "state" : "TX", "_id" : "76539" }
+{ "city" : "CHICOPEE",     "pop" : 23396, "state" : "MA", "_id" : "01013" }
+{ "city" : "CHICOPEE",     "pop" : 31495, "state" : "MA", "_id" : "01020" }
+{ "city" : "WESTOVER AFB", "pop" : 1764,  "state" : "MA", "_id" : "01022" }
+{ "city" : "JARRELL",      "pop" : 3430,  "state" : "TX", "_id" : "76537" }
+{ "city" : "JONESBORO",    "pop" : 793,   "state" : "TX", "_id" : "76538" }
+{ "city" : "KEMPNER",      "pop" : 3884,  "state" : "TX", "_id" : "76539" }
 ```
 We can read then as follows:
 ```java
