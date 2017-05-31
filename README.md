@@ -48,7 +48,7 @@ For instance, the following JSON entry:
 ```javascript
 { "city" : "SPRINGFIELD", "loc" : {"lat": -72.577769, "long": 42.128848}, "pop" : 22115}
 ```
-will be readed as:
+will be read as:
 ```javascript
 { "city" : "SPRINGFIELD", "loc.lat" -72.577769, "loc.long": 42.128848, "pop" : 22115}
 ```
@@ -58,7 +58,7 @@ For instance, the following JSON entry:
 ```javascript
 { "city" : "SPRINGFIELD", "loc" : [ -72.577769, 42.128848 ], "pop" : 22115}
 ```
-will be readed as:
+will be read as:
 ```javascript
 { "city" : "SPRINGFIELD", "loc_0" : -72.577769, "loc_1": 42.128848, "pop" : 22115}
 ```
