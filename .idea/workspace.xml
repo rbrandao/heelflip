@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e7b9f98c-d72e-423a-91e6-aa149e7231bc" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/JsonAgg.java" afterPath="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/JsonAgg.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/util/JsonDumper.java" afterPath="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/util/JsonDumper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/JsonAggTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/JsonAggTest.java" />
     </list>
     <ignored path="heelflip.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,38 +30,18 @@
       <file leaf-file-name="JsonAggTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/JsonAggTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-82">
-              <caret line="361" column="0" selection-start-line="361" selection-start-column="0" selection-end-line="361" selection-end-column="0" />
+            <state relative-caret-position="342">
+              <caret line="402" column="27" selection-start-line="402" selection-start-column="27" selection-end-line="402" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JsonAgg.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/JsonAgg.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="156" column="0" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JsonDumper.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="JsonDumper.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/util/JsonDumper.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="522">
-              <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Files.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/Applications/jdk1.8.0_73/src.zip!/java/nio/file/Files.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="2381" column="50" selection-start-line="2381" selection-start-column="50" selection-end-line="2381" selection-end-column="50" />
+              <caret line="40" column="63" selection-start-line="40" selection-start-column="63" selection-end-line="40" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -136,8 +116,8 @@
         <option value="$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/GroupByAggTest.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/JsonAgg.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/util/JsonDumper.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/JsonAggTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/util/JsonDumper.java" />
       </list>
     </option>
   </component>
@@ -357,7 +337,7 @@
       <recent name="$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/column" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.JsonAggTest.testGetGroupByOnJsonWithObject">
+  <component name="RunManager" selected="JUnit.JsonAggTest.testLargeFileZips (1)">
     <configuration default="false" name="All in heelflip" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="heelflip" />
@@ -761,10 +741,10 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.JsonAggTest.testGetGroupByOnJsonWithObject" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.All in heelflip" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.GroupByAggTest.testGroupBy" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.JsonAggTest.testLargeFileZips (1)" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.JsonAggTest.testLargeFileZips (1)" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.JsonAggTest.testGetGroupByOnJsonWithObject" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.All in heelflip" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.GroupByAggTest.testGroupBy" />
         <item index="4" class="java.lang.String" itemvalue="JUnit.JsonAggTest.testLargeFileStocks" />
       </list>
     </recent_temporary>
@@ -792,15 +772,6 @@
     <history-entry file="All_in_heelflip - 2017.05.31 at 11h 28m 38s.xml">
       <configuration name="All in heelflip" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="GroupByAggTest_testGroupBy - 2017.05.31 at 10h 26m 13s.xml">
-      <configuration name="GroupByAggTest.testGroupBy" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GroupByAggTest_testGroupBy - 2017.05.31 at 10h 26m 26s.xml">
-      <configuration name="GroupByAggTest.testGroupBy" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GroupByAggTest_testGroupBy - 2017.05.31 at 10h 27m 25s.xml">
-      <configuration name="GroupByAggTest.testGroupBy" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="JsonAggTest_testGetGroupByOnJsonWithObject - 2017.05.31 at 12h 56m 51s.xml">
       <configuration name="JsonAggTest.testGetGroupByOnJsonWithObject" configurationId="JUnit" />
     </history-entry>
@@ -815,6 +786,15 @@
     </history-entry>
     <history-entry file="JsonAggTest_testGetGroupByOnJsonWithObject - 2017.05.31 at 13h 01m 13s.xml">
       <configuration name="JsonAggTest.testGetGroupByOnJsonWithObject" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="JsonAggTest_testLargeFileZips_(1) - 2017.05.31 at 13h 20m 55s.xml">
+      <configuration name="JsonAggTest.testLargeFileZips (1)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="JsonAggTest_testLargeFileZips_(1) - 2017.05.31 at 13h 22m 10s.xml">
+      <configuration name="JsonAggTest.testLargeFileZips (1)" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="JsonAggTest_testLargeFileZips_(1) - 2017.05.31 at 13h 25m 41s.xml">
+      <configuration name="JsonAggTest.testLargeFileZips (1)" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -869,22 +849,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/out1.txt" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/IColumn.java" />
-    <entry file="jar://$USER_HOME$/jdk1.8.0_73/src.zip!/java/lang/Number.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/resources/stocks.json" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/agg/IAggregation.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/ColumnStatistic.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/ObjectColumn.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/FieldAggTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/table/value/HFValue.java" />
     <entry file="jar:///usr/lib/jvm/java-1.8.0/jre/lib/rt.jar!/java/util/stream/Stream.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
@@ -1107,26 +1071,98 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/util/JsonDumper.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/JsonAgg.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="61" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+        <state relative-caret-position="288">
+          <caret line="150" column="38" selection-start-line="150" selection-start-column="38" selection-end-line="150" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/city/city_groupBy_loc_0.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/___id.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/skatepark/heelflip/JsonAggTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-82">
-          <caret line="361" column="0" selection-start-line="361" selection-start-column="0" selection-end-line="361" selection-end-column="0" />
+        <state relative-caret-position="342">
+          <caret line="402" column="27" selection-start-line="402" selection-start-column="27" selection-end-line="402" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/JsonAgg.java">
+    <entry file="file://$PROJECT_DIR$/out/city/city_groupBy_pop.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="156" column="0" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
+        <state relative-caret-position="252">
+          <caret line="209" column="24" selection-start-line="209" selection-start-column="24" selection-end-line="209" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/pop/pop_groupBy_city.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2268">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/state/state_groupBy_pop.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/pop/pop_groupBy_state.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5778">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/_id/___id.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/pop/__pop.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/pop/pop_groupBy__id.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3240">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/skatepark/heelflip/util/JsonDumper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="40" column="63" selection-start-line="40" selection-start-column="63" selection-end-line="40" selection-end-column="63" />
           <folding />
         </state>
       </provider>

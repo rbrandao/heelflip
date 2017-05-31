@@ -35,10 +35,13 @@ public class JsonDumper {
 
         // global aggregations
         for (String fieldName : jsonAgg.fieldNames()) {
+            Path fieldDir = Paths.get(dirPath.toString(), fieldName);
+            Files.createDirectory(fieldDir);
+
             FieldAgg fieldAgg = jsonAgg.getFieldAgg(fieldName);
 
             String fileName = String.format("__%s.json", fieldName);
-            Path filePath = Paths.get(dirPath.toString(), fileName);
+            Path filePath = Paths.get(fieldDir.toString(), fileName);
 
             Files.write(filePath, fieldAgg.toString(includeValues).getBytes());
         }
@@ -46,6 +49,8 @@ public class JsonDumper {
         // group by aggregations
         Set<String> fieldNames = jsonAgg.fieldNames();
         for (String fieldName : fieldNames) {
+            Path fieldDir = Paths.get(dirPath.toString(), fieldName);
+
             for (String groupBy : fieldNames) {
                 if (groupBy.equals(fieldName)) {
                     continue;
@@ -56,7 +61,7 @@ public class JsonDumper {
                 }
 
                 String fileName = String.format("%s_groupBy_%s.json", fieldName, groupBy);
-                Path filePath = Paths.get(dirPath.toString(), fileName);
+                Path filePath = Paths.get(fieldDir.toString(), fileName);
 
                 Files.write(filePath, groupByAgg.toString(includeValues).getBytes());
             }
