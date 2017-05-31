@@ -17,6 +17,9 @@ public class GroupByAggTest {
         groupByAgg.agg(new JsonPrimitive(-1), new JsonPrimitive(false));
         groupByAgg.agg(new JsonPrimitive(-1), new JsonPrimitive(false));
 
+        Assert.assertEquals("a", groupByAgg.getFieldName());
+        Assert.assertEquals("b", groupByAgg.getGroupBy());
+
         Set<String> groupByValues = groupByAgg.groupByValues();
         Assert.assertEquals(2, groupByValues.size());
         Assert.assertTrue(groupByValues.contains("true"));
@@ -30,6 +33,9 @@ public class GroupByAggTest {
         groupByAgg.agg(new JsonPrimitive(20), new JsonPrimitive(true));
         groupByAgg.agg(new JsonPrimitive(-1), new JsonPrimitive(false));
         groupByAgg.agg(new JsonPrimitive(-1), new JsonPrimitive(false));
+
+        Assert.assertEquals("a", groupByAgg.getFieldName());
+        Assert.assertEquals("b", groupByAgg.getGroupBy());
 
         Set<String> values = groupByAgg.values();
         Assert.assertEquals(3, values.size());
@@ -46,6 +52,9 @@ public class GroupByAggTest {
         groupByAgg.agg(new JsonPrimitive(-1), new JsonPrimitive(false));
         groupByAgg.agg(new JsonPrimitive(-1), new JsonPrimitive(false));
 
+        Assert.assertEquals("a", groupByAgg.getFieldName());
+        Assert.assertEquals("b", groupByAgg.getGroupBy());
+        
         FieldAgg fieldAgg = groupByAgg.groupBy("true");
         Set<String> distinctValues = fieldAgg.distinctValues();
         Assert.assertEquals(2, distinctValues.size());
