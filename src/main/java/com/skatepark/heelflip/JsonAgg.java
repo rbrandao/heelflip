@@ -144,27 +144,15 @@ public class JsonAgg {
     }
 
     /**
-     * Dump all {@link FieldAgg} objects into a single file.
+     * Dump aggregation objects into files in the given directory path.
      *
-     * @param filePath      path destination.
+     * @param dirPathStr       path for directory destination.
      * @param includeValues true if needed to write the JSON values related to aggregations, false
      *                      otherwise.
      * @throws IOException if IO errors occurs.
      */
-    public void dumpFieldAgg(String filePath, boolean includeValues) throws IOException {
-        JsonDumper.dumpFieldAgg(this, filePath, includeValues);
-    }
-
-    /**
-     * Dump all {@link GroupByAgg} objects into a single file.
-     *
-     * @param filePath      path destination.
-     * @param includeValues true if needed to write the JSON values related to aggregations, false
-     *                      otherwise.
-     * @throws IOException if IO errors occurs.
-     */
-    public void dumpGroupByAgg(String filePath, boolean includeValues) throws IOException {
-        JsonDumper.dumpGroupByAgg(this, filePath, includeValues);
+    public void dumpReport(String dirPathStr, boolean includeValues) throws IOException {
+        JsonDumper.dumpReport(this, dirPathStr, includeValues);
     }
 
     /**

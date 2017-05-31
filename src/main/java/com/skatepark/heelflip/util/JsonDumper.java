@@ -1,14 +1,9 @@
 package com.skatepark.heelflip.util;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-
 import com.skatepark.heelflip.FieldAgg;
 import com.skatepark.heelflip.GroupByAgg;
 import com.skatepark.heelflip.JsonAgg;
 
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -23,60 +18,48 @@ import java.util.Set;
 public class JsonDumper {
 
     /**
-     * Dump all {@link FieldAgg} objects into a single file.
-     *
-     * @param jsonAgg       source object.
-     * @param filePath      path destination.
-     * @param includeValues true if needed to write the JSON values related to aggregations, false
-     *                      otherwise.
-     * @throws IOException if IO errors occurs.
-     */
-    public static void dumpFieldAgg(JsonAgg jsonAgg, String filePath, boolean includeValues) throws IOException {
-        Path path = Paths.get(filePath);
-        try (BufferedWriter writer = Files.newBufferedWriter(path)) {
-
-            JsonArray fieldAggArray = new JsonArray();
-            for (String name : jsonAgg.fieldNames()) {
-                FieldAgg fieldAgg = jsonAgg.getFieldAgg(name);
-                fieldAggArray.add(fieldAgg.toJSON(includeValues));
-            }
-
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            writer.write(gson.toJson(fieldAggArray));
-        }
-    }
-
-    /**
      * Dump all {@link GroupByAgg} objects into a single file.
      *
      * @param jsonAgg       source object.
-     * @param filePath      path destination.
+     * @param dirPathStr    path for directory destination.
      * @param includeValues true if needed to write the JSON values related to aggregations, false
      *                      otherwise.
      * @throws IOException if IO errors occurs.
      */
-    public static void dumpGroupByAgg(JsonAgg jsonAgg, String filePath, boolean includeValues) throws IOException {
-        Path path = Paths.get(filePath);
-        try (BufferedWriter writer = Files.newBufferedWriter(path)) {
+    public static void dumpReport(JsonAgg jsonAgg, String dirPathStr, boolean includeValues) throws IOException {
+        Path dirPath = Paths.get(dirPathStr);
 
-            Set<String> fieldNames = jsonAgg.fieldNames();
+        if (!Files.exists(dirPath)) {
+            Files.createDirectory(dirPath);
+        }
 
-            JsonArray groupByArray = new JsonArray();
-            for (String fieldName : fieldNames) {
-                for (String groupBy : fieldNames) {
-                    if (groupBy.equals(fieldName)) {
-                        continue;
-                    }
-                    GroupByAgg groupByAgg = jsonAgg.getGroupBy(fieldName, groupBy);
-                    if (groupByAgg == null) {
-                        continue;
-                    }
-                    groupByArray.add(groupByAgg.toJSON(includeValues));
+        // global aggregations
+        for (String fieldName : jsonAgg.fieldNames()) {
+            FieldAgg fieldAgg = jsonAgg.getFieldAgg(fieldName);
+
+            String fileName = String.format("__%s.json", fieldName);
+            Path filePath = Paths.get(dirPath.toString(), fileName);
+
+            Files.write(filePath, fieldAgg.toString(includeValues).getBytes());
+        }
+
+        // group by aggregations
+        Set<String> fieldNames = jsonAgg.fieldNames();
+        for (String fieldName : fieldNames) {
+            for (String groupBy : fieldNames) {
+                if (groupBy.equals(fieldName)) {
+                    continue;
                 }
-            }
+                GroupByAgg groupByAgg = jsonAgg.getGroupBy(fieldName, groupBy);
+                if (groupByAgg == null) {
+                    continue;
+                }
 
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            writer.write(gson.toJson(groupByArray));
+                String fileName = String.format("%s_groupBy_%s.json", fieldName, groupBy);
+                Path filePath = Paths.get(dirPath.toString(), fileName);
+
+                Files.write(filePath, groupByAgg.toString(includeValues).getBytes());
+            }
         }
     }
 }
