@@ -6,7 +6,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -58,10 +57,10 @@ public class GroupByAgg {
      *
      * @param value value.
      */
-    public Set<String> groupBy(String value) {
+    public FieldAgg groupBy(String value) {
         return value == null || !aggregations.containsKey(value) ?
-                Collections.emptySet() :
-                aggregations.get(value).distinctValues();
+                null :
+                aggregations.get(value);
     }
 
     /**

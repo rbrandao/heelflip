@@ -46,12 +46,12 @@ public class GroupByAggTest {
         groupByAgg.agg(new JsonPrimitive(-1), new JsonPrimitive(false));
         groupByAgg.agg(new JsonPrimitive(-1), new JsonPrimitive(false));
 
-        Set<String> values = groupByAgg.groupBy("true");
+        Set<String> values = groupByAgg.groupBy("true").distinctValues();
         Assert.assertEquals(2, values.size());
         Assert.assertTrue(values.contains("10"));
         Assert.assertTrue(values.contains("20"));
 
-        values = groupByAgg.groupBy("false");
+        values = groupByAgg.groupBy("false").distinctValues();
         Assert.assertEquals(1, values.size());
         Assert.assertTrue(values.contains("-1"));
     }

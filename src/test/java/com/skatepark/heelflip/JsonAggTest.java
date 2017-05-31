@@ -3,6 +3,7 @@ package com.skatepark.heelflip;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -144,7 +145,7 @@ public class JsonAggTest {
                 Assert.assertEquals(1, groupByAgg.values().size());
                 Assert.assertEquals(1, groupByAgg.groupByValues().size());
 
-                Set<String> groupBySet = groupByAgg.groupBy(groupByValue);
+                Set<String> groupBySet = groupByAgg.groupBy(groupByValue).distinctValues();
                 Assert.assertEquals(1, groupBySet.size());
                 Assert.assertEquals(value, groupBySet.iterator().next());
             }
@@ -202,14 +203,14 @@ public class JsonAggTest {
         Assert.assertEquals(6, jsonAgg.numberOfGroupByAgg());
 
         GroupByAgg groupByAgg = jsonAgg.getGroupBy("b.x", "a");
-        Set<String> values = groupByAgg.groupBy("true");
+        Set<String> values = groupByAgg.groupBy("true").distinctValues();
         Assert.assertEquals(3, values.size());
         Assert.assertTrue(values.contains("9"));
         Assert.assertTrue(values.contains("10"));
         Assert.assertTrue(values.contains("12"));
 
         groupByAgg = jsonAgg.getGroupBy("b.y", "a");
-        values = groupByAgg.groupBy("false");
+        values = groupByAgg.groupBy("false").distinctValues();
         Assert.assertEquals(4, values.size());
         Assert.assertTrue(values.contains("-12"));
         Assert.assertTrue(values.contains("-13"));
@@ -217,20 +218,20 @@ public class JsonAggTest {
         Assert.assertTrue(values.contains("-1"));
 
         groupByAgg = jsonAgg.getGroupBy("b.y", "b.x");
-        values = groupByAgg.groupBy("10");
+        values = groupByAgg.groupBy("10").distinctValues();
         Assert.assertEquals(4, values.size());
         Assert.assertTrue(values.contains("-20"));
         Assert.assertTrue(values.contains("-11"));
         Assert.assertTrue(values.contains("-10"));
         Assert.assertTrue(values.contains("-14"));
 
-        values = groupByAgg.groupBy("9");
+        values = groupByAgg.groupBy("9").distinctValues();
         Assert.assertEquals(2, values.size());
         Assert.assertTrue(values.contains("-20"));
         Assert.assertTrue(values.contains("-10"));
 
         groupByAgg = jsonAgg.getGroupBy("a", "b.x");
-        values = groupByAgg.groupBy("10");
+        values = groupByAgg.groupBy("10").distinctValues();
         Assert.assertEquals(1, values.size());
         Assert.assertTrue(values.contains("true"));
     }
@@ -296,14 +297,14 @@ public class JsonAggTest {
         Assert.assertEquals(20, jsonAgg.numberOfGroupByAgg());
 
         GroupByAgg groupByAgg = jsonAgg.getGroupBy("b_0", "a");
-        Set<String> values = groupByAgg.groupBy("true");
+        Set<String> values = groupByAgg.groupBy("true").distinctValues();
         Assert.assertEquals(2, values.size());
         Assert.assertTrue(values.contains("9"));
         Assert.assertTrue(values.contains("8"));
 
 
         groupByAgg = jsonAgg.getGroupBy("b_0", "b_2");
-        values = groupByAgg.groupBy("10");
+        values = groupByAgg.groupBy("10").distinctValues();
         Assert.assertEquals(4, values.size());
         Assert.assertTrue(values.contains("9"));
         Assert.assertTrue(values.contains("9"));
@@ -362,14 +363,14 @@ public class JsonAggTest {
         Assert.assertEquals(6, jsonAgg.numberOfGroupByAgg());
 
         GroupByAgg groupByAgg = jsonAgg.getGroupBy("b.x", "a");
-        Set<String> values = groupByAgg.groupBy("true");
+        Set<String> values = groupByAgg.groupBy("true").distinctValues();
         Assert.assertEquals(3, values.size());
         Assert.assertTrue(values.contains("-1"));
         Assert.assertTrue(values.contains("0"));
         Assert.assertTrue(values.contains("1"));
 
         groupByAgg = jsonAgg.getGroupBy("b.y", "b.x");
-        values = groupByAgg.groupBy("0");
+        values = groupByAgg.groupBy("0").distinctValues();
         Assert.assertEquals(1, values.size());
         Assert.assertTrue(values.contains("4"));
     }
