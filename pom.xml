@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.skatepark</groupId>
+    <groupId>com.github.greatjapa</groupId>
     <artifactId>heelflip</artifactId>
     <version>1.0-SNAPSHOT</version>
 
@@ -85,7 +85,6 @@
     </build>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
