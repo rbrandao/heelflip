@@ -30,8 +30,8 @@
 
     <scm>
         <connection>scm:git:git://github.com/greatjapa/heelflip.git</connection>
-        <developerConnection>scm:git:ssh://github.com:greatjapa/heelflip.git</developerConnection>
-        <url>http://github.com/greatjapa/heelflip/tree/master</url>
+        <developerConnection>scm:git:git@github.com:greatjapa/heelflip.git</developerConnection>
+        <url>http://github.com/greatjapa/heelflip</url>
     </scm>
 
     <distributionManagement>
