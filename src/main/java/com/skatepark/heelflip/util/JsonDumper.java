@@ -1,5 +1,10 @@
 package com.skatepark.heelflip.util;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
 import com.skatepark.heelflip.FieldAgg;
 import com.skatepark.heelflip.GroupByAgg;
 import com.skatepark.heelflip.JsonAgg;
@@ -48,6 +53,7 @@ public class JsonDumper {
 
         // group by aggregations
         Set<String> fieldNames = jsonAgg.fieldNames();
+        JsonArray missingGroupByArray = new JsonArray();
         for (String fieldName : fieldNames) {
             Path fieldDir = Paths.get(dirPath.toString(), fieldName);
 
@@ -57,6 +63,10 @@ public class JsonDumper {
                 }
                 GroupByAgg groupByAgg = jsonAgg.getGroupBy(fieldName, groupBy);
                 if (groupByAgg == null) {
+                    JsonObject missingEntry = new JsonObject();
+                    missingEntry.addProperty("field", fieldName);
+                    missingEntry.addProperty("groupBy", groupBy);
+                    missingGroupByArray.add(missingEntry);
                     continue;
                 }
 
@@ -65,6 +75,12 @@ public class JsonDumper {
 
                 Files.write(filePath, groupByAgg.toString(includeValues).getBytes());
             }
+        }
+
+        if (missingGroupByArray.size() > 0) {
+            Path path = Paths.get(dirPath.toString(), "__missingGroupBy.");
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            Files.write(path, gson.toJson(missingGroupByArray).getBytes());
         }
     }
 }
