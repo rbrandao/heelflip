@@ -4,7 +4,16 @@
 [![codecov](https://codecov.io/gh/greatjapa/heelflip/branch/master/graph/badge.svg)](https://codecov.io/gh/greatjapa/heelflip)
 
 **Heelflip** is an in-memory JSON aggregator for Java. Sometimes we just want to read a couple of JSON samples and get analytics information from them. Before throw it on a relational or NoSQL databases, it would be interesting if we can get some quick results just read them in our code.
- 
+
+## Maven
+```xml
+<dependency>
+    <groupId>com.github.greatjapa</groupId>
+    <artifactId>heelflip</artifactId>
+    <version>1.0</version>
+</dependency>
+```
+
 ## How to use
 Considering the following bookstore JSON sample:
 ```javascript
