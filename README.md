@@ -89,6 +89,11 @@ report
 └───inStock
 └───price
 ```
+Each JSON field has its own directory, for instance, *name*, *author* etc. This directory has the following items:
+1. *__<field_name>.json* file with global aggregations for this field;
+2. A list of *<field_name>_groupBy_<field_name>.json* files with group by aggregations.
+
+Finally, the root directory contains a file *__missingGroupBy.json* with a list of missing group by combination.
 
 ### How aggregation works over non-flat JSON
 There is no problem if you have JSONs with array or nested objects. What Heelflip does is calculate aggregations over fields and their values. But the Heelflip API is based on field names and, for that, we need to rename JSON fields when arrays or objects appears.
