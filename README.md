@@ -71,7 +71,7 @@ namesInStockAgg.distinctValues();
 ```
 
 ### How aggregation works over non-flat JSON
-There is no problem if you have JSONs with array or nested objects. What Heelflip do is calculate aggregations over fields and their values in a given JSON. But the Heelflip API is based on field names and, for that, we need to rename JSON fields when arrays or objects appears.
+There is no problem if you have JSONs with array or nested objects. What Heelflip does is calculate aggregations over fields and their values. But the Heelflip API is based on field names and, for that, we need to rename JSON fields when arrays or objects appears.
 
 For instance, the following JSON entry:
 ```javascript
@@ -81,16 +81,13 @@ will be read as:
 ```javascript
 {"name":"Steve", "age":30, "address.street":"8nd Street", "address.city":"New York"}}
 ```
-**NOTE**: We don't flatten the JSON, we just rename the field names for objects to generate unique names at aggregation time.
-
 To retrieve the information about the field "city" we need to concatenate the field names as showed below:
 ```java
 FieldAgg cityAgg = agg.getFieldAgg("address.city");
 cityAgg.count();
 ```
 
-### Arrays
-For instance, the following JSON entry:
+Similarly, the following JSON entry with arrays:
 ```javascript
 { "city" : "SPRINGFIELD", "loc" : [ -72.577769, 42.128848 ], "pop" : 22115}
 ```
@@ -98,3 +95,5 @@ will be read as:
 ```javascript
 { "city" : "SPRINGFIELD", "loc_0" : -72.577769, "loc_1": 42.128848, "pop" : 22115}
 ```
+
+**NOTE**: The examples above are used only to ilustrate how we rename field names for objects and arrays to generate unique names at aggregation time. It is importante to understand that we do not flatten the JSON.
