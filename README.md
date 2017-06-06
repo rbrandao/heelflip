@@ -9,7 +9,7 @@ Considering the following zip code JSON sample:
 ```javascript
 {"name":"The Lightning Thief","author":"Rick Riordan","genre":"fantasy","inStock":true,"price":12.50,"pages":384}
 {"name":"The Sea of Monsters","author":"Rick Riordan","genre":"fantasy","inStock":true,"price":6.49,"pages":304}
-{"name":"Sophie's World","author":"Jostein Gaarder","genre":"fantasy","inStock":true,"price":3.07,"pages":64}
+{"name":"Sophie's World","author":"Jostein Gaarder","genre":"fantasy","inStock":false,"price":3.07,"pages":64}
 {"name":"Lucene in Action","author":"Michael McCandless","genre":"IT","inStock":true,"price":30.50,"pages":475}
 ```
 We can read then as follows:
