@@ -5,7 +5,7 @@
 **Heelflip** is an in-memory JSON aggregator for Java. Sometimes we just want to read a couple of JSON samples and get analytics information from them. Before throw it on a relational or NoSQL databases, it would be interesting if we can get some quick results just read them in our code.
  
 #### How to use
-Considering the following zip code JSON sample:
+Considering the following bookstore JSON sample:
 ```javascript
 {"name":"The Lightning Thief","author":"Rick Riordan","genre":"fantasy","inStock":true,"price":12.50,"pages":384}
 {"name":"The Sea of Monsters","author":"Rick Riordan","genre":"fantasy","inStock":true,"price":6.49,"pages":304}
@@ -14,7 +14,7 @@ Considering the following zip code JSON sample:
 ```
 We can read then as follows:
 ```java
-try(InputStream stream = new FileInputStream("zips.json")){
+try(InputStream stream = new FileInputStream("bookstore.json")){
     JsonAgg jsonAgg = new JsonAgg();
     jsonAgg.loadNDJSON(zipStream);
     
@@ -23,19 +23,19 @@ try(InputStream stream = new FileInputStream("zips.json")){
 ```
 After that we can get global aggregations doing as follows:
 ```java
-FieldAgg popAgg = jsonAgg.getFieldAgg("pop");
-popAgg.getMin(); // 793
-popAgg.getMax(); // 31495
-popAgg.getSum(); // 64762
+FieldAgg priceAgg = agg.getFieldAgg("price");
+popAgg.getMin(); // 3.07
+popAgg.getMax(); // 30.50
+popAgg.getSum(); // 52.56
 ```
 
 And group by aggregations doing as follows:
 ```java
-GroupAgg popByStateAgg = jsonAgg.getGroupBy("pop", "state");
-FieldAgg popByMA = popByStateAgg.groupBy("MA");
-popByMA.getMin(); // 1764
-popByMA.getMax(); // 31495
-popByMA.getSum(); // 56655
+GroupByAgg groupByAgg = agg.getGroupBy("price", "inStock");
+FieldAgg priceBystockAgg = groupByAgg.groupBy("true");
+priceBystockAgg.getMin(); // 6.49
+priceBystockAgg.getMax(); // 30.50
+priceBystockAgg.getSum(); // 49.49
 ```
 
 
