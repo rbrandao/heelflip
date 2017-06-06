@@ -1,9 +1,8 @@
-package com.skatepark.heelflip;
+package skatepark.heelflip;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;

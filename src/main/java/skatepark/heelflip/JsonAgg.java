@@ -1,12 +1,12 @@
-package com.skatepark.heelflip;
+package skatepark.heelflip;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
 
-import com.skatepark.heelflip.util.Extractor;
-import com.skatepark.heelflip.util.JsonDumper;
+import skatepark.heelflip.util.Extractor;
+import skatepark.heelflip.util.JsonDumper;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package com.skatepark.heelflip;
+package skatepark.heelflip;
 
 import com.google.gson.JsonPrimitive;
 

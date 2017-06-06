@@ -1,13 +1,13 @@
-package com.skatepark.heelflip.util;
+package skatepark.heelflip.util;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-import com.skatepark.heelflip.FieldAgg;
-import com.skatepark.heelflip.GroupByAgg;
-import com.skatepark.heelflip.JsonAgg;
+import skatepark.heelflip.FieldAgg;
+import skatepark.heelflip.GroupByAgg;
+import skatepark.heelflip.JsonAgg;
 
 import java.io.IOException;
 import java.nio.file.Files;

@@ -1,4 +1,4 @@
-package com.skatepark.heelflip.util;
+package skatepark.heelflip.util;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
