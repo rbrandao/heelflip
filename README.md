@@ -19,10 +19,10 @@ Heelflip is available at the Central Maven Repository:
 ## How to use
 Considering the following bookstore JSON sample:
 ```javascript
-{"name":"The Lightning Thief","author":"Rick Riordan","genre":"fantasy","inStock":true,"price":12.50,"pages":384}
-{"name":"The Sea of Monsters","author":"Rick Riordan","genre":"fantasy","inStock":true,"price":6.49,"pages":304}
-{"name":"Sophie's World","author":"Jostein Gaarder","genre":"fantasy","inStock":false,"price":3.07,"pages":64}
-{"name":"Lucene in Action","author":"Michael McCandless","genre":"IT","inStock":true,"price":30.50,"pages":475}
+{"name":"The Odyssey",  "author":"Homer",          "genre":"poem",  "inStock":true, "price":12.50}
+{"name":"The Godfather","author":"Mario Puzo",     "genre":"novel", "inStock":true, "price":6.49}
+{"name":"Moby-Dick",    "author":"Herman Melville","genre":"novel", "inStock":false,"price":3.07}
+{"name":"Emma",         "author":"Austen",         "genre":"novel", "inStock":true, "price":30.50}
 ```
 We can read then as follows:
 ```java
@@ -47,7 +47,7 @@ Or counting their values (count and cardinality):
 FieldAgg genreAgg = agg.getFieldAgg("genre");
 genreAgg.count();          // 4
 genreAgg.cardinality();    // 2
-genreAgg.count("fantasy"); // 3
+genreAgg.count("novel");   // 3
 ```
 ### Group By Aggregations
 
@@ -65,9 +65,9 @@ GroupByAgg groupByAgg = agg.getGroupBy("name", "inStock");
 FieldAgg namesInStockAgg = groupByAgg.groupBy("true");
 
 namesInStockAgg.distinctValues(); 
-//"The Sea of Monsters"
-//"Lucene in Action"
-//"The Lightning Thief"
+//"The Odyssey"
+//"The Godfather"
+//"Emma"
 ```
 <under construction>
 
