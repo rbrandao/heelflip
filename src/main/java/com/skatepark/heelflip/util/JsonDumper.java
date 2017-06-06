@@ -78,7 +78,7 @@ public class JsonDumper {
         }
 
         if (missingGroupByArray.size() > 0) {
-            Path path = Paths.get(dirPath.toString(), "__missingGroupBy.");
+            Path path = Paths.get(dirPath.toString(), "__missingGroupBy.json");
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             Files.write(path, gson.toJson(missingGroupByArray).getBytes());
         }
