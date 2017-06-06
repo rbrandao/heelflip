@@ -37,14 +37,14 @@ try(InputStream stream = new FileInputStream("bookstore.json")){
 
 Once you have a JsonAgg object we can get global aggregations (min, max and sum) doing as follows:
 ```java
-FieldAgg priceAgg = agg.getFieldAgg("price");
+FieldAgg priceAgg = jsonAgg.getFieldAgg("price");
 popAgg.getMin(); // 3.07
 popAgg.getMax(); // 30.50
 popAgg.getSum(); // 52.56
 ```
 Or counting their values (count and cardinality):
 ```java
-FieldAgg genreAgg = agg.getFieldAgg("genre");
+FieldAgg genreAgg = jsonAgg.getFieldAgg("genre");
 genreAgg.count();          // 4
 genreAgg.cardinality();    // 2
 genreAgg.count("novel");   // 3
@@ -53,7 +53,7 @@ genreAgg.count("novel");   // 3
 
 We also can get group by aggregations doing as follows:
 ```java
-GroupByAgg groupByAgg = agg.getGroupBy("price", "inStock");
+GroupByAgg groupByAgg = jsonAgg.getGroupBy("price", "inStock");
 FieldAgg priceBystockAgg = groupByAgg.groupBy("true");
 priceBystockAgg.getMin(); // 6.49
 priceBystockAgg.getMax(); // 30.50
@@ -61,7 +61,7 @@ priceBystockAgg.getSum(); // 49.49
 ```
 or
 ```java
-GroupByAgg groupByAgg = agg.getGroupBy("name", "inStock");
+GroupByAgg groupByAgg = jsonAgg.getGroupBy("name", "inStock");
 FieldAgg namesInStockAgg = groupByAgg.groupBy("true");
 
 namesInStockAgg.distinctValues(); 
@@ -72,7 +72,7 @@ namesInStockAgg.distinctValues();
 ### Dump Report
 You can also generate a report with all aggregations accumulated. You just need to do:
 ```java
-agg.dumpReport("report", true);
+jsonAgg.dumpReport("report", true);
 ```
 This code snippet will create a directory in the following structure:
 ```
