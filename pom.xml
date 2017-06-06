@@ -27,8 +27,8 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git@github.com:greatjapa/heelflip.git</connection>
-        <developerConnection>scm:git:git@github.com:greatjapa/heelflip.git</developerConnection>
+	<connection>scm:git:https://github.com/greatjapa/heelflip.git</connection>
+	<developerConnection>scm:git:https://github.com/greatjapa/heelflip.git</developerConnection>
         <url>http://github.com/greatjapa/heelflip</url>
     </scm>
 
