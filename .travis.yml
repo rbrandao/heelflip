@@ -7,7 +7,7 @@ branches:
   only:
     - master
     
-script: "mvn cobertura:cobertura"
+script: "mvn -Dgpg.skip cobertura:cobertura"
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
