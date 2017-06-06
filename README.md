@@ -69,6 +69,26 @@ namesInStockAgg.distinctValues();
 //"The Godfather"
 //"Emma"
 ```
+### Dump Report
+You can also generate a report with all aggregations accumulated. You just need to do:
+```java
+agg.dumpReport("report", true);
+```
+This code snippet will create a directory in the following structure:
+```
+report
+│   __missingGroupBy.json
+└───name
+│   │   __name.json
+│   │   name_groupBy_author.json
+│   │   name_groupBy_genre.json
+│   │   name_groupBy_inStock.json
+│   │   name_groupBy_price.json
+└───author
+└───genre
+└───inStock
+└───price
+```
 
 ### How aggregation works over non-flat JSON
 There is no problem if you have JSONs with array or nested objects. What Heelflip does is calculate aggregations over fields and their values. But the Heelflip API is based on field names and, for that, we need to rename JSON fields when arrays or objects appears.
