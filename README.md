@@ -20,8 +20,8 @@ Heelflip is available at the Central Maven Repository:
 Considering the following bookstore JSON sample:
 ```javascript
 {"name":"The Odyssey",  "author":"Homer",          "genre":"poem",  "inStock":true, "price":12.50}
-{"name":"The Godfather","author":"Mario Puzo",     "genre":"novel", "inStock":true, "price":6.49}
-{"name":"Moby-Dick",    "author":"Herman Melville","genre":"novel", "inStock":false,"price":3.07}
+{"name":"The Godfather","author":"Mario Puzo",     "genre":"novel", "inStock":true, "price":6.49 }
+{"name":"Moby-Dick",    "author":"Herman Melville","genre":"novel", "inStock":false,"price":3.07 }
 {"name":"Emma",         "author":"Austen",         "genre":"novel", "inStock":true, "price":30.50}
 ```
 We can read then as follows:
