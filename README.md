@@ -6,6 +6,8 @@
 **Heelflip** is an in-memory JSON aggregator for Java. Sometimes we just want to read a couple of JSON samples and get analytics information from them. Before throw it on a relational or NoSQL databases, it would be interesting if we can get some quick results just read them in our code.
 
 ## Maven
+Heelflip is available at the Central Maven Repository:
+
 ```xml
 <dependency>
     <groupId>com.github.greatjapa</groupId>
