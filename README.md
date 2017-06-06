@@ -53,7 +53,10 @@ or
 GroupByAgg groupByAgg = agg.getGroupBy("name", "inStock");
 FieldAgg namesInStockAgg = groupByAgg.groupBy("true");
 
-namesInStockAgg.distinctValues(); //"The Sea of Monsters", "Lucene in Action", "The Lightning Thief"
+namesInStockAgg.distinctValues(); 
+//"The Sea of Monsters"
+//"Lucene in Action"
+//"The Lightning Thief"
 ```
 <under construction>
 
