@@ -90,8 +90,8 @@ report
 └───price
 ```
 Each JSON field has its own directory, for instance, `name`, `author` etc. This directory has the following items:
-1. `__<field_name>.json` file with global aggregations for this field;
-2. A list of `<field_name>_groupBy_<field_name>.json` files with group by aggregations.
+1. `__<field_name>.json` file with field global aggregations;
+2. All combinations of group by aggregations separated in different files in this format `<field_name>_groupBy_<field_name>.json`.
 
 Finally, the root directory contains a file `__missingGroupBy.json` with a list of missing group by combination.
 
