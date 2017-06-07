@@ -15,7 +15,9 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
+import redis.clients.jedis.Jedis;
 import skatepark.heelflip.inmem.InMemFactory;
+import skatepark.heelflip.redis.RedisFactory;
 import skatepark.heelflip.util.Extractor;
 import skatepark.heelflip.util.JsonDumper;
 
@@ -36,6 +38,14 @@ public class JsonAgg {
         this.fieldAggMap = new HashMap<>();
         this.groupByAggMap = new HashMap<>();
         this.aggFactory = new InMemFactory();
+    }
+
+    public JsonAgg(Jedis jedis) {
+        Objects.requireNonNull(jedis, "jedis should not be null.");
+
+        this.fieldAggMap = new HashMap<>();
+        this.groupByAggMap = new HashMap<>();
+        this.aggFactory = new RedisFactory(jedis);
     }
 
     /**
