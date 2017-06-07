@@ -140,7 +140,7 @@ public class JsonAggTest {
                 String value = fieldEntry.getValue();
                 String groupByValue = groupByEntry.getValue();
 
-                GroupByAgg groupByAgg = jsonAgg.getGroupBy(fieldName, groupBy);
+                IGroupByAgg groupByAgg = jsonAgg.getGroupBy(fieldName, groupBy);
                 Assert.assertEquals(1, groupByAgg.values().size());
                 Assert.assertEquals(1, groupByAgg.groupByValues().size());
 
@@ -201,9 +201,9 @@ public class JsonAggTest {
         Assert.assertEquals(3, jsonAgg.numberOfFieldAgg());
         Assert.assertEquals(6, jsonAgg.numberOfGroupByAgg());
 
-        GroupByAgg groupByAgg = jsonAgg.getGroupBy("b.x", "a");
+        IGroupByAgg groupByAgg = jsonAgg.getGroupBy("b.x", "a");
 
-        FieldAgg fieldAgg = groupByAgg.groupBy("true");
+        IFieldAgg fieldAgg = groupByAgg.groupBy("true");
         Set<String> values = fieldAgg.distinctValues();
         Assert.assertEquals(3, values.size());
         Assert.assertTrue(values.contains("9"));
@@ -301,8 +301,8 @@ public class JsonAggTest {
         Assert.assertEquals(5, jsonAgg.numberOfFieldAgg());
         Assert.assertEquals(20, jsonAgg.numberOfGroupByAgg());
 
-        GroupByAgg groupByAgg = jsonAgg.getGroupBy("b_0", "a");
-        FieldAgg fieldAgg = groupByAgg.groupBy("true");
+        IGroupByAgg groupByAgg = jsonAgg.getGroupBy("b_0", "a");
+        IFieldAgg fieldAgg = groupByAgg.groupBy("true");
         Set<String> values = fieldAgg.distinctValues();
         Assert.assertEquals(2, values.size());
         Assert.assertTrue(values.contains("9"));
@@ -369,8 +369,8 @@ public class JsonAggTest {
         Assert.assertEquals(3, jsonAgg.numberOfFieldAgg());
         Assert.assertEquals(6, jsonAgg.numberOfGroupByAgg());
 
-        GroupByAgg groupByAgg = jsonAgg.getGroupBy("b.x", "a");
-        FieldAgg fieldAgg = groupByAgg.groupBy("true");
+        IGroupByAgg groupByAgg = jsonAgg.getGroupBy("b.x", "a");
+        IFieldAgg fieldAgg = groupByAgg.groupBy("true");
         Set<String> values = fieldAgg.distinctValues();
         Assert.assertEquals(3, values.size());
         Assert.assertTrue(values.contains("-1"));
@@ -384,7 +384,7 @@ public class JsonAggTest {
         Assert.assertTrue(values.contains("4"));
     }
 
-//    @Test
+    //    @Test
     public void testLargeFileStocks() throws IOException {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(STOCKS_FILE_PATH);
         ZipInputStream zipStream = new ZipInputStream(stream);
@@ -398,7 +398,7 @@ public class JsonAggTest {
         Assert.assertEquals(4692, jsonAgg.numberOfGroupByAgg());
     }
 
-//    @Test
+    //    @Test
     public void testLargeFileZips() throws IOException {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(ZIPS_FILE_PATH);
         ZipInputStream zipStream = new ZipInputStream(stream);

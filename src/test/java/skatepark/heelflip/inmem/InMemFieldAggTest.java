@@ -1,15 +1,15 @@
-package skatepark.heelflip;
+package skatepark.heelflip.inmem;
 
 import com.google.gson.JsonPrimitive;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-public class FieldAggTest {
+public class InMemFieldAggTest {
 
     @Test
     public void testDoubleValues() {
-        FieldAgg fieldAgg = new FieldAgg("a");
+        InMemFieldAgg fieldAgg = new InMemFieldAgg("a");
         fieldAgg.agg(new JsonPrimitive(2.3));
         fieldAgg.agg(new JsonPrimitive(2.1));
         fieldAgg.agg(new JsonPrimitive(2.0));
@@ -35,7 +35,7 @@ public class FieldAggTest {
 
     @Test
     public void testIntValues() {
-        FieldAgg fieldAgg = new FieldAgg("a");
+        InMemFieldAgg fieldAgg = new InMemFieldAgg("a");
         fieldAgg.agg(new JsonPrimitive(10));
         fieldAgg.agg(new JsonPrimitive(11));
         fieldAgg.agg(new JsonPrimitive(12));
@@ -61,7 +61,7 @@ public class FieldAggTest {
 
     @Test
     public void testLongValues() {
-        FieldAgg fieldAgg = new FieldAgg("a");
+        InMemFieldAgg fieldAgg = new InMemFieldAgg("a");
         fieldAgg.agg(new JsonPrimitive(10L));
         fieldAgg.agg(new JsonPrimitive(11L));
         fieldAgg.agg(new JsonPrimitive(12L));
@@ -87,7 +87,7 @@ public class FieldAggTest {
 
     @Test
     public void testStringValues() {
-        FieldAgg fieldAgg = new FieldAgg("a");
+        InMemFieldAgg fieldAgg = new InMemFieldAgg("a");
         fieldAgg.agg(new JsonPrimitive("foo"));
         fieldAgg.agg(new JsonPrimitive("foo"));
         fieldAgg.agg(new JsonPrimitive("boo"));
@@ -113,7 +113,7 @@ public class FieldAggTest {
 
     @Test
     public void testBooleanValues() {
-        FieldAgg fieldAgg = new FieldAgg("a");
+        InMemFieldAgg fieldAgg = new InMemFieldAgg("a");
         fieldAgg.agg(new JsonPrimitive(true));
         fieldAgg.agg(new JsonPrimitive(true));
         fieldAgg.agg(new JsonPrimitive(true));
@@ -138,7 +138,7 @@ public class FieldAggTest {
 
     @Test
     public void testMixedValues() {
-        FieldAgg fieldAgg = new FieldAgg("a");
+        InMemFieldAgg fieldAgg = new InMemFieldAgg("a");
         fieldAgg.agg(new JsonPrimitive("foo"));
         fieldAgg.agg(new JsonPrimitive("true"));
         fieldAgg.agg(new JsonPrimitive("1.2"));

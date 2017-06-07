@@ -1,4 +1,4 @@
-package skatepark.heelflip;
+package skatepark.heelflip.inmem;
 
 import com.google.gson.JsonPrimitive;
 
@@ -7,11 +7,11 @@ import org.junit.Test;
 
 import java.util.Set;
 
-public class GroupByAggTest {
+public class InMemGroupByAggTest {
 
     @Test
     public void testGroupByValues() {
-        GroupByAgg groupByAgg = new GroupByAgg("a", "b");
+        InMemGroupByAgg groupByAgg = new InMemGroupByAgg("a", "b");
         groupByAgg.agg(new JsonPrimitive(10), new JsonPrimitive(true));
         groupByAgg.agg(new JsonPrimitive(20), new JsonPrimitive(true));
         groupByAgg.agg(new JsonPrimitive(-1), new JsonPrimitive(false));
@@ -28,7 +28,7 @@ public class GroupByAggTest {
 
     @Test
     public void testValues() {
-        GroupByAgg groupByAgg = new GroupByAgg("a", "b");
+        InMemGroupByAgg groupByAgg = new InMemGroupByAgg("a", "b");
         groupByAgg.agg(new JsonPrimitive(10), new JsonPrimitive(true));
         groupByAgg.agg(new JsonPrimitive(20), new JsonPrimitive(true));
         groupByAgg.agg(new JsonPrimitive(-1), new JsonPrimitive(false));
@@ -46,7 +46,7 @@ public class GroupByAggTest {
 
     @Test
     public void testGroupBy() {
-        GroupByAgg groupByAgg = new GroupByAgg("a", "b");
+        InMemGroupByAgg groupByAgg = new InMemGroupByAgg("a", "b");
         groupByAgg.agg(new JsonPrimitive(10), new JsonPrimitive(true));
         groupByAgg.agg(new JsonPrimitive(20), new JsonPrimitive(true));
         groupByAgg.agg(new JsonPrimitive(-1), new JsonPrimitive(false));
@@ -55,7 +55,7 @@ public class GroupByAggTest {
         Assert.assertEquals("a", groupByAgg.getFieldName());
         Assert.assertEquals("b", groupByAgg.getGroupBy());
         
-        FieldAgg fieldAgg = groupByAgg.groupBy("true");
+        InMemFieldAgg fieldAgg = groupByAgg.groupBy("true");
         Set<String> distinctValues = fieldAgg.distinctValues();
         Assert.assertEquals(2, distinctValues.size());
         Assert.assertTrue(distinctValues.contains("10"));
