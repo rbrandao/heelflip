@@ -7,11 +7,11 @@ import skatepark.heelflip.IGroupByAgg;
 public class RedisFactory implements IAggFactory {
     @Override
     public IFieldAgg newFieldAgg(String fieldName) {
-        return null;
+        return new RedisFieldAgg(fieldName);
     }
 
     @Override
     public IGroupByAgg newGroupByAgg(String fieldName, String groupBy) {
-        return null;
+        return new RedisGroupByAgg(fieldName, groupBy);
     }
 }

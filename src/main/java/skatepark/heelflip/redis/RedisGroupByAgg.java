@@ -1,22 +1,19 @@
-package skatepark.heelflip.inmem;
+package skatepark.heelflip.redis;
 
 import com.google.gson.JsonPrimitive;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 
+import skatepark.heelflip.IFieldAgg;
 import skatepark.heelflip.IGroupByAgg;
 
-class InMemGroupByAgg implements IGroupByAgg {
+class RedisGroupByAgg implements IGroupByAgg {
 
     private String fieldName;
     private String groupBy;
-    private Map<String, InMemFieldAgg> aggregations;
 
-    public InMemGroupByAgg(String fieldName, String groupBy) {
+    public RedisGroupByAgg(String fieldName, String groupBy) {
         Objects.requireNonNull(fieldName, "fieldName should not be null.");
         Objects.requireNonNull(groupBy, "groupBy should not be null.");
         if (fieldName.equals(groupBy)) {
@@ -24,7 +21,6 @@ class InMemGroupByAgg implements IGroupByAgg {
         }
         this.fieldName = fieldName;
         this.groupBy = groupBy;
-        this.aggregations = new HashMap<>();
     }
 
     @Override
@@ -39,27 +35,22 @@ class InMemGroupByAgg implements IGroupByAgg {
 
     @Override
     public void agg(JsonPrimitive fieldNameValue, JsonPrimitive groupByValue) {
-        InMemFieldAgg fieldAgg = aggregations.computeIfAbsent(groupByValue.getAsString(), key -> new InMemFieldAgg(fieldName));
-        fieldAgg.agg(fieldNameValue);
+//TODO
     }
 
     @Override
-    public InMemFieldAgg groupBy(String value) {
-        return value == null || !aggregations.containsKey(value) ?
-                null :
-                aggregations.get(value);
+    public IFieldAgg groupBy(String value) {
+        return null;//TODO
     }
 
     @Override
     public Set<String> groupByValues() {
-        return aggregations.keySet();
+        return null;//TODO
     }
 
     @Override
     public Set<String> values() {
-        return aggregations.values().stream()
-                .flatMap(fieldAgg -> fieldAgg.distinctValues().stream())
-                .collect(Collectors.toSet());
+        return null;//TODO
     }
 
     @Override
