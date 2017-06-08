@@ -25,8 +25,8 @@ class RedisFieldAgg implements IFieldAgg {
         this.fieldName = fieldName;
         this.jedis = jedis;
 
-        this.FIELD_INFO_KEY = String.format("FIELD_INFO:%s", fieldName);
-        this.FIELD_VALUES_KEY = String.format("FIELD_VALUES:%s", fieldName);
+        this.FIELD_INFO_KEY = String.format("JSON_AGG:FIELD_INFO:%s", fieldName);
+        this.FIELD_VALUES_KEY = String.format("JSON_AGG:FIELD_VALUES:%s", fieldName);
     }
 
     @Override
