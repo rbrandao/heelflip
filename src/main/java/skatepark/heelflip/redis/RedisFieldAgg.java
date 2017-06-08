@@ -79,17 +79,20 @@ class RedisFieldAgg implements IFieldAgg {
 
     @Override
     public BigDecimal getMax() {
-        return null;//TODO
+        String max = jedis.hget(FIELD_INFO_KEY, "max");
+        return max == null ? null : new BigDecimal(max);
     }
 
     @Override
     public BigDecimal getMin() {
-        return null;//TODO
+        String min = jedis.hget(FIELD_INFO_KEY, "min");
+        return min == null ? null : new BigDecimal(min);
     }
 
     @Override
     public BigDecimal getSum() {
-        return null;//TODO
+        String sum = jedis.hget(FIELD_INFO_KEY, "sum");
+        return sum == null ? null : new BigDecimal(sum);
     }
 
     @Override
@@ -97,6 +100,22 @@ class RedisFieldAgg implements IFieldAgg {
         jedis.hincrBy(FIELD_VALUES_KEY, value.getAsString(), 1);
 
         if (value.isNumber()) {
+            Double min = value.getAsDouble();
+            String minStr = jedis.hget(FIELD_INFO_KEY, "min");//TODO
+            if (minStr != null) {
+                min = Math.min(min, Double.parseDouble(minStr));
+            }
+            jedis.hset(FIELD_INFO_KEY, "min", min.toString());
+
+            Double max = value.getAsDouble();
+            String maxStr = jedis.hget(FIELD_INFO_KEY, "max");//TODO
+            if (maxStr != null) {
+                max = Math.max(max, Double.parseDouble(maxStr));
+            }
+            jedis.hset(FIELD_INFO_KEY, "max", max.toString());
+
+            jedis.hincrByFloat(FIELD_INFO_KEY, "sum", value.getAsDouble());
+
             jedis.hincrBy(FIELD_INFO_KEY, "numberCount", 1);
         } else if (value.isString()) {
             jedis.hincrBy(FIELD_INFO_KEY, "stringCount", 1);

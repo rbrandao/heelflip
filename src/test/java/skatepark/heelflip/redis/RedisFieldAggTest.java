@@ -3,6 +3,7 @@ package skatepark.heelflip.redis;
 import com.google.gson.JsonPrimitive;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import redis.clients.jedis.Jedis;
@@ -10,6 +11,14 @@ import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
 public class RedisFieldAggTest {
+
+    @Before
+    public void cleanRedis() {
+        JedisPool pool = new JedisPool(new JedisPoolConfig(), "localhost");
+        try (Jedis jedis = pool.getResource()) {
+            jedis.flushAll();
+        }
+    }
 
     @Test
     public void testDoubleValues() {
@@ -28,9 +37,9 @@ public class RedisFieldAggTest {
             Assert.assertEquals(0, fieldAgg.getStringCount());
             Assert.assertEquals(0, fieldAgg.getBooleanCount());
             Assert.assertEquals(4, fieldAgg.getNumberCount());
-//            Assert.assertEquals(2.0, fieldAgg.getMin().doubleValue(), 10E10);
-//            Assert.assertEquals(2.3, fieldAgg.getMax().doubleValue(), 10E10);
-//            Assert.assertEquals(8.4, fieldAgg.getSum().doubleValue(), 10E10);
+            Assert.assertEquals(2.0, fieldAgg.getMin().doubleValue(), 10E10);
+            Assert.assertEquals(2.3, fieldAgg.getMax().doubleValue(), 10E10);
+            Assert.assertEquals(8.4, fieldAgg.getSum().doubleValue(), 10E10);
 
             Assert.assertEquals(4, fieldAgg.count());
             Assert.assertEquals(1, fieldAgg.count("2.3"));
