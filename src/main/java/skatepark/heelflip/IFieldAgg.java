@@ -28,12 +28,12 @@ public interface IFieldAgg {
     /**
      * @return number of fields.
      */
-    int count();
+    long count();
 
     /**
      * @return number of occurrences of the given value.
      */
-    int count(String value);
+    long count(String value);
 
     /**
      * @return set of distinct values.
@@ -43,17 +43,17 @@ public interface IFieldAgg {
     /**
      * @return count of {@link String} value.
      */
-    int getStringCount();
+    long getStringCount();
 
     /**
      * @return count of {@link Boolean} value.
      */
-    int getBooleanCount();
+    long getBooleanCount();
 
     /**
      * @return count of {@link Number} value.
      */
-    int getNumberCount();
+    long getNumberCount();
 
     /**
      * @return max value.

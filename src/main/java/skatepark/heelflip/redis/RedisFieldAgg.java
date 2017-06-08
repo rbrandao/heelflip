@@ -41,17 +41,17 @@ class RedisFieldAgg implements IFieldAgg {
     }
 
     @Override
-    public int count() {
+    public long count() {
         List<String> counters = jedis.hvals(FIELD_VALUES_KEY);
         return counters.stream()
-                .mapToInt(count -> Integer.valueOf(count))
+                .mapToLong(Long::valueOf)
                 .sum();
     }
 
     @Override
-    public int count(String value) {
+    public long count(String value) {
         String count = jedis.hget(FIELD_VALUES_KEY, value);
-        return count == null ? 0 : Integer.valueOf(count);
+        return count == null ? 0 : Long.valueOf(count);
     }
 
     @Override
@@ -60,21 +60,21 @@ class RedisFieldAgg implements IFieldAgg {
     }
 
     @Override
-    public int getStringCount() {
+    public long getStringCount() {
         String stringCount = jedis.hget(FIELD_INFO_KEY, "stringCount");
-        return stringCount == null ? 0 : Integer.valueOf(stringCount);
+        return stringCount == null ? 0 : Long.valueOf(stringCount);
     }
 
     @Override
-    public int getBooleanCount() {
+    public long getBooleanCount() {
         String booleanCount = jedis.hget(FIELD_INFO_KEY, "booleanCount");
-        return booleanCount == null ? 0 : Integer.valueOf(booleanCount);
+        return booleanCount == null ? 0 : Long.valueOf(booleanCount);
     }
 
     @Override
-    public int getNumberCount() {
+    public long getNumberCount() {
         String numberCount = jedis.hget(FIELD_INFO_KEY, "numberCount");
-        return numberCount == null ? 0 : Integer.valueOf(numberCount);
+        return numberCount == null ? 0 : Long.valueOf(numberCount);
     }
 
     @Override

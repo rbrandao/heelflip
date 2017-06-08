@@ -13,11 +13,11 @@ import skatepark.heelflip.IFieldAgg;
 class InMemFieldAgg implements IFieldAgg {
 
     private String fieldName;
-    private Map<String, Integer> countMap;
+    private Map<String, Long> countMap;
 
-    private int stringCount;
-    private int booleanCount;
-    private int numberCount;
+    private long stringCount;
+    private long booleanCount;
+    private long numberCount;
 
     private BigDecimal min;
     private BigDecimal max;
@@ -43,14 +43,14 @@ class InMemFieldAgg implements IFieldAgg {
     }
 
     @Override
-    public int count() {
+    public long count() {
         return countMap.values().stream()
-                .mapToInt(Integer::intValue)
+                .mapToLong(Long::longValue)
                 .sum();
     }
 
     @Override
-    public int count(String value) {
+    public long count(String value) {
         return value == null || !countMap.containsKey(value) ? 0 : countMap.get(value);
     }
 
@@ -60,17 +60,17 @@ class InMemFieldAgg implements IFieldAgg {
     }
 
     @Override
-    public int getStringCount() {
+    public long getStringCount() {
         return stringCount;
     }
 
     @Override
-    public int getBooleanCount() {
+    public long getBooleanCount() {
         return booleanCount;
     }
 
     @Override
-    public int getNumberCount() {
+    public long getNumberCount() {
         return numberCount;
     }
 
@@ -91,7 +91,7 @@ class InMemFieldAgg implements IFieldAgg {
 
     @Override
     public void agg(JsonPrimitive value) {
-        countMap.computeIfAbsent(value.getAsString(), key -> 0);
+        countMap.computeIfAbsent(value.getAsString(), key -> 0L);
         countMap.put(value.getAsString(), countMap.get(value.getAsString()) + 1);
 
         if (value.isNumber()) {

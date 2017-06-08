@@ -394,7 +394,7 @@ public class JsonAggTest2 {
         Assert.assertTrue(values.contains("4"));
     }
 
-    @Test
+//    @Test
     public void testLargeFileStocks() throws IOException {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(STOCKS_FILE_PATH);
         ZipInputStream zipStream = new ZipInputStream(stream);
@@ -408,7 +408,7 @@ public class JsonAggTest2 {
         Assert.assertEquals(4692, jsonAgg.numberOfGroupByAgg());
     }
 
-    @Test
+//    @Test
     public void testLargeFileZips() throws IOException {
         InputStream stream = getClass().getClassLoader().getResourceAsStream(ZIPS_FILE_PATH);
         ZipInputStream zipStream = new ZipInputStream(stream);
