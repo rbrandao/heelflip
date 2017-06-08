@@ -3,11 +3,13 @@ package skatepark.heelflip.redis;
 import com.google.gson.JsonPrimitive;
 
 import java.math.BigDecimal;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.Pipeline;
 import skatepark.heelflip.IFieldAgg;
 
 class RedisFieldAgg implements IFieldAgg {
@@ -17,6 +19,9 @@ class RedisFieldAgg implements IFieldAgg {
 
     private final String FIELD_INFO_KEY;
     private final String FIELD_VALUES_KEY;
+
+    private static final String SCRIPT_MIN = "if not redis.call('hget',KEYS[1],'min') or tonumber(redis.call('hget',KEYS[1],'min')) > tonumber(ARGV[1]) then redis.call('hset',KEYS[1],'min', ARGV[1]) end";
+    private static final String SCRIPT_MAX = "if not redis.call('hget',KEYS[1],'max') or tonumber(redis.call('hget',KEYS[1],'max')) < tonumber(ARGV[1]) then redis.call('hset',KEYS[1],'max', ARGV[1]) end";
 
     public RedisFieldAgg(String fieldName, Jedis jedis) {
         Objects.requireNonNull(fieldName, "fieldName should not be null.");
@@ -97,31 +102,24 @@ class RedisFieldAgg implements IFieldAgg {
 
     @Override
     public void agg(JsonPrimitive value) {
-        jedis.hincrBy(FIELD_VALUES_KEY, value.getAsString(), 1);
+        Pipeline p = jedis.pipelined();
+        p.hincrBy(FIELD_VALUES_KEY, value.getAsString(), 1);
 
         if (value.isNumber()) {
-            Double min = value.getAsDouble();
-            String minStr = jedis.hget(FIELD_INFO_KEY, "min");//TODO
-            if (minStr != null) {
-                min = Math.min(min, Double.parseDouble(minStr));
-            }
-            jedis.hset(FIELD_INFO_KEY, "min", min.toString());
+            List<String> keys = Collections.singletonList(FIELD_INFO_KEY);
+            List<String> args = Collections.singletonList(value.getAsString());
 
-            Double max = value.getAsDouble();
-            String maxStr = jedis.hget(FIELD_INFO_KEY, "max");//TODO
-            if (maxStr != null) {
-                max = Math.max(max, Double.parseDouble(maxStr));
-            }
-            jedis.hset(FIELD_INFO_KEY, "max", max.toString());
+            p.eval(SCRIPT_MIN, keys, args);
+            p.eval(SCRIPT_MAX, keys, args);
+            p.hincrByFloat(FIELD_INFO_KEY, "sum", value.getAsDouble());
 
-            jedis.hincrByFloat(FIELD_INFO_KEY, "sum", value.getAsDouble());
-
-            jedis.hincrBy(FIELD_INFO_KEY, "numberCount", 1);
+            p.hincrBy(FIELD_INFO_KEY, "numberCount", 1);
         } else if (value.isString()) {
-            jedis.hincrBy(FIELD_INFO_KEY, "stringCount", 1);
+            p.hincrBy(FIELD_INFO_KEY, "stringCount", 1);
         } else if (value.isBoolean()) {
-            jedis.hincrBy(FIELD_INFO_KEY, "booleanCount", 1);
+            p.hincrBy(FIELD_INFO_KEY, "booleanCount", 1);
         }
+        p.sync();
     }
 
     @Override
