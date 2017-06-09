@@ -3,7 +3,7 @@ package skatepark.heelflip.redis;
 import com.google.gson.JsonPrimitive;
 
 import java.math.BigDecimal;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -20,6 +20,9 @@ class RedisFieldAgg implements IFieldAgg {
     private final String FIELD_INFO_KEY;
     private final String FIELD_VALUES_KEY;
 
+    private final List<String> keysMemoList;
+    private final List<String> argsMemoList;
+
     private static final String SCRIPT_MIN = "if not redis.call('hget',KEYS[1],'min') or tonumber(redis.call('hget',KEYS[1],'min')) > tonumber(ARGV[1]) then redis.call('hset',KEYS[1],'min', ARGV[1]) end";
     private static final String SCRIPT_MAX = "if not redis.call('hget',KEYS[1],'max') or tonumber(redis.call('hget',KEYS[1],'max')) < tonumber(ARGV[1]) then redis.call('hset',KEYS[1],'max', ARGV[1]) end";
 
@@ -29,6 +32,9 @@ class RedisFieldAgg implements IFieldAgg {
 
         this.fieldName = fieldName;
         this.jedis = jedis;
+
+        this.keysMemoList = new ArrayList<>();
+        this.argsMemoList = new ArrayList<>();
 
         this.FIELD_INFO_KEY = String.format("JSON_AGG:FIELD_INFO:%s", fieldName);
         this.FIELD_VALUES_KEY = String.format("JSON_AGG:FIELD_VALUES:%s", fieldName);
@@ -106,11 +112,11 @@ class RedisFieldAgg implements IFieldAgg {
         p.hincrBy(FIELD_VALUES_KEY, value.getAsString(), 1);
 
         if (value.isNumber()) {
-            List<String> keys = Collections.singletonList(FIELD_INFO_KEY);
-            List<String> args = Collections.singletonList(value.getAsString());
+            keysMemoList.add(FIELD_INFO_KEY);
+            argsMemoList.add(value.getAsString());
 
-            p.eval(SCRIPT_MIN, keys, args);
-            p.eval(SCRIPT_MAX, keys, args);
+            p.eval(SCRIPT_MIN, keysMemoList, argsMemoList);
+            p.eval(SCRIPT_MAX, keysMemoList, argsMemoList);
             p.hincrByFloat(FIELD_INFO_KEY, "sum", value.getAsDouble());
 
             p.hincrBy(FIELD_INFO_KEY, "numberCount", 1);
@@ -120,6 +126,9 @@ class RedisFieldAgg implements IFieldAgg {
             p.hincrBy(FIELD_INFO_KEY, "booleanCount", 1);
         }
         p.sync();
+
+        keysMemoList.clear();
+        argsMemoList.clear();
     }
 
     @Override
