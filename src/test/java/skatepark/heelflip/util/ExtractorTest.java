@@ -10,6 +10,8 @@ import org.junit.Test;
 import java.util.List;
 import java.util.Map;
 
+import skatepark.heelflip.util.Extractor;
+
 public class ExtractorTest {
 
     @Test

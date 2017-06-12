@@ -5,15 +5,15 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-import skatepark.heelflip.FieldAgg;
-import skatepark.heelflip.GroupByAgg;
-import skatepark.heelflip.JsonAgg;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Set;
+
+import skatepark.heelflip.IFieldAgg;
+import skatepark.heelflip.IGroupByAgg;
+import skatepark.heelflip.JsonAgg;
 
 /**
  * An utility to write a JSON file with all aggregations from the given {@link JsonAgg}.
@@ -23,7 +23,7 @@ import java.util.Set;
 public class JsonDumper {
 
     /**
-     * Dump all {@link GroupByAgg} objects into a single file.
+     * Dump all {@link IGroupByAgg} objects into a single file.
      *
      * @param jsonAgg       source object.
      * @param dirPathStr    path for directory destination.
@@ -43,7 +43,7 @@ public class JsonDumper {
             Path fieldDir = Paths.get(dirPath.toString(), fieldName);
             Files.createDirectory(fieldDir);
 
-            FieldAgg fieldAgg = jsonAgg.getFieldAgg(fieldName);
+            IFieldAgg fieldAgg = jsonAgg.getFieldAgg(fieldName);
 
             String fileName = String.format("__%s.json", fieldName);
             Path filePath = Paths.get(fieldDir.toString(), fileName);
@@ -61,7 +61,7 @@ public class JsonDumper {
                 if (groupBy.equals(fieldName)) {
                     continue;
                 }
-                GroupByAgg groupByAgg = jsonAgg.getGroupBy(fieldName, groupBy);
+                IGroupByAgg groupByAgg = jsonAgg.getGroupBy(fieldName, groupBy);
                 if (groupByAgg == null) {
                     JsonObject missingEntry = new JsonObject();
                     missingEntry.addProperty("field", fieldName);

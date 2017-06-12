@@ -5,9 +5,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
 
-import skatepark.heelflip.util.Extractor;
-import skatepark.heelflip.util.JsonDumper;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,6 +15,14 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
+import redis.clients.jedis.Jedis;
+import skatepark.heelflip.inmem.InMemFieldAgg;
+import skatepark.heelflip.inmem.InMemGroupByAgg;
+import skatepark.heelflip.redis.RedisFieldAgg;
+import skatepark.heelflip.redis.RedisGroupByAgg;
+import skatepark.heelflip.util.Extractor;
+import skatepark.heelflip.util.JsonDumper;
+
 /**
  * The aggregation engine that calculate all aggregations from the given JSON data.
  *
@@ -25,13 +30,20 @@ import java.util.Set;
  */
 public class JsonAgg {
 
-    private Map<String, FieldAgg> fieldAggMap;
+    private Map<String, IFieldAgg> fieldAggMap;
 
-    private Map<String, Map<String, GroupByAgg>> groupByAggMap;
+    private Map<String, Map<String, IGroupByAgg>> groupByAggMap;
+
+    private Jedis jedis;
 
     public JsonAgg() {
+        this(null);
+    }
+
+    public JsonAgg(Jedis jedis) {
         this.fieldAggMap = new HashMap<>();
         this.groupByAggMap = new HashMap<>();
+        this.jedis = jedis;
     }
 
     /**
@@ -45,14 +57,14 @@ public class JsonAgg {
     }
 
     /**
-     * @return total of {@link FieldAgg} objects.
+     * @return total of {@link IFieldAgg} objects.
      */
     public int numberOfFieldAgg() {
         return fieldAggMap.size();
     }
 
     /**
-     * @return total of {@link GroupByAgg} objects.
+     * @return total of {@link IGroupByAgg} objects.
      */
     public int numberOfGroupByAgg() {
         return groupByAggMap.values().stream()
@@ -76,12 +88,12 @@ public class JsonAgg {
     }
 
     /**
-     * Get {@link FieldAgg} object related to the given JSON field.
+     * Get {@link IFieldAgg} object related to the given JSON field.
      *
      * @param fieldName JSON field name.
      * @return aggregation object.
      */
-    public FieldAgg getFieldAgg(String fieldName) {
+    public IFieldAgg getFieldAgg(String fieldName) {
         return !hasFieldAgg(fieldName) ? null : fieldAggMap.get(fieldName);
     }
 
@@ -94,13 +106,13 @@ public class JsonAgg {
     }
 
     /**
-     * Get {@link GroupByAgg} object related to the given JSON fields.
+     * Get {@link IGroupByAgg} object related to the given JSON fields.
      *
      * @param fieldName JSON field name.
      * @param groupBy   JSON field name used to group.
      * @return aggregation object.
      */
-    public GroupByAgg getGroupBy(String fieldName, String groupBy) {
+    public IGroupByAgg getGroupBy(String fieldName, String groupBy) {
         return !hasGroupBy(fieldName) ? null : groupByAggMap.get(fieldName).get(groupBy);
     }
 
@@ -146,7 +158,7 @@ public class JsonAgg {
     /**
      * Dump aggregation objects into files in the given directory path.
      *
-     * @param dirPathStr       path for directory destination.
+     * @param dirPathStr    path for directory destination.
      * @param includeValues true if needed to write the JSON values related to aggregations, false
      *                      otherwise.
      * @throws IOException if IO errors occurs.
@@ -156,7 +168,7 @@ public class JsonAgg {
     }
 
     /**
-     * Build {@link FieldAgg} and {@link GroupByAgg} objects based on the given value map.
+     * Build {@link IFieldAgg} and {@link IGroupByAgg} objects based on the given value map.
      *
      * @param valueMap map field name to their {@link JsonPrimitive} values.
      */
@@ -164,7 +176,7 @@ public class JsonAgg {
         for (Map.Entry<String, List<JsonPrimitive>> entry : valueMap.entrySet()) {
             String fieldName = entry.getKey();
             List<JsonPrimitive> valueList = entry.getValue();
-            FieldAgg fieldAgg = fieldAggMap.computeIfAbsent(fieldName, key -> new FieldAgg(key));
+            IFieldAgg fieldAgg = fieldAggMap.computeIfAbsent(fieldName, key -> newFieldAgg(key));
 
             valueList.stream().forEach(fieldAgg::agg);
         }
@@ -175,8 +187,8 @@ public class JsonAgg {
                     continue;
                 }
 
-                Map<String, GroupByAgg> map = groupByAggMap.computeIfAbsent(fieldName, key -> new HashMap<>());
-                GroupByAgg groupByAgg = map.computeIfAbsent(groupBy, key -> new GroupByAgg(fieldName, groupBy));
+                Map<String, IGroupByAgg> map = groupByAggMap.computeIfAbsent(fieldName, key -> new HashMap<>());
+                IGroupByAgg groupByAgg = map.computeIfAbsent(groupBy, key -> newGroupByAgg(fieldName, groupBy));
 
                 for (JsonPrimitive fieldValue : valueMap.get(fieldName)) {
                     for (JsonPrimitive groupByValue : valueMap.get(groupBy)) {
@@ -185,5 +197,13 @@ public class JsonAgg {
                 }
             }
         }
+    }
+
+    private IFieldAgg newFieldAgg(String key) {
+        return jedis == null ? new InMemFieldAgg(key) : new RedisFieldAgg(key, jedis);
+    }
+
+    private IGroupByAgg newGroupByAgg(String fieldName, String groupBy) {
+        return jedis == null ? new InMemGroupByAgg(fieldName, groupBy) : new RedisGroupByAgg(fieldName, groupBy, jedis);
     }
 }
