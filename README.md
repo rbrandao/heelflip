@@ -54,7 +54,7 @@ genreAgg.count("novel");   // 3
 We also can get group by aggregations doing as follows:
 ```java
 IGroupByAgg groupByAgg = jsonAgg.getGroupBy("price", "inStock");
-FieldAgg priceBystockAgg = groupByAgg.groupBy("true");
+IFieldAgg priceBystockAgg = groupByAgg.groupBy("true");
 priceBystockAgg.getMin(); // 6.49
 priceBystockAgg.getMax(); // 30.50
 priceBystockAgg.getSum(); // 49.49
@@ -62,7 +62,7 @@ priceBystockAgg.getSum(); // 49.49
 or
 ```java
 IGroupByAgg groupByAgg = jsonAgg.getGroupBy("name", "inStock");
-FieldAgg namesInStockAgg = groupByAgg.groupBy("true");
+IFieldAgg namesInStockAgg = groupByAgg.groupBy("true");
 
 namesInStockAgg.distinctValues(); 
 //"The Odyssey"
