@@ -10,7 +10,7 @@ import java.util.Set;
 
 import skatepark.heelflip.IFieldAgg;
 
-class InMemFieldAgg implements IFieldAgg {
+public class InMemFieldAgg implements IFieldAgg {
 
     private String fieldName;
     private Map<String, Long> countMap;

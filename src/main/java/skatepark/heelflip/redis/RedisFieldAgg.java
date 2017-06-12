@@ -12,7 +12,7 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.Pipeline;
 import skatepark.heelflip.IFieldAgg;
 
-class RedisFieldAgg implements IFieldAgg {
+public class RedisFieldAgg implements IFieldAgg {
 
     private String fieldName;
     private Jedis jedis;

@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 import skatepark.heelflip.IGroupByAgg;
 
-class InMemGroupByAgg implements IGroupByAgg {
+public class InMemGroupByAgg implements IGroupByAgg {
 
     private String fieldName;
     private String groupBy;

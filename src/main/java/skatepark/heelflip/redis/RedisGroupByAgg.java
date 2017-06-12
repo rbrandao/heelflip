@@ -13,7 +13,7 @@ import redis.clients.jedis.Jedis;
 import skatepark.heelflip.IFieldAgg;
 import skatepark.heelflip.IGroupByAgg;
 
-class RedisGroupByAgg implements IGroupByAgg {
+public class RedisGroupByAgg implements IGroupByAgg {
 
     private String fieldName;
     private String groupBy;
