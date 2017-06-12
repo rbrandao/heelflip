@@ -3,7 +3,7 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.greatjapa/heelflip/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.greatjapa/heelflip)
 [![codecov](https://codecov.io/gh/greatjapa/heelflip/branch/master/graph/badge.svg)](https://codecov.io/gh/greatjapa/heelflip)
 
-**Heelflip** is an in-memory JSON aggregator for Java. Sometimes we just want to read a couple of JSON samples and get analytics information from them. Before throw it on a relational or NoSQL databases, it would be interesting if we can get some quick results just read them in our code.
+**Heelflip** is an JSON aggregator library for Java. It's well-known that aggregation processes are useful but it's very expensive to calculate. Instead of calculate aggregations over JSON files into a relational database or even NoSQL database, we provider a library that does this task for us. Heelflip provides 2 modes: **In-memory** and **redis-mode**.
 
 ## Maven
 Heelflip is available at the Central Maven Repository:
