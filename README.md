@@ -132,4 +132,4 @@ will be read as:
 { "city" : "SPRINGFIELD", "loc_0" : -72.577769, "loc_1": 42.128848, "pop" : 22115}
 ```
 
-**NOTE**: The examples above are used only to ilustrate how we rename field names for objects and arrays to generate unique names at aggregation time. It is importante to understand that we do not flatten the JSON.
+**NOTE**: The examples above are used only to ilustrate how we rename field names for objects and arrays to generate unique names at aggregation time. It is important to understand that we do not flatten the JSON.
