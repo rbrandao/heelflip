@@ -3,7 +3,7 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.greatjapa/heelflip/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.greatjapa/heelflip)
 [![codecov](https://codecov.io/gh/greatjapa/heelflip/branch/master/graph/badge.svg)](https://codecov.io/gh/greatjapa/heelflip)
 
-**Heelflip** is an in-memory JSON aggregator for Java. Sometimes we just want to read a couple of JSON samples and get analytics information from them. Before throw it on a relational or NoSQL databases, it would be interesting if we can get some quick results just read them in our code.
+**Heelflip** is an JSON aggregator library for Java. It's well-known that aggregation processes are useful but it's very expensive to calculate. Instead of calculate aggregations over JSON files into a relational database or even NoSQL database, we provider a library that does this task for us. Heelflip works **in-memory** and **in-redis** mode.
 
 ## Maven
 Heelflip is available at the Central Maven Repository:
@@ -12,7 +12,7 @@ Heelflip is available at the Central Maven Repository:
 <dependency>
     <groupId>com.github.greatjapa</groupId>
     <artifactId>heelflip</artifactId>
-    <version>1.1</version>
+    <version>1.2</version>
 </dependency>
 ```
 
@@ -94,6 +94,9 @@ Each JSON field has its own directory, for instance, `name`, `author` etc. This 
 2. All combinations of group by aggregations separated in different files in this format `<field_name>_groupBy_<field_name>.json`.
 
 Finally, the root directory contains a file `__missingGroupBy.json` with a list of missing group by combination.
+
+### How to scale?
+<under-construction>
 
 ### How aggregation works over non-flat JSON
 There is no problem if you have JSONs with array or nested objects. What Heelflip does is calculate aggregations over fields and their values. But the Heelflip API is based on field names and, for that, we need to rename JSON fields when arrays or objects appears.
