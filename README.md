@@ -96,7 +96,15 @@ Each JSON field has its own directory, for instance, `name`, `author` etc. This 
 Finally, the root directory contains a file `__missingGroupBy.json` with a list of missing group by combination.
 
 ### How to scale?
-<under-construction>
+Creating `JsonAgg` with default constructor means that you will aggregate JSON files in-memory. If you try to load several JSONs, the JVM may raise `OutOfMemoryError`. To avoid this kind of error, we provide an alternative to process aggregations in Redis instead of in-memory. See code below:
+
+```java
+JedisPool pool = new JedisPool(new JedisPoolConfig(), "localhost");
+try (Jedis jedis = pool.getResource()) {
+    JsonAgg jsonAgg = new JsonAgg(jedis);
+    ...
+}
+```
 
 ### How aggregation works over non-flat JSON
 There is no problem if you have JSONs with array or nested objects. What Heelflip does is calculate aggregations over fields and their values. But the Heelflip API is based on field names and, for that, we need to rename JSON fields when arrays or objects appears.
