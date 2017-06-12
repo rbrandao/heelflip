@@ -451,9 +451,9 @@ public class JsonAggTest {
             JedisPool pool = new JedisPool(new JedisPoolConfig(), "localhost");
             Jedis jedis = pool.getResource();
             list.add(new JsonAgg(jedis));
-            System.out.println("WARNING: using redis at localhost for unit tests");
+            System.out.println("WARNING: using redis at localhost for unit tests!");
         } catch (JedisConnectionException e) {
-            System.out.println("Executing unit tests without redis");
+            System.out.println("WARNING: executing unit tests without redis!");
         }
         return list;
     }

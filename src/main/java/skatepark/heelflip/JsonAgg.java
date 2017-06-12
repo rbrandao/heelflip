@@ -16,8 +16,10 @@ import java.util.Objects;
 import java.util.Set;
 
 import redis.clients.jedis.Jedis;
-import skatepark.heelflip.inmem.InMemFactory;
-import skatepark.heelflip.redis.RedisFactory;
+import skatepark.heelflip.inmem.InMemFieldAgg;
+import skatepark.heelflip.inmem.InMemGroupByAgg;
+import skatepark.heelflip.redis.RedisFieldAgg;
+import skatepark.heelflip.redis.RedisGroupByAgg;
 import skatepark.heelflip.util.Extractor;
 import skatepark.heelflip.util.JsonDumper;
 
@@ -32,20 +34,16 @@ public class JsonAgg {
 
     private Map<String, Map<String, IGroupByAgg>> groupByAggMap;
 
-    private IAggFactory aggFactory;
+    private Jedis jedis;
 
     public JsonAgg() {
-        this.fieldAggMap = new HashMap<>();
-        this.groupByAggMap = new HashMap<>();
-        this.aggFactory = new InMemFactory();
+        this(null);
     }
 
     public JsonAgg(Jedis jedis) {
-        Objects.requireNonNull(jedis, "jedis should not be null.");
-
         this.fieldAggMap = new HashMap<>();
         this.groupByAggMap = new HashMap<>();
-        this.aggFactory = new RedisFactory(jedis);
+        this.jedis = jedis;
     }
 
     /**
@@ -178,7 +176,7 @@ public class JsonAgg {
         for (Map.Entry<String, List<JsonPrimitive>> entry : valueMap.entrySet()) {
             String fieldName = entry.getKey();
             List<JsonPrimitive> valueList = entry.getValue();
-            IFieldAgg fieldAgg = fieldAggMap.computeIfAbsent(fieldName, key -> aggFactory.newFieldAgg(key));
+            IFieldAgg fieldAgg = fieldAggMap.computeIfAbsent(fieldName, key -> newFieldAgg(key));
 
             valueList.stream().forEach(fieldAgg::agg);
         }
@@ -190,7 +188,7 @@ public class JsonAgg {
                 }
 
                 Map<String, IGroupByAgg> map = groupByAggMap.computeIfAbsent(fieldName, key -> new HashMap<>());
-                IGroupByAgg groupByAgg = map.computeIfAbsent(groupBy, key -> aggFactory.newGroupByAgg(fieldName, groupBy));
+                IGroupByAgg groupByAgg = map.computeIfAbsent(groupBy, key -> newGroupByAgg(fieldName, groupBy));
 
                 for (JsonPrimitive fieldValue : valueMap.get(fieldName)) {
                     for (JsonPrimitive groupByValue : valueMap.get(groupBy)) {
@@ -199,5 +197,13 @@ public class JsonAgg {
                 }
             }
         }
+    }
+
+    private IFieldAgg newFieldAgg(String key) {
+        return jedis == null ? new InMemFieldAgg(key) : new RedisFieldAgg(key, jedis);
+    }
+
+    private IGroupByAgg newGroupByAgg(String fieldName, String groupBy) {
+        return jedis == null ? new InMemGroupByAgg(fieldName, groupBy) : new RedisGroupByAgg(fieldName, groupBy, jedis);
     }
 }
