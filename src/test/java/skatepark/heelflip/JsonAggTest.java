@@ -412,22 +412,7 @@ public class JsonAggTest {
         }
     }
 
-    //    @Test
-    public void testLargeFileStocks() throws IOException {
-        for (JsonAgg jsonAgg : getJsonAggList()) {
-            InputStream stream = getClass().getClassLoader().getResourceAsStream(STOCKS_FILE_PATH);
-            ZipInputStream zipStream = new ZipInputStream(stream);
-            zipStream.getNextEntry();
-
-            long time = System.currentTimeMillis();
-            jsonAgg.loadNDJSON(zipStream);
-            System.out.println("stocks takes (seconds): " + (System.currentTimeMillis() - time) / 1000);
-            Assert.assertEquals(69, jsonAgg.numberOfFieldAgg());
-            Assert.assertEquals(4692, jsonAgg.numberOfGroupByAgg());
-        }
-    }
-
-    //  @Test
+    @Test
     public void testLargeFileZips() throws IOException {
         for (JsonAgg jsonAgg : getJsonAggList()) {
             InputStream stream = getClass().getClassLoader().getResourceAsStream(ZIPS_FILE_PATH);
@@ -440,6 +425,40 @@ public class JsonAggTest {
 
             Assert.assertEquals(6, jsonAgg.numberOfFieldAgg());
             Assert.assertEquals(30, jsonAgg.numberOfGroupByAgg());
+
+            IFieldAgg popAgg = jsonAgg.getFieldAgg("pop");
+            Assert.assertEquals(29467, popAgg.count());
+            Assert.assertEquals(0, popAgg.getMin().longValue());
+            Assert.assertEquals(112047, popAgg.getMax().longValue());
+            Assert.assertEquals(248706415, popAgg.getSum().longValue());
+
+            IGroupByAgg popByCityAgg = jsonAgg.getGroupBy("pop", "city");
+            IFieldAgg popParishAgg = popByCityAgg.groupBy("PARISH");
+            Assert.assertEquals(1, popParishAgg.count());
+            Assert.assertEquals(3039, popParishAgg.getMin().longValue());
+            Assert.assertEquals(3039, popParishAgg.getMax().longValue());
+            Assert.assertEquals(3039, popParishAgg.getSum().longValue());
+
+            IFieldAgg popBurbankAgg = popByCityAgg.groupBy("BURBANK");
+            Assert.assertEquals(9, popBurbankAgg.count());
+            Assert.assertEquals(293, popBurbankAgg.getMin().longValue());
+            Assert.assertEquals(27870, popBurbankAgg.getMax().longValue());
+            Assert.assertEquals(124594, popBurbankAgg.getSum().longValue());
+        }
+    }
+
+    //    @Test
+    public void testLargeFileStocks() throws IOException {
+        for (JsonAgg jsonAgg : getJsonAggList()) {
+            InputStream stream = getClass().getClassLoader().getResourceAsStream(STOCKS_FILE_PATH);
+            ZipInputStream zipStream = new ZipInputStream(stream);
+            zipStream.getNextEntry();
+
+            long time = System.currentTimeMillis();
+            jsonAgg.loadNDJSON(zipStream);
+            System.out.println("stocks takes (seconds): " + (System.currentTimeMillis() - time) / 1000);
+            Assert.assertEquals(69, jsonAgg.numberOfFieldAgg());
+            Assert.assertEquals(4692, jsonAgg.numberOfGroupByAgg());
         }
     }
 
